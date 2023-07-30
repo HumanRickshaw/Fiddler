@@ -14287,20 +14287,20 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#f(n).</span>
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">return</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
-
-<span class="c1">#g(n).</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#g(n).</span>
 <span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1">#h(n).</span>
+<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
 
 <span class="c1">#Every number n yields two new unique values, f(n) and g(n).</span>
 <span class="k">def</span> <span class="nf">getWhole</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="p">:</span>
     <span class="n">new</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
-        <span class="n">new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
         <span class="n">new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+        <span class="n">new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
         
     <span class="n">new</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
     <span class="k">return</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>

@@ -14266,17 +14266,17 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><h3 id="Compositions:">Compositions:<a class="anchor-link" href="#Compositions:">&#182;</a></h3><p>I will first look at the total number.</p>
 <h4 id="Composition-of-0-functions.">Composition of 0 functions.<a class="anchor-link" href="#Composition-of-0-functions.">&#182;</a></h4><p>$n = 0$.  There is one number in the set.</p>
-<h4 id="Composition-of-1-function.">Composition of 1 function.<a class="anchor-link" href="#Composition-of-1-function.">&#182;</a></h4><p>$f(n) = 1$ and $g(n) = 0$.  There are two numbers in the set, and 1 is new.</p>
-<h4 id="Composition-of-2-functions.">Composition of 2 functions.<a class="anchor-link" href="#Composition-of-2-functions.">&#182;</a></h4><p>$f(f(n)) = -1$ and $g(f(n)) = 4$.  Note that $f(g(n)) = 1$ and $g(g(n)) = 0$.  There are four numbers in the set, and two are new.</p>
+<h4 id="Composition-of-1-function.">Composition of 1 function.<a class="anchor-link" href="#Composition-of-1-function.">&#182;</a></h4><p>$g(n) = 0$ and $h(n) = 1$.  There are two numbers in the set, and 1 is new.</p>
+<h4 id="Composition-of-2-functions.">Composition of 2 functions.<a class="anchor-link" href="#Composition-of-2-functions.">&#182;</a></h4><p>$g(h(n)) = 4$ and $h(h(n)) = -1$.  Note that $g(g(n)) = 0$ and $h(g(n)) = 1$.  There are four numbers in the set, and two are new.</p>
 <h4 id="...">...<a class="anchor-link" href="#...">&#182;</a></h4><h4 id="Composition-of-k-functions.">Composition of k functions.<a class="anchor-link" href="#Composition-of-k-functions.">&#182;</a></h4><p>There are $2^k$ numbers in the set, and $2^{k-1}$ are new.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="What-is-k?:">What is k?:<a class="anchor-link" href="#What-is-k?:">&#182;</a></h3><p>$2^{10} = 1024$ and $g^5(f(0)) = 4^5\cdot(1) = 1024$.</p>
-<p>Because $f$ negates and approximately doubles numbers, and $g$ quadruples numbers, the maximum number of compositions necessary to yield all feasible numbers $-1024 \le n \le 1024$ is eleven.</p>
-<p>$f^{11}(0) = 1 - 2 + 4 - ... - 512 + 1024 = 683$ is the only new number added at the 11<sup>th</sup> composition.</p>
+<h3 id="What-is-k?:">What is k?:<a class="anchor-link" href="#What-is-k?:">&#182;</a></h3><p>$2^{10} = 1024$ and $h^5(g(0)) = 4^5\cdot(1) = 1024$.</p>
+<p>Because $h$ negates and approximately doubles numbers, and $g$ quadruples numbers, the maximum number of compositions necessary to yield all feasible numbers $-1024 \le n \le 1024$ is eleven.</p>
+<p>$h^{11}(0) = 1 - 2 + 4 - ... - 512 + 1024 = 683$ is the only new number added at the 11<sup>th</sup> composition.</p>
 <p>$2^{11} = 2048$. However, many of those $2048$ numbers in the set of values from combinations of eleven compositions are less than $0$ or greater than $1024$...</p>
 
 </div>
@@ -14285,7 +14285,7 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>I ran code and achieved the following results.</p>
 <p><img src = "2023.07.28 Extra Credit.png"></p>
-<p>$234$ numbers between $-1024$ to $1024$ can be produced from combinations of $f$ and $g$.</p>
+<p>$234$ numbers between $-1024$ to $1024$ can be produced from combinations of $g$ and $h$.</p>
 <p>Those numbers are :</p>
 <p>$-1024, -511, -509, -508, -503, -501, -500, -497, -496, -479, -477, -476, -471, -469, -468, -465, -464, -455, -453, -452, -449,$
 $-448, -383, -381, -380, -375, -373, -372, -369, -368, -351, -349, -348, -343, -341, -340, -337, -336, -327, -325, -324, -321,$
