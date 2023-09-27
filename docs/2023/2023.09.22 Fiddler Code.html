@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2023.09.22 Extra Credit</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2023.09.22 Fiddler Code</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,81 +14259,678 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Can-You-Shape-All-the-Peloton?">Can You Shape All the Peloton?<a class="anchor-link" href="#Can-You-Shape-All-the-Peloton?">&#182;</a></h1><h2 id="Extra-Credit"><a href="https://thefiddler.substack.com/p/can-you-shape-the-peloton">Extra Credit</a><a class="anchor-link" href="#Extra-Credit">&#182;</a></h2><p>In this week’s Fiddler, you’re looking for numbers of riders where two distinct formations between a triangle and a rhombus are possible.</p><p><span>For Extra Credit, find the fewest number of riders needed so that there are </span><em>three</em><span> distinct formations between triangle and a rhombus.</span></p><p><span>(Note: The sequence of numbers for which there are at least three arrangements also appears to be missing from </span><a href="https://oeis.org/" rel>OEIS</a><span>. The same goes for the sequence that has the smallest number needed for two formations, followed by the smallest number needed for three formations, followed by the smallest number needed for four formations, and so on. Who will be first to </span><a href="https://oeis.org/Submit.html" rel>submit</a><span> all these sequences?)</span></p>
+<h1 id="Setup">Setup<a class="anchor-link" href="#Setup">&#182;</a></h1>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+     </div>
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>Using the same code I wrote for <a href="">Fiddler</a></p>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Create a list of the first R rhomboidal numbers.</span>
+<span class="k">def</span> <span class="nf">rhomboidal</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">rhombi</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">rhombi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">rhombi</span><span class="p">)</span>
+
+<span class="c1">#Create a list of the first T triangular numbers.</span>
+<span class="k">def</span> <span class="nf">triangular</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">triangles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">triangles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">triangles</span><span class="p">)</span>
+
+
+<span class="c1">#Find all pelotons with n^2 riders or less. </span>
+<span class="k">def</span> <span class="nf">find_all_pelotons</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+        
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">rhombi</span> <span class="o">=</span> <span class="n">rhomboidal</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">triangles</span> <span class="o">=</span> <span class="n">triangular</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    
+    <span class="c1">#For each rhombi of size i:</span>
+    <span class="c1">#    *Append to list of values.</span>
+    <span class="c1">#    *Subtract 1st triangular number from i^2, append to list of values.</span>
+    <span class="c1">#    *Subtract 2nd triangular number from i^2, append to list of values.</span>
+    <span class="c1">#    *...</span>
+    <span class="c1">#    *Subtract (i-1)st triangular number from i^2, append to list of values. (Note this is the same as the (i)th triangular number)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">rhombi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        
+        <span class="c1">#Append full rhombus.</span>
+        <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        
+        <span class="c1">#Take away a triangle from the rhombus and append.</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">triangles</span><span class="p">[:</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="n">t</span><span class="p">)</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">find_formations</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="c1">#The largest possible rhombus is slightly less than twice a triangle of size p.</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">))</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">r</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="n">j</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;^2 - Σ&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="s2">&quot; = &quot;</span><span class="p">,</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="n">j</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot; = &quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+                
+
+<span class="c1">#Create frequency table of pelotons and formations.</span>
+<span class="k">def</span> <span class="nf">formation_helper</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+
+    <span class="n">ps</span> <span class="o">=</span> <span class="n">find_all_pelotons</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    
+    <span class="n">freq</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ps</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">freq</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">freq</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">freq</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Value&#39;</span><span class="p">:</span> <span class="n">freq</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+            <span class="s1">&#39;Frequency&#39;</span><span class="p">:</span> <span class="n">freq</span><span class="o">.</span><span class="n">values</span><span class="p">()}</span> 
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>            
+                
+                
+
+<span class="c1">#Determine the smallest number of riders with 1, 2, ..., f distinct formations.</span>
+<span class="k">def</span> <span class="nf">find_all_formations</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">pelotons</span> <span class="o">=</span> <span class="n">formation_helper</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    
+    <span class="c1">#Find those that have exactly two formations.</span>
+    <span class="k">if</span> <span class="n">option</span> <span class="o">==</span> <span class="s2">&quot;Fiddler&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">pelotons</span><span class="p">[</span><span class="n">pelotons</span><span class="o">.</span><span class="n">Frequency</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)[</span><span class="s2">&quot;Value&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">f</span><span class="p">])])</span>
+        
+    <span class="c1">#Find those that have exactly three formations.       </span>
+    <span class="k">elif</span> <span class="n">option</span> <span class="o">==</span> <span class="s2">&quot;EC&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">pelotons</span><span class="p">[</span><span class="n">pelotons</span><span class="o">.</span><span class="n">Frequency</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)[</span><span class="s2">&quot;Value&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">f</span><span class="p">])])</span>
+        
+    <span class="c1">#Find the smallest number of riders for a particular number of formations.</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">f</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">pelotons</span><span class="p">[</span><span class="n">pelotons</span><span class="o">.</span><span class="n">Frequency</span> <span class="o">==</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;Value&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="n">mini</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">Value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The least number of riders for&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> <span class="s2">&quot;distinct formations is&quot;</span><span class="p">,</span> <span class="n">mini</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+            <span class="n">find_formations</span><span class="p">(</span><span class="n">mini</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
 
 </div>
-</div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>141 is the first number that can be expressed as three formations:</p>
-<ul>
-    <li> The $12^{th}$ rhombus minus the $2^{nd}$ triangular number.</li>
-    <li> The $13^{th}$ rhombus minus the $7^{th}$ triangular number.</li>
-    <li> The $14^{th}$ rhombus minus the $10^{th}$ triangular number.</li>
-</ul>
+<h2 id="Pelotons-with-exactly-2-distinct-formations">Pelotons with exactly 2 distinct formations<a class="anchor-link" href="#Pelotons-with-exactly-2-distinct-formations">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">find_all_formations</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;Fiddler&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Here is a list of the first 1000 numbers with exactly three distinct pelotons:</p>
-<p>141, 190, 253, 288, 435, 463, 484, 631, 778, 831, 841, 925, 1023, 1120, 1170, 1219, 1268, 1366, 1464, 1471, 1611, 1660, 1698, 1709, 1905, 1933, 2050, 2101, 2199, 2248, 2276, 2346, 2565, 2591, 2640, 2689, 2763, 2836, 2854, 2934, 2983, 3081, 3108, 3522, 3669, 3718, 3721, 3865, 3914, 3963, 4166, 4355, 4404, 4411, 4453, 4551, 4588, 4600, 4663, 4695, 4747, 4833, 5041, 5139, 5224, 5286, 5433, 5455, 5461, 5580, 5629, 5646, 5678, 5923, 6021, 6033, 6070, 6315, 6322, 6351, 6364, 6511, 6514, 6658, 6756, 6811, 6900, 6931, 7001, 7050, 7189, 7197, 7478, 7491, 7540, 7568, 7834, 7981, 8056, 8079, 8128, 8233, 8324, 8373, 8398, 8529, 8560, 8569, 8634, 8716, 8814, 8863, 9010, 9108, 9206, 9255, 9283, 9451, 9490, 9501, 9549, 9598, 9696, 9790, 9843, 9876, 9985, 10079, 10186, 10529, 10774, 10872, 10921, 10970, 11043, 11166, 11173, 11215, 11235, 11313, 11411, 11460, 11509, 11572, 11950, 12097, 12244, 12293, 12373, 12489, 12630, 12636, 12783, 12930, 12969, 13126, 13159, 13175, 13238, 13258, 13518, 13714, 13836, 14008, 14113, 14155, 14400, 14493, 14498, 14596, 14694, 14746, 14841, 14919, 14939, 14988, 15256, 15281, 15321, 15331, 15380, 15570, 15576, 15625, 15772, 15804, 15859, 15870, 16213, 16311, 16360, 16423, 16458, 16600, 16605, 16654, 16726, 16948, 17046, 17095, 17144, 17304, 17391, 17396, 17593, 17634, 17683, 17781, 17920, 17928, 17943, 18139, 18171, 18369, 18449, 18516, 18859, 18908, 19104, 19398, 19447, 19534, 19545, 19605, 19790, 19951, 20035, 20061, 20231, 20329, 20476, 20483, 20565, 20574, 20650, 20770, 20772, 20868, 21022, 21113, 21211, 21505, 21603, 21639, 21643, 21799, 21814, 21928, 21946, 22093, 22191, 22240, 22485, 22773, 22779, 22795, 22828, 22944, 22975, 23073, 23084, 23122, 23318, 23373, 23416, 23563, 23661, 23739, 23759, 23808, 23905, 23955, 24004, 24151, 24184, 24200, 24268, 24298, 24403, 24543, 24866, 24984, 25180, 25278, 25326, 25474, 25523, 25572, 25685, 25915, 25974, 26160, 26263, 26405, 26503, 26686, 26788, 26841, 26846, 26895, 27051, 27091, 27130, 27238, 27336, 27679, 27728, 27971, 27973, 27997, 28071, 28120, 28414, 28441, 28500, 28561, 28659, 28710, 28806, 29029, 29100, 29149, 29247, 29296, 29394, 29590, 29616, 29731, 29835, 30031, 30129, 30276, 30309, 30325, 30423, 30472, 30501, 30598, 30616, 30619, 30694, 30766, 30864, 31158, 31176, 31308, 31354, 31593, 31648, 31674, 31697, 31729, 31921, 32040, 32043, 32089, 32203, 32334, 32481, 32554, 32593, 32775, 32910, 33020, 33069, 33118, 33199, 33261, 33265, 33461, 33488, 33510, 33559, 33706, 33804, 33853, 34147, 34245, 34441, 34539, 34588, 34651, 34784, 34833, 34933, 34980, 35068, 35091, 35176, 35225, 35421, 35470, 35511, 35568, 35666, 35764, 35800, 36009, 36156, 36303, 36460, 36597, 36666, 36711, 36772, 36793, 37038, 37234, 37245, 37359, 37493, 37534, 37626, 37675, 37969, 38263, 38361, 38401, 38410, 38508, 38655, 38851, 38949, 38998, 39194, 39268, 39609, 39635, 39698, 39846, 40076, 40125, 40134, 40138, 40272, 40419, 40468, 40909, 40958, 41056, 41110, 41154, 41291, 41399, 41497, 41580, 41595, 41695, 41725, 41791, 41815, 41966, 42036, 42085, 42254, 42330, 42447, 42624, 42673, 42722, 42736, 42771, 42783, 42820, 43114, 43125, 43359, 43496, 43506, 43513, 43653, 43800, 43849, 44086, 44143, 44181, 44388, 44470, 45025, 45368, 45858, 46008, 46113, 46204, 46250, 46299, 46371, 46446, 46495, 46536, 46593, 46789, 46858, 47015, 47071, 47083, 47181, 47295, 47328, 47503, 47524, 47544, 47573, 47622, 47649, 47916, 47938, 48073, 48259, 48322, 48504, 48553, 48651, 48700, 48896, 49094, 49131, 49148, 49239, 49383, 49480, 49533, 49660, 49680, 49780, 49981, 50023, 50170, 50219, 50220, 50415, 50539, 50611, 50660, 50758, 50813, 50821, 50856, 50905, 51101, 51247, 51406, 51591, 51640, 51738, 51774, 51984, 52228, 52273, 52326, 52522, 52620, 52624, 52669, 52735, 52740, 52816, 52963, 53061, 53140, 53306, 53404, 53718, 53796, 53943, 53961, 54090, 54139, 54188, 54286, 54296, 54421, 54433, 54585, 54629, 54825, 54949, 54972, 55119, 55168, 55263, 55278, 55389, 55479, 55618, 55741, 55756, 55903, 56008, 56050, 56197, 56319, 56344, 56589, 56608, 56834, 56897, 56944, 57030, 57066, 57079, 57158, 57186, 57226, 57275, 57520, 57540, 57765, 57793, 57814, 57961, 58053, 58059, 58255, 58500, 58501, 58549, 58598, 58625, 58647, 58653, 58941, 58990, 59284, 59529, 59676, 59823, 59921, 59970, 60076, 60240, 60264, 60423, 60460, 60523, 60558, 60769, 60803, 61048, 61293, 61298, 61489, 61576, 61734, 61881, 61930, 62099, 62175, 62224, 62328, 62378, 62500, 62616, 62763, 62910, 63008, 63106, 63351, 63449, 63544, 63645, 63694, 63943, 64086, 64122, 64233, 64261, 64411, 64674, 64700, 64723, 64772, 64903, 64968, 65001, 65115, 65164, 65311, 65349, 65458, 65530, 65553, 65605, 65856, 65994, 65997, 66144, 66145, 66340, 66438, 66723, 66781, 67222, 67301, 67418, 67590, 67663, 67810, 67859, 67879, 67908, 68104, 68111, 68175, 68349, 68545, 68611, 68704, 68839, 69072, 69084, 69091, 69133, 69280, 69525, 69721, 69819, 69966, 70113, 70260, 70291, 70299, 70456, 70480, 70505, 70554, 70603, 70750, 70897, 71347, 71779, 71828, 71878, 71926, 71955, 72171, 72214, 72318, 72465, 72503, 72514, 72621, 72661, 72710, 72730, 72808, 72906, 72916, 72936, 73053, 73151, 73249, 73347, 73494, 73543, 73659, 73935, 74096, 74229, 74376, 74526, 74572, 74830, 74915, 74964, 75018, 75111, 75356, 75393, 75435, 75581, 75601, 75799, 75895, 76110, 76260, 76336, 76434, 76483, 76581, 76630, 76728, 76760, 77022, 77039, 77071, 77116, 77120, 77416, 77463, 77610, 77697, 77705, 77721, 77806, 78051, 78220, 78226, 78345, 78394, 78443, 78541, 79080, 79129, 79325, 79374, 79423, 79521, 79668, 79728, 79766, 80011, 80026, 80181, 80256, 80353, 80403, 80478, 80550, 80599, 80746, 80871, 80884, 81089, 81400, 81628, 81775, 81873, 81971, 82069, 82461, 82608, 82618, 82853, 83098, 83245, 83294, 83485, 83505, 83546, 83784, 83833, 83980, 84225, 84274, 84519, 84568, 84574, 84598, 84631, 84715, 84930, 85009, 85058, 85156, 85409, 85508, 85548, 85723, 85744, 85875, 85940, 86086, 86161, 86185, 86283, 86370, 86381, 86626, 86664, 86724, 87018, 87219, 87263, 87331, 87531, 87606, 87748, 87753, 88047, 88109, 88243, 88341, 88354, 88390, 88398, 88488, 88586, 88684, 88831, 88883, 88929, 89076, 89125, 89253, 89370, 89664, 89864, 90214, 90393, 90399, 90421, 90448, 90546, 90564, 90710, 90840, 91134, 91183, 91288, 91575, 91673, 91722, 91771, 91866, 92065, 92155, 92245, 92509, 92914, 92947, 93022, 93094, 93486, 93535, 93600, 93633, 93829, 94074, 94096, 94123, 94155, 94221, 94270, 94564, 94758, 94760, 95005, 95103, 95149, 95154, 95250, 95299, 95446, 95593, 95623, 95683, 95838, 95985, 96034, 96201, 96328, 96490, 96573, 96622, 96720, 96916, 96965, 97068, 97270, 97288, 97308, 97504, 97749, 97847, 97935, 97945, 98043, 98224, 98288, 98328, 98386, 98533, 98631, 98680, 98729, 98778, 98863, 99072, 99076, 99121, 99129, 99366, 99373, 99386, 99415, 99915, 99954, 99958, 100493, 100536, 100556, 100585, 100650, 100738, 100785, 100825, 100934, 100983, 101114</p>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[15, 36, 43, 49, 64, 66, 78, 85, 99, 100, 118, 120, 134, 151, 159, 168, 169, 204, 210, 211, 219, 225, 241, 246, 256, 270, 274, 279, 283, 295, 309, 321, 323, 325, 345, 351, 355, 358, 364, 372, 376, 379, 386, 393, 394, 400, 405, 406, 423, 429, 438, 440, 456, 474, 498, 505, 508, 519, 523, 526, 528, 531, 540, 555, 559, 561, 570, 575, 576, 589, 593, 648, 651, 661, 664, 666, 670, 673, 693, 701, 708, 721, 739, 748, 750, 763, 764, 771, 774, 780, 790, 805, 808, 813, 814, 820, 834, 855, 856, 861, 879, 883, 890, 897, 899, 900, 903, 904, 916, 918, 933, 934, 940, 958, 960, 969, 979, 984, 988, 996, 1003, 1009, 1015, 1018, 1020, 1035, 1044, 1051, 1061, 1065, 1069, 1072, 1079, 1089, 1093, 1116, 1128, 1134, 1135, 1143, 1146, 1153, 1156, 1159, 1176, 1191, 1205, 1213, 1216, 1222, 1225, 1233, 1245, 1249, 1254, 1273, 1290, 1291, 1296, 1303, 1306, 1314, 1341, 1348, 1353, 1358, 1359, 1368, 1369, 1375, 1378, 1389, 1401, 1408, 1413, 1416, 1430, 1450, 1455, 1485, 1498, 1506, 1510, 1511, 1520, 1521, 1524, 1528, 1534, 1540, 1545, 1554, 1555, 1576, 1579, 1585, 1594, 1596, 1597, 1636, 1639, 1647, 1651, 1653, 1659, 1674, 1678, 1680, 1705, 1713, 1728, 1740, 1743, 1744, 1749, 1764, 1765, 1771, 1774, 1783, 1794, 1800, 1816, 1821, 1828, 1831, 1834, 1835, 1839, 1840, 1843, 1849, 1858, 1863, 1870, 1881, 1884, 1885, 1889, 1891, 1898, 1906, 1935, 1936, 1947, 1953, 1963, 1970, 1980, 1989, 1996, 2010, 2019, 2024, 2025, 2035, 2055, 2068, 2074, 2080, 2089, 2094, 2106, 2115, 2122, 2125, 2133, 2136, 2139, 2164, 2168, 2175, 2181, 2188, 2191, 2205, 2206, 2208, 2209, 2211, 2213, 2214, 2236, 2250, 2259, 2269, 2281, 2283, 2290, 2298, 2301, 2303, 2304, 2310, 2316, 2325, 2326, 2329, 2344, 2353, 2356, 2359, 2373, 2374, 2380, 2388, 2391, 2400, 2403, 2409, 2413, 2429, 2430, 2446, 2451, 2455, 2464, 2465, 2472, 2473, 2479, 2481, 2484, 2485, 2494, 2496, 2497, 2500, 2510, 2514, 2533, 2535, 2538, 2544, 2546, 2578, 2584, 2586, 2598, 2599, 2608, 2616, 2626, 2638, 2654, 2659, 2661, 2668, 2671, 2685, 2694, 2698, 2703, 2704, 2718, 2731, 2740, 2745, 2769, 2773, 2775, 2778, 2780, 2803, 2808, 2809, 2811, 2815, 2820, 2838, 2850, 2860, 2888, 2898, 2899, 2901, 2905, 2906, 2913, 2924, 2926, 2941, 2947, 2949, 2970, 2973, 2980, 2991, 2997, 3000, 3004, 3015, 3016, 3018, 3024, 3025, 3058, 3061, 3064, 3070, 3075, 3088, 3091, 3103, 3104, 3111, 3126, 3133, 3135, 3144, 3150, 3154, 3158, 3160, 3165, 3189, 3194, 3211, 3214, 3221, 3234, 3235, 3246, 3271, 3275, 3276, 3279, 3286, 3291, 3298, 3309, 3313, 3315, 3316, 3319, 3321, 3328, 3330, 3343, 3347, 3349, 3354, 3364, 3376, 3383, 3390, 3396, 3403, 3408, 3410, 3414, 3415, 3430, 3438, 3453, 3460, 3473, 3484, 3486, 3495, 3499, 3501, 3531, 3534, 3536, 3543, 3545, 3550, 3559, 3564, 3591, 3599, 3600, 3613, 3618, 3625, 3630, 3631, 3634, 3643, 3644, 3653, 3655, 3676, 3685, 3690, 3693, 3699, 3706, 3711, 3715, 3724, 3726, 3729, 3738, 3739, 3753, 3760, 3766, 3771, 3772, 3786, 3789, 3795, 3798, 3806, 3808, 3819, 3826, 3828, 3843, 3849, 3858, 3860, 3874, 3886, 3891, 3900, 3910, 3913, 3921, 3925, 3933, 3941, 3949, 3954, 3959, 3960, 3972, 3976, 3985, 3991, 3993, 3994, 4003, 4006, 4029, 4030, 4039, 4051, 4056, 4065, 4068, 4075, 4080, 4083, 4089, 4093, 4103, 4120, 4131, 4138, 4146, 4194, 4197, 4201, 4215, 4218, 4222, 4225, 4248, 4251, 4258, 4261, 4265, 4276, 4278, 4281, 4300, 4320, 4333, 4339, 4341, 4348, 4353, 4369, 4371, 4375, 4383, 4384, 4393, 4398, 4423, 4434, 4435, 4444, 4446, 4450, 4461, 4465, 4468, 4471, 4474, 4481, 4486, 4504, 4509, 4513, 4518, 4544, 4545, 4546, 4549, 4554, 4558, 4571, 4579, 4590, 4603, 4608, 4614, 4621, 4623, 4624, 4626, 4635, 4641, 4644, 4654, 4669, 4670, 4690, 4706, 4710, 4716, 4719, 4733, 4740, 4751, 4753, 4758, 4761, 4764, 4768, 4778, 4795, 4801, 4831, 4840, 4851, 4859, 4860, 4864, 4873, 4879, 4884, 4911, 4936, 4948, 4950, 4956, 4969, 4978, 4994, 4995, 4996, 5020, 5026, 5030, 5031, 5035, 5038, 5040, 5048, 5050, 5064, 5071, 5076, 5079, 5097, 5098, 5109, 5118, 5119, 5121, 5125, 5129, 5145, 5146, 5149, 5151, 5160, 5163, 5174, 5176, 5178, 5183, 5184, 5188, 5200, 5209, 5226, 5247, 5263, 5266, 5272, 5274, 5284, 5300, 5304, 5314, 5319, 5323, 5325, 5326, 5328, 5329, 5334, 5336, 5349, 5350, 5356, 5365, 5370, 5380, 5385, 5404, 5410, 5418, 5421, 5431, 5440, 5448, 5458, 5460, 5466, 5472, 5475, 5476, 5500, 5505, 5506, 5538, 5539, 5545, 5553, 5559, 5563, 5566, 5571, 5575, 5596, 5599, 5604, 5614, 5619, 5622, 5625, 5643, 5653, 5659, 5664, 5671, 5676, 5689, 5698, 5706, 5710, 5713, 5730, 5734, 5739, 5740, 5748, 5754, 5755, 5758, 5761, 5766, 5770, 5778, 5781, 5796, 5799, 5808, 5831, 5839, 5853, 5856, 5858, 5866, 5880, 5884, 5895, 5899, 5904, 5905, 5908, 5914, 5916, 5928, 5931, 5935, 5944, 5948, 5973, 5975, 5979, 5983, 5986, 5993, 5995, 6000, 6006, 6018, 6022, 6029, 6056, 6063, 6069, 6075, 6088, 6091, 6093, 6099, 6105, 6118, 6121, 6126, 6135, 6136, 6144, 6147, 6148, 6163, 6169, 6175, 6190, 6201, 6204, 6213, 6220, 6231, 6235, 6236, 6238, 6268, 6280, 6285, 6294, 6308, 6309, 6330, 6345, 6361, 6366, 6371, 6373, 6385, 6393, 6397, 6406, 6421, 6424, 6445, 6448, 6469, 6488, 6490, 6493, 6495, 6504, 6525, 6534, 6535, 6538, 6540, 6543, 6546, 6553, 6555, 6558, 6559, 6561, 6576, 6588, 6595, 6604, 6616, 6628, 6630, 6633, 6634, 6646, 6650, 6663, 6664, 6669, 6678, 6693, 6708, 6709, 6714, 6718, 6721, 6730, 6731, 6747, 6749, 6753, 6754, 6760, 6766, 6774, 6780, 6781, 6784, 6793, 6801, 6819, 6825, 6834, 6840, 6847, 6853, 6861, 6866, 6874, 6875, 6879, 6880, 6886, 6889, 6938, 6945, 6949, 6951, 6961, 6965, 6972, 6979, 6990, 6994, 7006, 7008, 7009, 7015, 7018, 7019, 7020, 7035, 7053, 7056, 7071, 7072, 7078, 7104, 7105, 7109, 7110, 7128, 7138, 7141, 7150, 7164, 7170, 7180, 7183, 7198, 7200, 7204, 7206, 7239, 7240, 7244, 7246, 7248, 7255, 7258, 7260, 7263, 7271, 7288, 7293, 7309, 7316, 7320, 7323, 7325, 7326, 7330, 7338, 7359, 7360, 7369, 7372, 7375, 7379, 7381, 7413, 7416, 7429, 7449, 7455, 7456, 7461, 7470, 7473, 7495, 7501]
+</pre>
+</div>
+</div>
 
 </div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Extension">Extension<a class="anchor-link" href="#Extension">&#182;</a></h2><p>Here is the first number that can be expressed as exactly $n$ different formations:</p>
-<table>
-    <th style = "text-align:center" width = 80>n</th>
-    <th style = "text-align:center" width = 80>Riders</th>
-    <th style = "text-align:center" width = 120>Formations</th>
-    <tbody>
-        <tr>
-            <td style = "text-align:center">1</td>
-            <td style = "text-align:center">0</td>
-            <td style = "text-align:right">$1^2 - \sum{0}$</td>
-        </tr>
-        <tr>
-            <td style = "text-align:center">2</td>
-            <td style = "text-align:center">15</td>
-            <td style = "text-align:right">$4^2 - \sum{1}$<br>
-                $5^2 - \sum{4}$</td>
-        <tr>
-            <td style = "text-align:center">3</td>
-            <td style = "text-align:center">141</td>
-            <td style = "text-align:right">$12^2 - \sum{2}$<br>
-                $13^2 - \sum{7}$<br>
-                $14^2 - \sum{10}$</td>
-        <tr>
-        <tr>
-            <td style = "text-align:center">4</td>
-            <td style = "text-align:center">610</td>
-            <td style = "text-align:right">$25^2 - \sum{5}$<br>
-                $26^2 - \sum{11}$<br>
-                $29^2 - \sum{21}$<br>
-                $31^2 - \sum{26}$</td>
-        <tr>
-        <tr>
-            <td style = "text-align:center">4</td>
-            <td style = "text-align:center">610</td>
-            <td style = "text-align:right">$25^2 - \sum{5}$<br>
-                $26^2 - \sum{11}$<br>
-                $29^2 - \sum{21}$<br>
-                $31^2 - \sum{26}$</td>
-        <tr>
-    </tbody>            
-</table>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h1><h4 id="2023.09.25">2023.09.25<a class="anchor-link" href="#2023.09.25">&#182;</a></h4><p>Code can be found <a href="https://humanrickshaw.github.io/Fiddler/2023/2023.09.22%20Fiddler%20Code.html">here</a>.</p>
 
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2-Formation-Peloton-Pairs">2 Formation Peloton Pairs<a class="anchor-link" href="#2-Formation-Peloton-Pairs">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pelotons</span> <span class="o">=</span> <span class="n">formation_helper</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+    
+<span class="n">temp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pelotons</span><span class="p">[</span><span class="n">pelotons</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">])[</span><span class="s1">&#39;Value&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1000</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>99.0 100.0
+168.0 169.0
+210.0 211.0
+393.0 394.0
+405.0 406.0
+575.0 576.0
+763.0 764.0
+813.0 814.0
+855.0 856.0
+899.0 900.0
+903.0 904.0
+933.0 934.0
+1134.0 1135.0
+1290.0 1291.0
+1358.0 1359.0
+1368.0 1369.0
+1510.0 1511.0
+1520.0 1521.0
+1554.0 1555.0
+1596.0 1597.0
+1743.0 1744.0
+1764.0 1765.0
+1834.0 1835.0
+1839.0 1840.0
+1884.0 1885.0
+1935.0 1936.0
+2024.0 2025.0
+2205.0 2206.0
+2208.0 2209.0
+2213.0 2214.0
+2303.0 2304.0
+2325.0 2326.0
+2373.0 2374.0
+2429.0 2430.0
+2464.0 2465.0
+2472.0 2473.0
+2484.0 2485.0
+2496.0 2497.0
+2598.0 2599.0
+2703.0 2704.0
+2808.0 2809.0
+2898.0 2899.0
+2905.0 2906.0
+3015.0 3016.0
+3024.0 3025.0
+3103.0 3104.0
+3234.0 3235.0
+3275.0 3276.0
+3315.0 3316.0
+3414.0 3415.0
+3599.0 3600.0
+3630.0 3631.0
+3643.0 3644.0
+3738.0 3739.0
+3771.0 3772.0
+3959.0 3960.0
+3993.0 3994.0
+4029.0 4030.0
+4383.0 4384.0
+4434.0 4435.0
+4544.0 4545.0
+4545.0 4546.0
+4623.0 4624.0
+4669.0 4670.0
+4859.0 4860.0
+4994.0 4995.0
+4995.0 4996.0
+5030.0 5031.0
+5097.0 5098.0
+5118.0 5119.0
+5145.0 5146.0
+5183.0 5184.0
+5325.0 5326.0
+5328.0 5329.0
+5349.0 5350.0
+5475.0 5476.0
+5505.0 5506.0
+5538.0 5539.0
+5739.0 5740.0
+5754.0 5755.0
+5904.0 5905.0
+6135.0 6136.0
+6147.0 6148.0
+6235.0 6236.0
+6308.0 6309.0
+6534.0 6535.0
+6558.0 6559.0
+6633.0 6634.0
+6663.0 6664.0
+6708.0 6709.0
+6730.0 6731.0
+6753.0 6754.0
+6780.0 6781.0
+6874.0 6875.0
+6879.0 6880.0
+7008.0 7009.0
+7018.0 7019.0
+7019.0 7020.0
+7071.0 7072.0
+7104.0 7105.0
+7109.0 7110.0
+7239.0 7240.0
+7325.0 7326.0
+7359.0 7360.0
+7455.0 7456.0
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Pelotons-with-exactly-3-distinct-formations">Pelotons with exactly 3 distinct formations<a class="anchor-link" href="#Pelotons-with-exactly-3-distinct-formations">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">find_all_formations</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;EC&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[141, 190, 253, 288, 435, 463, 484, 631, 778, 831, 841, 925, 1023, 1120, 1170, 1219, 1268, 1366, 1464, 1471, 1611, 1660, 1698, 1709, 1905, 1933, 2050, 2101, 2199, 2248, 2276, 2346, 2565, 2591, 2640, 2689, 2763, 2836, 2854, 2934, 2983, 3081, 3108, 3522, 3669, 3718, 3721, 3865, 3914, 3963, 4166, 4355, 4404, 4411, 4453, 4551, 4588, 4600, 4663, 4695, 4747, 4833, 5041, 5139, 5224, 5286, 5433, 5455, 5461, 5580, 5629, 5646, 5678, 5923, 6021, 6033, 6070, 6315, 6322, 6351, 6364, 6511, 6514, 6658, 6756, 6811, 6900, 6931, 7001, 7050, 7189, 7197, 7478, 7491, 7540, 7568, 7834, 7981, 8056, 8079, 8128, 8233, 8324, 8373, 8398, 8529, 8560, 8569, 8634, 8716, 8814, 8863, 9010, 9108, 9206, 9255, 9283, 9451, 9490, 9501, 9549, 9598, 9696, 9790, 9843, 9876, 9985, 10079, 10186, 10529, 10774, 10872, 10921, 10970, 11043, 11166, 11173, 11215, 11235, 11313, 11411, 11460, 11509, 11572, 11950, 12097, 12244, 12293, 12373, 12489, 12630, 12636, 12783, 12930, 12969, 13126, 13159, 13175, 13238, 13258, 13518, 13714, 13836, 14008, 14113, 14155, 14400, 14493, 14498, 14596, 14694, 14746, 14841, 14919, 14939, 14988, 15256, 15281, 15321, 15331, 15380, 15570, 15576, 15625, 15772, 15804, 15859, 15870, 16213, 16311, 16360, 16423, 16458, 16600, 16605, 16654, 16726, 16948, 17046, 17095, 17144, 17304, 17391, 17396, 17593, 17634, 17683, 17781, 17920, 17928, 17943, 18139, 18171, 18369, 18449, 18516, 18859, 18908, 19104, 19398, 19447, 19534, 19545, 19605, 19790, 19951, 20035, 20061, 20231, 20329, 20476, 20483, 20565, 20574, 20650, 20770, 20772, 20868, 21022, 21113, 21211, 21505, 21603, 21639, 21643, 21799, 21814, 21928, 21946, 22093, 22191, 22240, 22485, 22773, 22779, 22795, 22828, 22944, 22975, 23073, 23084, 23122, 23318, 23373, 23416, 23563, 23661, 23739, 23759, 23808, 23905, 23955, 24004, 24151, 24184, 24200, 24268, 24298, 24403, 24543, 24866, 24984, 25180, 25278, 25326, 25474, 25523, 25572, 25685, 25915, 25974, 26160, 26263, 26405, 26503, 26686, 26788, 26841, 26846, 26895, 27051, 27091, 27130, 27238, 27336, 27679, 27728, 27971, 27973, 27997, 28071, 28120, 28414, 28441, 28500, 28561, 28659, 28710, 28806, 29029, 29100, 29149, 29247, 29296, 29394, 29590, 29616, 29731, 29835, 30031, 30129, 30276, 30309, 30325, 30423, 30472, 30501, 30598, 30616, 30619, 30694, 30766, 30864, 31158, 31176, 31308, 31354, 31593, 31648, 31674, 31697, 31729, 31921, 32040, 32043, 32089, 32203, 32334, 32481, 32554, 32593, 32775, 32910, 33020, 33069, 33118, 33199, 33261, 33265, 33461, 33488, 33510, 33559, 33706, 33804, 33853, 34147, 34245, 34441, 34539, 34588, 34651, 34784, 34833, 34933, 34980, 35068, 35091, 35176, 35225, 35421, 35470, 35511, 35568, 35666, 35764, 35800, 36009, 36156, 36303, 36460, 36597, 36666, 36711, 36772, 36793, 37038, 37234, 37245, 37359, 37493, 37534, 37626, 37675, 37969, 38263, 38361, 38401, 38410, 38508, 38655, 38851, 38949, 38998, 39194, 39268, 39609, 39635, 39698, 39846, 40076, 40125, 40134, 40138, 40272, 40419, 40468, 40909, 40958, 41056, 41110, 41154, 41291, 41399, 41497, 41580, 41595, 41695, 41725, 41791, 41815, 41966, 42036, 42085, 42254, 42330, 42447, 42624, 42673, 42722, 42736, 42771, 42783, 42820, 43114, 43125, 43359, 43496, 43506, 43513, 43653, 43800, 43849, 44086, 44143, 44181, 44388, 44470, 45025, 45368, 45858, 46008, 46113, 46204, 46250, 46299, 46371, 46446, 46495, 46536, 46593, 46789, 46858, 47015, 47071, 47083, 47181, 47295, 47328, 47503, 47524, 47544, 47573, 47622, 47649, 47916, 47938, 48073, 48259, 48322, 48504, 48553, 48651, 48700, 48896, 49094, 49131, 49148, 49239, 49383, 49480, 49533, 49660, 49680, 49780, 49981, 50023, 50170, 50219, 50220, 50415, 50539, 50611, 50660, 50758, 50813, 50821, 50856, 50905, 51101, 51247, 51406, 51591, 51640, 51738, 51774, 51984, 52228, 52273, 52326, 52522, 52620, 52624, 52669, 52735, 52740, 52816, 52963, 53061, 53140, 53306, 53404, 53718, 53796, 53943, 53961, 54090, 54139, 54188, 54286, 54296, 54421, 54433, 54585, 54629, 54825, 54949, 54972, 55119, 55168, 55263, 55278, 55389, 55479, 55618, 55741, 55756, 55903, 56008, 56050, 56197, 56319, 56344, 56589, 56608, 56834, 56897, 56944, 57030, 57066, 57079, 57158, 57186, 57226, 57275, 57520, 57540, 57765, 57793, 57814, 57961, 58053, 58059, 58255, 58500, 58501, 58549, 58598, 58625, 58647, 58653, 58941, 58990, 59284, 59529, 59676, 59823, 59921, 59970, 60076, 60240, 60264, 60423, 60460, 60523, 60558, 60769, 60803, 61048, 61293, 61298, 61489, 61576, 61734, 61881, 61930, 62099, 62175, 62224, 62328, 62378, 62500, 62616, 62763, 62910, 63008, 63106, 63351, 63449, 63544, 63645, 63694, 63943, 64086, 64122, 64233, 64261, 64411, 64674, 64700, 64723, 64772, 64903, 64968, 65001, 65115, 65164, 65311, 65349, 65458, 65530, 65553, 65605, 65856, 65994, 65997, 66144, 66145, 66340, 66438, 66723, 66781, 67222, 67301, 67418, 67590, 67663, 67810, 67859, 67879, 67908, 68104, 68111, 68175, 68349, 68545, 68611, 68704, 68839, 69072, 69084, 69091, 69133, 69280, 69525, 69721, 69819, 69966, 70113, 70260, 70291, 70299, 70456, 70480, 70505, 70554, 70603, 70750, 70897, 71347, 71779, 71828, 71878, 71926, 71955, 72171, 72214, 72318, 72465, 72503, 72514, 72621, 72661, 72710, 72730, 72808, 72906, 72916, 72936, 73053, 73151, 73249, 73347, 73494, 73543, 73659, 73935, 74096, 74229, 74376, 74526, 74572, 74830, 74915, 74964, 75018, 75111, 75356, 75393, 75435, 75581, 75601, 75799, 75895, 76110, 76260, 76336, 76434, 76483, 76581, 76630, 76728, 76760, 77022, 77039, 77071, 77116, 77120, 77416, 77463, 77610, 77697, 77705, 77721, 77806, 78051, 78220, 78226, 78345, 78394, 78443, 78541, 79080, 79129, 79325, 79374, 79423, 79521, 79668, 79728, 79766, 80011, 80026, 80181, 80256, 80353, 80403, 80478, 80550, 80599, 80746, 80871, 80884, 81089, 81400, 81628, 81775, 81873, 81971, 82069, 82461, 82608, 82618, 82853, 83098, 83245, 83294, 83485, 83505, 83546, 83784, 83833, 83980, 84225, 84274, 84519, 84568, 84574, 84598, 84631, 84715, 84930, 85009, 85058, 85156, 85409, 85508, 85548, 85723, 85744, 85875, 85940, 86086, 86161, 86185, 86283, 86370, 86381, 86626, 86664, 86724, 87018, 87219, 87263, 87331, 87531, 87606, 87748, 87753, 88047, 88109, 88243, 88341, 88354, 88390, 88398, 88488, 88586, 88684, 88831, 88883, 88929, 89076, 89125, 89253, 89370, 89664, 89864, 90214, 90393, 90399, 90421, 90448, 90546, 90564, 90710, 90840, 91134, 91183, 91288, 91575, 91673, 91722, 91771, 91866, 92065, 92155, 92245, 92509, 92914, 92947, 93022, 93094, 93486, 93535, 93600, 93633, 93829, 94074, 94096, 94123, 94155, 94221, 94270, 94564, 94758, 94760, 95005, 95103, 95149, 95154, 95250, 95299, 95446, 95593, 95623, 95683, 95838, 95985, 96034, 96201, 96328, 96490, 96573, 96622, 96720, 96916, 96965, 97068, 97270, 97288, 97308, 97504, 97749, 97847, 97935, 97945, 98043, 98224, 98288, 98328, 98386, 98533, 98631, 98680, 98729, 98778, 98863, 99072, 99076, 99121, 99129, 99366, 99373, 99386, 99415, 99915, 99954, 99958, 100493, 100536, 100556, 100585, 100650, 100738, 100785, 100825, 100934, 100983, 101114]
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Least-number-of-riders-for-$n$-distinct-formations">Least number of riders for $n$ distinct formations<a class="anchor-link" href="#Least-number-of-riders-for-$n$-distinct-formations">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">find_all_formations</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;Extension&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>
+
+The least number of riders for 1 distinct formations is 1 .
+1 ^2 - Σ 0  =  1  -  0.0  =  1
+
+
+The least number of riders for 2 distinct formations is 15 .
+4 ^2 - Σ 1  =  16  -  1.0  =  15
+5 ^2 - Σ 4  =  25  -  10.0  =  15
+
+
+The least number of riders for 3 distinct formations is 141 .
+12 ^2 - Σ 2  =  144  -  3.0  =  141
+13 ^2 - Σ 7  =  169  -  28.0  =  141
+14 ^2 - Σ 10  =  196  -  55.0  =  141
+
+
+The least number of riders for 4 distinct formations is 610 .
+25 ^2 - Σ 5  =  625  -  15.0  =  610
+26 ^2 - Σ 11  =  676  -  66.0  =  610
+29 ^2 - Σ 21  =  841  -  231.0  =  610
+31 ^2 - Σ 26  =  961  -  351.0  =  610
+
+
+The least number of riders for 5 distinct formations is 6903 .
+84 ^2 - Σ 17  =  7056  -  153.0  =  6903
+87 ^2 - Σ 36  =  7569  -  666.0  =  6903
+91 ^2 - Σ 52  =  8281  -  1378.0  =  6903
+98 ^2 - Σ 73  =  9604  -  2701.0  =  6903
+117 ^2 - Σ 116  =  13689  -  6786.0  =  6903
+
+
+The least number of riders for 6 distinct formations is 2395 .
+49 ^2 - Σ 3  =  2401  -  6.0  =  2395
+50 ^2 - Σ 14  =  2500  -  105.0  =  2395
+55 ^2 - Σ 35  =  3025  -  630.0  =  2395
+56 ^2 - Σ 38  =  3136  -  741.0  =  2395
+61 ^2 - Σ 51  =  3721  -  1326.0  =  2395
+65 ^2 - Σ 60  =  4225  -  1830.0  =  2395
+
+
+The least number of riders for 7 distinct formations is 338241 .
+587 ^2 - Σ 112  =  344569  -  6328.0  =  338241
+588 ^2 - Σ 122  =  345744  -  7503.0  =  338241
+609 ^2 - Σ 255  =  370881  -  32640.0  =  338241
+637 ^2 - Σ 367  =  405769  -  67528.0  =  338241
+686 ^2 - Σ 514  =  470596  -  132355.0  =  338241
+738 ^2 - Σ 642  =  544644  -  206403.0  =  338241
+819 ^2 - Σ 815  =  670761  -  332520.0  =  338241
+
+
+The least number of riders for 8 distinct formations is 10606 .
+103 ^2 - Σ 2  =  10609  -  3.0  =  10606
+104 ^2 - Σ 20  =  10816  -  210.0  =  10606
+106 ^2 - Σ 35  =  11236  -  630.0  =  10606
+109 ^2 - Σ 50  =  11881  -  1275.0  =  10606
+116 ^2 - Σ 75  =  13456  -  2850.0  =  10606
+122 ^2 - Σ 92  =  14884  -  4278.0  =  10606
+128 ^2 - Σ 107  =  16384  -  5778.0  =  10606
+131 ^2 - Σ 114  =  17161  -  6555.0  =  10606
+
+
+The least number of riders for 9 distinct formations is 40713 .
+202 ^2 - Σ 13  =  40804  -  91.0  =  40713
+203 ^2 - Σ 31  =  41209  -  496.0  =  40713
+204 ^2 - Σ 42  =  41616  -  903.0  =  40713
+213 ^2 - Σ 96  =  45369  -  4656.0  =  40713
+221 ^2 - Σ 127  =  48841  -  8128.0  =  40713
+238 ^2 - Σ 178  =  56644  -  15931.0  =  40713
+243 ^2 - Σ 191  =  59049  -  18336.0  =  40713
+252 ^2 - Σ 213  =  63504  -  22791.0  =  40713
+279 ^2 - Σ 272  =  77841  -  37128.0  =  40713
+
+
+The least number of riders for 10 distinct formations is 117349 .
+343 ^2 - Σ 24  =  117649  -  300.0  =  117349
+350 ^2 - Σ 101  =  122500  -  5151.0  =  117349
+352 ^2 - Σ 114  =  123904  -  6555.0  =  117349
+353 ^2 - Σ 120  =  124609  -  7260.0  =  117349
+362 ^2 - Σ 165  =  131044  -  13695.0  =  117349
+385 ^2 - Σ 248  =  148225  -  30876.0  =  117349
+392 ^2 - Σ 269  =  153664  -  36315.0  =  117349
+427 ^2 - Σ 360  =  182329  -  64980.0  =  117349
+455 ^2 - Σ 423  =  207025  -  89676.0  =  117349
+463 ^2 - Σ 440  =  214369  -  97020.0  =  117349
+
+
+The least number of riders for 11 distinct formations is 200170034 .
+14178 ^2 - Σ 1300  =  201015684  -  845650.0  =  200170034
+14193 ^2 - Σ 1594  =  201441249  -  1271215.0  =  200170034
+14292 ^2 - Σ 2860  =  204261264  -  4091230.0  =  200170034
+14895 ^2 - Σ 6586  =  221861025  -  21690991.0  =  200170034
+15300 ^2 - Σ 8236  =  234090000  -  33919966.0  =  200170034
+15387 ^2 - Σ 8554  =  236759769  -  36589735.0  =  200170034
+15798 ^2 - Σ 9940  =  249576804  -  49406770.0  =  200170034
+16305 ^2 - Σ 11461  =  265853025  -  65682991.0  =  200170034
+16983 ^2 - Σ 13285  =  288422289  -  88252255.0  =  200170034
+17337 ^2 - Σ 14170  =  300571569  -  100401535.0  =  200170034
+18972 ^2 - Σ 17875  =  359936784  -  159766750.0  =  200170034
+20007 ^2 - Σ 20005  =  400280049  -  200110015.0  =  200170034
+
+
+The least number of riders for 12 distinct formations is 98190 .
+314 ^2 - Σ 28  =  98596  -  406.0  =  98190
+315 ^2 - Σ 45  =  99225  -  1035.0  =  98190
+321 ^2 - Σ 98  =  103041  -  4851.0  =  98190
+324 ^2 - Σ 116  =  104976  -  6786.0  =  98190
+334 ^2 - Σ 163  =  111556  -  13366.0  =  98190
+336 ^2 - Σ 171  =  112896  -  14706.0  =  98190
+350 ^2 - Σ 220  =  122500  -  24310.0  =  98190
+361 ^2 - Σ 253  =  130321  -  32131.0  =  98190
+379 ^2 - Σ 301  =  143641  -  45451.0  =  98190
+381 ^2 - Σ 306  =  145161  -  46971.0  =  98190
+420 ^2 - Σ 395  =  176400  -  78210.0  =  98190
+431 ^2 - Σ 418  =  185761  -  87571.0  =  98190
+
+
+The least number of riders for 13 distinct formations is 203282766 .
+14259 ^2 - Σ 269  =  203319081  -  36315.0  =  203282766
+14399 ^2 - Σ 2845  =  207331201  -  4048435.0  =  203282766
+14406 ^2 - Σ 2915  =  207532836  -  4250070.0  =  203282766
+14786 ^2 - Σ 5539  =  218625796  -  15343030.0  =  203282766
+14896 ^2 - Σ 6100  =  221890816  -  18608050.0  =  203282766
+14949 ^2 - Σ 6354  =  223472601  -  20189835.0  =  203282766
+15589 ^2 - Σ 8914  =  243016921  -  39734155.0  =  203282766
+15666 ^2 - Σ 9180  =  245423556  -  42140790.0  =  203282766
+16749 ^2 - Σ 12429  =  280529001  -  77246235.0  =  203282766
+16856 ^2 - Σ 12715  =  284124736  -  80841970.0  =  203282766
+16887 ^2 - Σ 12797  =  285170769  -  81888003.0  =  203282766
+18179 ^2 - Σ 15949  =  330476041  -  127193275.0  =  203282766
+18487 ^2 - Σ 16642  =  341769169  -  138486403.0  =  203282766
+20139 ^2 - Σ 20114  =  405579321  -  202296555.0  =  203282766
+
+
+The least number of riders for 14 distinct formations is 5750095 .
+2401 ^2 - Σ 171  =  5764801  -  14706.0  =  5750095
+2405 ^2 - Σ 260  =  5784025  -  33930.0  =  5750095
+2450 ^2 - Σ 710  =  6002500  -  252405.0  =  5750095
+2464 ^2 - Σ 801  =  6071296  -  321201.0  =  5750095
+2471 ^2 - Σ 843  =  6105841  -  355746.0  =  5750095
+2534 ^2 - Σ 1158  =  6421156  -  671061.0  =  5750095
+2596 ^2 - Σ 1406  =  6739216  -  989121.0  =  5750095
+2695 ^2 - Σ 1739  =  7263025  -  1512930.0  =  5750095
+2710 ^2 - Σ 1785  =  7344100  -  1594005.0  =  5750095
+2744 ^2 - Σ 1886  =  7529536  -  1779441.0  =  5750095
+2989 ^2 - Σ 2523  =  8934121  -  3184026.0  =  5750095
+3160 ^2 - Σ 2910  =  9985600  -  4235505.0  =  5750095
+3185 ^2 - Σ 2964  =  10144225  -  4394130.0  =  5750095
+3241 ^2 - Σ 3083  =  10504081  -  4753986.0  =  5750095
+
+
+The least number of riders for 15 distinct formations is 1994931 .
+1414 ^2 - Σ 94  =  1999396  -  4465.0  =  1994931
+1421 ^2 - Σ 220  =  2019241  -  24310.0  =  1994931
+1428 ^2 - Σ 297  =  2039184  -  44253.0  =  1994931
+1434 ^2 - Σ 350  =  2056356  -  61425.0  =  1994931
+1479 ^2 - Σ 620  =  2187441  -  192510.0  =  1994931
+1491 ^2 - Σ 675  =  2223081  -  228150.0  =  1994931
+1524 ^2 - Σ 809  =  2322576  -  327645.0  =  1994931
+1531 ^2 - Σ 835  =  2343961  -  349030.0  =  1994931
+1547 ^2 - Σ 892  =  2393209  -  398278.0  =  1994931
+1666 ^2 - Σ 1249  =  2775556  -  780625.0  =  1994931
+1701 ^2 - Σ 1340  =  2893401  -  898470.0  =  1994931
+1764 ^2 - Σ 1494  =  3111696  -  1116765.0  =  1994931
+1872 ^2 - Σ 1737  =  3504384  -  1509453.0  =  1994931
+1953 ^2 - Σ 1907  =  3814209  -  1819278.0  =  1994931
+1989 ^2 - Σ 1980  =  3956121  -  1961190.0  =  1994931
+
+
+The least number of riders for 16 distinct formations is 434841 .
+661 ^2 - Σ 64  =  436921  -  2080.0  =  434841
+662 ^2 - Σ 82  =  438244  -  3403.0  =  434841
+669 ^2 - Σ 159  =  447561  -  12720.0  =  434841
+671 ^2 - Σ 175  =  450241  -  15400.0  =  434841
+681 ^2 - Σ 240  =  463761  -  28920.0  =  434841
+687 ^2 - Σ 272  =  471969  -  37128.0  =  434841
+688 ^2 - Σ 277  =  473344  -  38503.0  =  434841
+716 ^2 - Σ 394  =  512656  -  77815.0  =  434841
+726 ^2 - Σ 429  =  527076  -  92235.0  =  434841
+769 ^2 - Σ 559  =  591361  -  156520.0  =  434841
+787 ^2 - Σ 607  =  619369  -  184528.0  =  434841
+804 ^2 - Σ 650  =  646416  -  211575.0  =  434841
+813 ^2 - Σ 672  =  660969  -  226128.0  =  434841
+846 ^2 - Σ 749  =  715716  -  280875.0  =  434841
+864 ^2 - Σ 789  =  746496  -  311655.0  =  434841
+904 ^2 - Σ 874  =  817216  -  382375.0  =  434841
+
+
+The least number of riders for 17 distinct formations is 201169641 .
+14191 ^2 - Σ 655  =  201384481  -  214840.0  =  201169641
+14294 ^2 - Σ 2509  =  204318436  -  3148795.0  =  201169641
+14321 ^2 - Σ 2800  =  205091041  -  3921400.0  =  201169641
+14334 ^2 - Σ 2930  =  205463556  -  4293915.0  =  201169641
+14681 ^2 - Σ 5359  =  215531761  -  14362120.0  =  201169641
+14763 ^2 - Σ 5792  =  217946169  -  16776528.0  =  201169641
+14812 ^2 - Σ 6037  =  219395344  -  18225703.0  =  201169641
+14904 ^2 - Σ 6474  =  222129216  -  20959575.0  =  201169641
+15594 ^2 - Σ 9165  =  243172836  -  42003195.0  =  201169641
+15671 ^2 - Σ 9424  =  245580241  -  44410600.0  =  201169641
+15813 ^2 - Σ 9887  =  250050969  -  48881328.0  =  201169641
+16374 ^2 - Σ 11570  =  268107876  -  66938235.0  =  201169641
+16944 ^2 - Σ 13109  =  287099136  -  85929495.0  =  201169641
+17871 ^2 - Σ 15375  =  319372641  -  118203000.0  =  201169641
+18101 ^2 - Σ 15904  =  327646201  -  126476560.0  =  201169641
+18234 ^2 - Σ 16205  =  332478756  -  131309115.0  =  201169641
+19812 ^2 - Σ 19562  =  392515344  -  191345703.0  =  201169641
+20013 ^2 - Σ 19967  =  400520169  -  199350528.0  =  201169641
+
+
+The least number of riders for 18 distinct formations is 1669228 .
+1292 ^2 - Σ 8  =  1669264  -  36.0  =  1669228
+1298 ^2 - Σ 176  =  1684804  -  15576.0  =  1669228
+1309 ^2 - Σ 297  =  1713481  -  44253.0  =  1669228
+1318 ^2 - Σ 368  =  1737124  -  67896.0  =  1669228
+1337 ^2 - Σ 486  =  1787569  -  118341.0  =  1669228
+1343 ^2 - Σ 518  =  1803649  -  134421.0  =  1669228
+1358 ^2 - Σ 591  =  1844164  -  174936.0  =  1669228
+1387 ^2 - Σ 713  =  1923769  -  254541.0  =  1669228
+1408 ^2 - Σ 791  =  1982464  -  313236.0  =  1669228
+1441 ^2 - Σ 902  =  2076481  -  407253.0  =  1669228
+1447 ^2 - Σ 921  =  2093809  -  424581.0  =  1669228
+1484 ^2 - Σ 1032  =  2202256  -  533028.0  =  1669228
+1513 ^2 - Σ 1113  =  2289169  -  619941.0  =  1669228
+1568 ^2 - Σ 1256  =  2458624  -  789396.0  =  1669228
+1627 ^2 - Σ 1398  =  2647129  -  977901.0  =  1669228
+1666 ^2 - Σ 1487  =  2775556  -  1106328.0  =  1669228
+1684 ^2 - Σ 1527  =  2835856  -  1166628.0  =  1669228
+1802 ^2 - Σ 1776  =  3247204  -  1577976.0  =  1669228
+
+
+The least number of riders for 19 distinct formations is 203563683 .
+14273 ^2 - Σ 556  =  203718529  -  154846.0  =  203563683
+14327 ^2 - Σ 1843  =  205262929  -  1699246.0  =  203563683
+14406 ^2 - Σ 2817  =  207532836  -  3969153.0  =  203563683
+14419 ^2 - Σ 2947  =  207907561  -  4343878.0  =  203563683
+14581 ^2 - Σ 4252  =  212605561  -  9041878.0  =  203563683
+14698 ^2 - Σ 4993  =  216031204  -  12467521.0  =  203563683
+14742 ^2 - Σ 5246  =  217326564  -  13762881.0  =  203563683
+15218 ^2 - Σ 7486  =  231587524  -  28023841.0  =  203563683
+15288 ^2 - Σ 7766  =  233722944  -  30159261.0  =  203563683
+15569 ^2 - Σ 8812  =  242393761  -  38830078.0  =  203563683
+15956 ^2 - Σ 10102  =  254593936  -  51030253.0  =  203563683
+16044 ^2 - Σ 10377  =  257409936  -  53846253.0  =  203563683
+16317 ^2 - Σ 11196  =  266244489  -  62680806.0  =  203563683
+16912 ^2 - Σ 12841  =  286015744  -  82452061.0  =  203563683
+17367 ^2 - Σ 14003  =  301612689  -  98049006.0  =  203563683
+17497 ^2 - Σ 14323  =  306145009  -  102581326.0  =  203563683
+18033 ^2 - Σ 15596  =  325189089  -  121625406.0  =  203563683
+18669 ^2 - Σ 17027  =  348531561  -  144967878.0  =  203563683
+19268 ^2 - Σ 18313  =  371255824  -  167692141.0  =  203563683
+20132 ^2 - Σ 20086  =  405297424  -  201733741.0  =  203563683
+
+
+The least number of riders for 20 distinct formations is 4811304 .
+2198 ^2 - Σ 199  =  4831204  -  19900.0  =  4811304
+2203 ^2 - Σ 289  =  4853209  -  41905.0  =  4811304
+2205 ^2 - Σ 318  =  4862025  -  50721.0  =  4811304
+2230 ^2 - Σ 568  =  4972900  -  161596.0  =  4811304
+2235 ^2 - Σ 606  =  4995225  -  183921.0  =  4811304
+2247 ^2 - Σ 689  =  5049009  -  237705.0  =  4811304
+2268 ^2 - Σ 815  =  5143824  -  332520.0  =  4811304
+2338 ^2 - Σ 1144  =  5466244  -  654940.0  =  4811304
+2352 ^2 - Σ 1200  =  5531904  -  720600.0  =  4811304
+2360 ^2 - Σ 1231  =  5569600  -  758296.0  =  4811304
+2450 ^2 - Σ 1543  =  6002500  -  1191196.0  =  4811304
+2495 ^2 - Σ 1681  =  6225025  -  1413721.0  =  4811304
+2527 ^2 - Σ 1774  =  6385729  -  1574425.0  =  4811304
+2653 ^2 - Σ 2110  =  7038409  -  2227105.0  =  4811304
+2667 ^2 - Σ 2145  =  7112889  -  2301585.0  =  4811304
+2693 ^2 - Σ 2209  =  7252249  -  2440945.0  =  4811304
+2712 ^2 - Σ 2255  =  7354944  -  2543640.0  =  4811304
+2865 ^2 - Σ 2606  =  8208225  -  3396921.0  =  4811304
+2940 ^2 - Σ 2768  =  8643600  -  3832296.0  =  4811304
+3017 ^2 - Σ 2929  =  9102289  -  4290985.0  =  4811304
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h4><h4 id="2023.09.24">2023.09.24<a class="anchor-link" href="#2023.09.24">&#182;</a></h4>
 </div>
 </div>
 </body>
