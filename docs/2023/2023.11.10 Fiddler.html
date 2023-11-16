@@ -14270,7 +14270,8 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>Two trapezoids, for a combined area of $6\cdot\dfrac{\sqrt{3}}{4} \approx 2.598$ yields about $82.70\%$ of the circle.</p>
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>Two trapezoids yields a combined area of $6\cdot\dfrac{\sqrt{3}}{4}r^2$</p>
+<p>$\dfrac{6\cdot\frac{\sqrt{3}}{4}}{\pi} \approx 82.70\%$ of the circle.</p>
 <p><img src = "2023.11.10Fiddler.png"></p>
 
 </div>
@@ -14282,7 +14283,8 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>Since a quadrilateral and triangle are being inscribed in a circle, symmetry can be assumed.</p>
+<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>(Note for all graphics below, part of the <b><font color = "#2A788E">quadrilateral</font></b> is completely 'under' the <b><font color = "#7AD151">triangle</font></b>.)</p>
+<p>Since a quadrilateral and triangle are being inscribed in a circle, symmetry can be assumed.</p>
 <p>The given information gave the maximum area of the quadrilateral, a <b><font color = "#2A788E">square</font></b> with area $2$, and the corresponding <b><font color = "#7AD151">triangle</font></b> with area $1$.</p>
 <p>$\dfrac{2+1}{\pi} \approx 95.49\%$ of the circle.
 <img src = "2023.11.10EC1.png"></p>
@@ -14291,7 +14293,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Similarly the maximum area of the triangle, an equilateral <b><font color = "#7AD151">triangle</font></b> with area $\dfrac{3\sqrt{3}}{4}$, and the corresponding <b><font color = "#2A788E">quadrilateral</font></b> with area $\sqrt{3}$.</p>
+<p>Similarly the maximum area of the triangle, an <b><font color = "#7AD151">equilateral triangle</font></b> with area $\dfrac{3\sqrt{3}}{4}$, and the corresponding <b><font color = "#2A788E">quadrilateral</font></b> with area $\sqrt{3}$.</p>
 <p>$\dfrac{\dfrac{3\sqrt{3}}{4}+\sqrt{3}}{\pi} \approx 96.48\%$ of the circle.
 <img src = "2023.11.10EC2.png"></p>
 
@@ -14299,8 +14301,8 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The maximum is probably in between.
-<img src = "2023.11.10EC3.png"></p>
+<p>Create a variable $a$ to solve for the maximum, which is likely going to occur the above two cases.</p>
+<p><img src = "2023.11.10EC3.png"></p>
 $$Quadrilateral = \dfrac{1}{2} \cdot 2r \cdot 2\sqrt{r^2-a^2} = 2r\sqrt{r^2-a^2}$$<p><br>
 $$Triangle = \dfrac{1}{2} \cdot (r+a) \cdot 2\sqrt{r^2-a^2} = (r+a)\sqrt{r^2-a^2}$$
 <br>
