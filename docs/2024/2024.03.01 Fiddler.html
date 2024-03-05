@@ -14642,7 +14642,10 @@ $$A = \frac{a+b}{2} \cdot h$$$$\dfrac{200}{3} = \frac{15 + (10+x)}{2} \cdot 5$$$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2>
+<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>This diagram starts with my first answer from Fiddler and shifts each friends' frosting perimeter $z$ inches clockwise.</p>
+<p><img src = "2023.03.013.png"></p>
+<p>The slices meet at some point $(x,y)$ away from the origin in the first quadrant, because the path of the point of concurrency is moving in some path from $\left(0, \frac{5}{3}\right)$ to $\left(\frac{5}{3}, 0\right)$.</p>
+
 </div>
 </div>
 </div>
@@ -14653,15 +14656,99 @@ $$A = \frac{a+b}{2} \cdot h$$$$\dfrac{200}{3} = \frac{15 + (10+x)}{2} \cdot 5$$$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answers">Answers<a class="anchor-link" href="#Answers">&#182;</a></h2><p>Applying symmetry to $x+y = \frac{5}{3}$ in the other four quadrants of the cake, we get a square with corners:</p>
-<ul>
-    <li>$\left(-\frac{5}{3}, 0\right)$</li>
-    <li>$\left(0, \frac{5}{3}\right)$</li>
-    <li>$\left(\frac{5}{3}, 0\right)$</li>
-    <li>$\left(0, -\frac{5}{3}\right)$</li>
-</ul><p>Since the diagonals are of length $\frac{10}{3}$, the area is $\frac{1}{2}d^2 = \frac{50}{9} = 5 \frac{5}{6} \text{in}^2$.</p>
-$$\dfrac{\dfrac{50}{9}}{200} = \dfrac{1}{36}$$<p>The friends have a $2.78\%$ chance of randomly selecting the correct point of concurrency.</p>
+<p>Solving for the area of the bottom <b><font color= "#2A788E">quadrilateral</font></b>:</p>
+$$\text{Area} \text{  }=\text{  } A_1 + A_2 \text{  }=\text{  } \dfrac{a_1+b_1}{2} \cdot h_1 \text{  }+\text{  } \frac{1}{2} \cdot b_2 \cdot h_2$$$$\dfrac{200}{3} \text{  } = \text{  } \dfrac{z+(5+y)}{2} \cdot (10+x) \text{  }+\text{  } \frac{1}{2} \cdot (5+y) \cdot (10-x-z)$$$$400 \text{  } = \text{  } 3\big((y+z+5) \cdot (x+10) \text{  }+\text{  } (y+5)\cdot (-x-z+10)\big)$$$$400 \text{  } = \text{  } 3\big(xy+10y+xz+10z+5x+50) + (-xy-yz+10y-5x-5z+50)\big)$$$$400 \text{  } = \text{  } 3\big(xz-yz+20y+5z+100\big)$$<p><br></p>
+<center><span style="border-width:3px; border-style:solid; border-color:#2A788E; padding : 3px;">$0 = 3xz-3yz+60y+15z-100$</span></center>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Solving for the area of the top left <b><font color= "#440154">quadrilateral</font></b>:</p>
+$$\text{Area} \text{  }=\text{  } B_1 + B_2 \text{  }=\text{  } \dfrac{a_1+b_1}{2} \cdot h_1 \text{  }+\text{  } \frac{1}{2} \cdot b_2 \cdot h_2$$$$\dfrac{200}{3} \text{  } = \text{  } \dfrac{(10+x+z-x)+(10+x)}{2} \cdot (5-y) \text{  }+\text{  } \frac{1}{2} \cdot (10+x) \cdot (5+y-z)$$$$400 \text{  } = \text{  } 3\big((x+z+20) \cdot (-y+5) \text{  }+\text{  } (x+10)\cdot (y-z+5)\big)$$$$400 \text{  } = \text{  } 3\big(-xy+5x-yz+5z-20y+100) + (xy-xz+5x+10y-10z+50)\big)$$$$400 \text{  } = \text{  } 3\big(-xz-yz+10x-10y-5z-20y+150\big)$$<p><br></p>
+<center><span style="border-width:3px; border-style:solid; border-color:#440154; padding : 3px;">$0 = 3xz+3yz-30x+30y+15z-50$</span></center>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Solving for the area of the right side <b><font color= "#7AD151">quadrilateral</font></b>:</p>
+$$\text{Area} \text{  }=\text{  } C_1 + C_2 \text{  }=\text{  } \dfrac{a_1+b_1}{2} \cdot h_1 \text{  }+\text{  } \dfrac{a_2+b_2}{2} \cdot h_2$$$$\dfrac{200}{3} \text{  } = \text{  } \dfrac{(10-z)+(10-x)}{2} \cdot (-y+5) \text{  }+\text{  } \dfrac{(10-x) + z}{2} \cdot (y+5)$$$$400 \text{  } = \text{  } 3\big((-x-z+20) \cdot (-y+5) \text{  }+\text{  } (-x+z+10)\cdot (y+5)\big)$$$$400 \text{  } = \text{  } 3\big(xy-5x+yz-5z-20y+100) + (-xy-5x+yz+5z+10y+50)\big)$$$$400 \text{  } = \text{  } 3\big(2yz-10x-10y+150\big)$$<p><br></p>
+<center><span style="border-width:3px; border-style:solid; border-color:#7AD151; padding : 3px;">$0 = 6yz-30x-30y+50$</span></center>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Solve <span style="border-width:3px; border-style:solid; border-color:#2A788E; padding : 3px;">$0 = 3xz-3yz+60y+15z-100$</span> and <span style="border-width:3px; border-style:solid; border-color:#7AD151; padding : 3px;">$0 = 6yz-30x-30y+50$</span> for $z$:</p>
+$$0 = 3xz-3yz+60y+15z-100$$$$3xz-3yz+15z = 100-60y$$$$z = \dfrac{100-60y}{3x-3y+15}$$<p><br>
+<br>
+$$0 = 6yz-30x-30y+50$$
+$$6yz=30x+30y-50$$
+$$z = \dfrac{30x+30y-50}{6y}$$
+<br>
+<br>
+Setting equal to each other
+$$\dfrac{100-60y}{3x-3y+15}= \dfrac{30x+30y-50}{6y}$$
+$$\dfrac{10-6y}{x-y+5}= \dfrac{3x+3y-5}{2y}$$
+$$20y-12y^2= 3x^2+3xy-5x-3xy-3y^2+5y+15x+15y-25$$
+$$9y^2 = -3x^2-10x+25$$
+<br></p>
+<center><span style="border-width:3px; border-style:solid; border-color:#000000; padding-left : 3px; padding-top : 20px; padding-right : 3px;padding-bottom : 12px;">$y = \pm\dfrac{\sqrt{(-3x+5)(x+5)}}{3}$</span></center><p>Note that $\left(0, \frac{5}{3}\right)$ and $\left(\frac{5}{3}, 0\right)$ are solutions.</p>
 
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src = "2023.03.014.png"></p>
+$$A =\int\limits_0^{5/3} \frac{1}{3}\sqrt{-3x^2+10x-25}dx$$<p>Using a <a href="https://www.integral-calculator.com/">solver</a>,</p>
+$$A = \dfrac{900\pi -25\cdot \sqrt{3^7}}{2\cdot \sqrt{3^{11}}} \approx 1.970$$
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>The region bounded by $9y^2 = 3x^2+10x-25$ has an Area of $4*1.970 \approx 7.88$.</p>
+$$\dfrac{7.88}{200} = 0.0394$$<p>The friends have a $3.94\%$ chance of randomly selecting the correct point of concurrency.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Here are the cuts.</p>
+<video controls style = "padding: 0px; border: 0px;" src = "2024.03.01 EC.mp4" />
 </div>
 </div>
 </div>
