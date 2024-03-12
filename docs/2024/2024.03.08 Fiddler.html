@@ -14645,8 +14645,32 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <p>You can drive unassisted to the $\frac{3}{4}$ mark in the road, but you will be empty.  Fortunately, $H_1$ has drove back to the gas station, filled up, and meets you at the $\frac{3}{4}$ with $10$ gallons.  They donate $5$ to you so both of you can drive to the $\frac{7}{8}$ mark.</p>
 <p>As you and $H_1$ depart the $\frac{3}{4}$ mark, $H_2$ leaves with a full tank from the gas station to meet at $\frac{7}{8}$ mark. You and $H_1$ run down to empty at the $\frac{7}{8}$ mark, and $H_2$ has $15$ gallons, enough for 3 cars to make a $5$ gallon trip back to the gas station.</p>
 <video controls style = "padding: 0px; border: 0px;" src = "2024.03.08 EC.mp4" />
-
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>(Gas transfer is instantaneous.  Even at the gas station.)</p>
+<p>You drive the entire loop, which is $40$ gallons.  While you are driving, $H_1$ is also always driving.  They also use $40$ gallons.  $H_2$ only drives between the gas station and the $\frac{1}{8}$ mark, as well as between the gas station and the $\frac{7}{8}$ mark.  This is only $\frac{1}{2}$ the road distance, or $20$ gallons.</p>
+$$40 + 40 + 20 = 100 \text{ gallons}$$
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Extention">Extention<a class="anchor-link" href="#Extention">&#182;</a></h2><p>For a particular number of cars, what is the minimum tank size for each car $T$ that allows you to drive the full route and all helpers be able to start and stop at the gas station? $T$ is fraction of that needed for the total road.</p>
+<p>Optimization occurs when anyone leaving the gas station is full and arriving at gas station is empty.  Optimization should  should also occur with a bit of symmetry.</p>
+<h3 id="1-Car.">1 Car.<a class="anchor-link" href="#1-Car.">&#182;</a></h3><p>You can travel the entire route as long as the car tank is greater than or equal to the amount needed for the road.  The total gas consumed is that of the trip.</p>
 
 </div>
 </div>
@@ -14658,8 +14682,65 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>You drive the entire loop, which is $40$ gallons.  While you are driving, $H_1$ is also always driving.  They also use $40$ gallons.  $H_2$ only drives between the gas station and the $\frac{1}{8}$ mark, as well as between the gas station and the $\frac{7}{8}$ mark.  This is only $\frac{1}{2}$ the road distance, or $20$ gallons.</p>
-$$40 + 40 + 20 = 100 \text{ gallons}$$
+<h3 id="2-Cars.">2 Cars.<a class="anchor-link" href="#2-Cars.">&#182;</a></h3><p>Define $x$ as some fraction of the road where $H_1$ gives you enough gas to travel $y$ to make it to $1-x$, and they still have the ability to get back to the gas station.</p>
+<p>You and $H_1$ will drive to $x$, transfer, they will head back to the gas station and fill up. They will then meet you at $1-x$, transfer, and both of you will be empty upon arriving at the gas station.</p>
+<p>For $H_1$ a full tank is $T = 2x + y$.   For $H_1$'s final trip, a full tank is $T = 3x$.  This yields $x = y$.</p>
+<p>For you, $T+x = 1-x$. Substituting from above, $x = y = \frac{1}{5}$, and $T = \dfrac{3}{5}$ of that needed for the road.</p>
+<p>The total gas consumed is $3$ full tanks, or $\dfrac{9}{5}$ of that needed for the road.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="3-Cars.">3 Cars.<a class="anchor-link" href="#3-Cars.">&#182;</a></h3><p>Using what we learned from 2 Cars, all cars will drive to $x$, $H_2$ will give you and $H_1$ enough gas to drive $x$ more each, and drive back to the gas station.</p>
+<p>You and $H_1$ continue on to some fraction of the road $y$ where $H_1$ gives you enough gas to travel $z$ more, and they make it back to the gas station.  You will then drive to $1-y$ and be empty upon arrival.  They will meet you at $1-y$, give you enough gas so you will drive together to $\frac{3}{4}$ and both be empty.  $H_2$ will meet and give a $\frac{1}{4}$ of a tank to each of you, so everyone returns to the gas station empty.</p>
+<p>For $H_1$ a full tank $T = 4x$</p>
+<p>For $H_1$ a full tank $T = 2y + \frac{T}{4} - z$.  For $H_1$'s final trip, $T = y + 2\cdot(y-\frac{T}{4})$ or $T = 2y$.  This yields $T = 4z$.</p>
+<p>For you, $T+x+z = 1-y$. Substituting from above, $T+\frac{T}{4}+\frac{T}{4}= 1-\frac{T}{2}$, or $T = \frac{1}{2}$ of that needed for the road.</p>
+<p>The total gas consumed is $5$ full tanks, or $\dfrac{5}{2}$ of that needed for the road.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<table>
+    <th style = "text-align:center" width = 120>Number of Cars Needed</th>
+    <th style = "text-align:center" width = 120>Minimum Tank Size</th>
+    <th style = "text-align:center" width = 120>Total Gas Consumption</th>
+    <tbody>
+        <tr>
+            <td style = "text-align:center">$1$</td>
+            <td style = "text-align:center">$1$</td>
+            <td style = "text-align:center">$1$</td>
+        </tr>
+        <tr>
+            <td style = "text-align:center">$2$</td>
+            <td style = "text-align:center">$\dfrac{3}{5}$</td>
+            <td style = "text-align:center">$\dfrac{9}{5}$</td>
+        <tr>
+            <td style = "text-align:center">$3$</td>
+            <td style = "text-align:center">??</td>
+            <td style = "text-align:center">??</td>
+        </tr>
+        <tr>
+            <td style = "text-align:center">$4$</td>
+            <td style = "text-align:center">??</td>
+            <td style = "text-align:center">??</td>
+        </tr>
+</tbody>            
+</table>
 </div>
 </div>
 </div>
