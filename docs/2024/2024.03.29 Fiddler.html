@@ -14801,25 +14801,26 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <ol>
         <li>Step number, 0 steps.</li>
         <li>An $(a+1) \text{ x } (b+1)$ matrix, where $a$ and $b$ are the volumes of pitchers A and B.</li>
-        <li>The array is to check if a state has existed already, and the minimum number of states to get there.</li>
+        <li>A state is the ordered pair $(a,b)$.</li>
+        <li>The array is to check if a state has existed already, and the minimum number of steps to get there.</li>
         <li>$[0,0] = 0$ in the array.  The rest are NA.</li>
-        <li>A list of states, containing the volumes of pitchers A and B.  The initial state in states is $[0,0].$</li>
+        <li>A list of states. The initial state in states is $[0,0]$.</li>
     </ol>
     <li><b>Begin</b></li>
     <li>Create an empty list of new states</li>
     <li>Increase the step number by 1.</li>
-    <li>For each state in the list of states, check and see if applying the any of the following options to it (the next state) has already been visited in the array of steps:</li>
+    <li>For each state in the list of states, check and see if applying any of the following options to it (the next state) has already been visited in the array of states:</li>
         <ol>
             <li>Does filling A create a new state?</li>
             <li>Does filling B create a new state?</li>
             <li>Does emptying A create a new state?</li>
             <li>Does emptying B create a new state?</li>
-            <li>If the amount in A $>$ less than the empty amount in B, does emptying A into B create a new state?</li>
+            <li>If the amount in A $<$ empty amount in B, does emptying A into B create a new state?</li>
             <li>If the amount in A $≥$ empty amount in B, does filling B from A create a new state?</li>
             <li>If the amount in B $<$ empty amount in A, does emptying B into A create a new state?</li>
-            <li>If the amount in B $≥$ greather than the empty amount in A, does filling A from B create a new state?</li>
+            <li>If the amount in B $≥$ empty amount in A, does filling A from B create a new state?</li>
         </ol>   
-    <li>Once all old states have been checked, check the new states.</li>
+    <li>Once all old states have been checked, look at new states.</li>
     <ol>
         <li>If there is at least one new state, repeat from <b>Begin</b>.</li>
         <li>If there are no new states, the array is complete.</li>
@@ -14854,8 +14855,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>I plotted my results of all pitcher sizes from 1 to 100 liters. If the $gcd(a,b) ≠ 1$, they were removed, as not all pitcher sizes would be possible for that pair.</p>
-<p>The volume that requires the maximum number of steps is exactly half of the larger of the two pitchers if the larger is <em>even</em>.  This is observable at the blocks of the same color in any even row or column.  I could not determine any immediate pattern if the larger pitcher is odd.</p>
+<p>I plotted my results of all pitcher sizes from 1 to 100 liters.</p>
+<p>If the $gcd(a,b) ≠ 1$, they were removed, as not all pitcher sizes would be possible for that pair.</p>
+<p>The volume that requires the maximum number of steps is exactly half of the larger of the two pitchers if the larger is <em>even</em>.</p>
+<p>This is observable at the blocks of the same color in any even row or column.  I could not determine any immediate pattern if the larger pitcher is odd.</p>
 <p><img src = "2024.03.29.1.png"></p>
 
 </div>
