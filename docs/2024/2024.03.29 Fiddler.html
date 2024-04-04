@@ -14799,18 +14799,29 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <ol>
     <li>Start with :</li>
     <ol>
-        <li>Step number, 0 steps.</li>
-        <li>An $(a+1) \text{ x } (b+1)$ matrix, where $a$ and $b$ are the volumes of pitchers A and B.</li>
-        <li>A state is the ordered pair $(a,b)$.</li>
-        <li>The array is to check if a state has existed already, and the minimum number of steps to get there.</li>
-        <li>$[0,0] = 0$ in the array.  The rest are NA.</li>
-        <li>A list of states. The initial state in states is $[0,0]$.</li>
+        <li>Step number.
+            <ul>
+                <li>Initialize with 0 steps.</li>
+            </ul>
+        </li>
+        <li>An $(a+1) \text{ x } (b+1)$ matrix
+            <ul>
+                <li>A state is the ordered pair $(a,b)$, where $a$ and $b$ are the represent the amount of water in pitchers A and B.</li>
+                <li>The array is to check if a state has existed already, and the minimum number of steps to get there.</li>
+                <li>Initialize with $[0,0] = 0$ in the array.  The rest are NA.</li>
+            </ul>
+        </li>
+        <li>A list of states
+            <ul>
+                <li>Initialize state $[0,0]$.</li>
+            </ul>
+        </li>.
     </ol>
     <li><b>Begin</b></li>
     <li>Create an empty list of new states</li>
     <li>Increase the step number by 1.</li>
     <li>For each state in the list of states, check and see if applying any of the following options to it (the next state) has already been visited in the array of states:</li>
-        <ol>
+        <ul>
             <li>Does filling A create a new state?</li>
             <li>Does filling B create a new state?</li>
             <li>Does emptying A create a new state?</li>
@@ -14819,18 +14830,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
             <li>If the amount in A $≥$ empty amount in B, does filling B from A create a new state?</li>
             <li>If the amount in B $<$ empty amount in A, does emptying B into A create a new state?</li>
             <li>If the amount in B $≥$ empty amount in A, does filling A from B create a new state?</li>
-        </ol>   
+        </ul>   
     <li>Once all old states have been checked, look at new states.</li>
-    <ol>
+    <ul>
         <li>If there is at least one new state, repeat from <b>Begin</b>.</li>
         <li>If there are no new states, the array is complete.</li>
-    </ol>
+    </ul>
     <li>Getting the steps for each volume:</li>
-    <ol>
+    <ul>
         <li>If the steps $>$ B, check for the minimum value in row $a$.</li>
         <li>If the steps $≤$ B, check for the minimum of the minimum value in row $a$ and the minimum value in column $b$.</li>
         <li>The maximum of all the minimums can be easily found.</li>
-    </ol>
+    </ul>
 </ol><p>I used a breadth first search as it guarantees that the array is populated by the minimum number of steps or not at all.</p>
 
 </div>
@@ -14857,8 +14868,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>I plotted my results of all pitcher sizes from 1 to 200 liters.</p>
 <p>If the $gcd(a,b) ≠ 1$, they were removed, as not all pitcher sizes would be possible for that pair.</p>
-<p>The volume that requires the maximum number of steps is exactly half of the larger of the two pitchers if the larger is <em>even</em>.</p>
-<p>This is observable at the blocks of the same color in any even row or column.  I could not determine any immediate pattern if the larger pitcher is odd.</p>
+<p>The volume that requires the maximum number of steps is exactly half of the larger of the two pitchers if the larger is <em>even</em>.  This is observable at the blocks of the same color in any even row or column.</p>
+<p>I could not determine any immediate pattern if the larger pitcher is odd.</p>
 <p><img src = "2024.03.29.1.png"></p>
 
 </div>
