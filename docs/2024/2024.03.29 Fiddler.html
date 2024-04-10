@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2024.04.05 Fiddler</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2024.03.29 Fiddler</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14580,51 +14580,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Can-You-Paint-by-Number?">Can You Paint by Number?<a class="anchor-link" href="#Can-You-Paint-by-Number?">&#182;</a></h1><h2 id="Fiddler"><a href="https://thefiddler.substack.com/p/can-you-paint-by-number">Fiddler</a><a class="anchor-link" href="#Fiddler">&#182;</a></h2><p>I’m completing a paint-by-number painting, although this one is a little different from any that I’ve seen before. It’s an infinitely long strip of canvas that is 1 cm wide. It’s broken up into adjacent 1 cm-by-1 cm squares, each of which is numbered zero or one, each with a 50 percent chance. The squares are all numbered independently of each other. Every square with a zero I color red, while every square with a one I color blue.</p><p>Once I’m done painting, there will be many “clusters” of contiguous red and blue squares. For example, consider the finite strip of canvas below. It contains 10 total squares and seven clusters, which means the average size of a cluster here is approximately 1.43 squares.</p><p><img src = "https://substackcdn.com/image/fetch/w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F542c8374-820f-4e04-b1ec-0b3d63b9a10d_2016x272.png"></p>
-<p>Once I’m done painting, what will be the average size of each red or blue cluster?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>Let $X_s$ represent the average number of clusters for a strip of length $s$. I will use induction to show that:</p>
-$$X_s = \dfrac{s+1}{2}$$<h3 id="$s-=-1$:">$s = 1$:<a class="anchor-link" href="#$s-=-1$:">&#182;</a></h3><p>There are only two possibilities.  A single red square or a single bue square.  The average number of clusters is</p>
-$$X_1 = \dfrac{1+1}{2} = 1$$
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="$s-=-k-1$:">$s = k-1$:<a class="anchor-link" href="#$s-=-k-1$:">&#182;</a></h3><p>Assume</p>
-$$X_{k-1} = \dfrac{k-1+1}{2} = \dfrac{k}{2}$$
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="$s-=-k$:">$s = k$:<a class="anchor-link" href="#$s-=-k$:">&#182;</a></h3><p>For $s = k-1$, there are $2^{k-1}$ possible strips.  The average number of clusters for those strips is $\dfrac{k}{2}$.</p>
-<p><ul>
-    <li>Half the time the next square added will match the last square of $X_{k-1}$.  They will have no new clusters.</li>
-    <li>Half the time the next square added will be different from the last square of $X_{k-1}$.  They will have one new cluster.</li>
-</ul>
-<br>
-$$X_k = \dfrac{k}{2} + \dfrac{1}{2} \cdot 1 = \dfrac{k + 1}{2}$$</p>
+<h1 id="Can-You-Pour-the-Water?">Can You Pour the Water?<a class="anchor-link" href="#Can-You-Pour-the-Water?">&#182;</a></h1><h2 id="Fiddler"><a href="https://thefiddler.substack.com/p/can-you-pour-the-water">Fiddler</a><a class="anchor-link" href="#Fiddler">&#182;</a></h2><p><span>Last weekend, I saw an old friend of mine (in fact, he was the composer of an opera I performed in several decades ago!) who recently subscribed to The Fiddler. He confessed that the last time he encountered math puzzles like these, they were </span><a href="https://en.wikipedia.org/wiki/Water_pouring_puzzle" rel>water pouring puzzles</a><span>. “Oh, I can do one of those!,” I exclaimed.</span></p><p>So Joel, this week’s puzzle is dedicated to you!</p><p>I have two large pitchers with known volumes: 10 liters (“pitcher A”) and 3 liters (“pitcher B”). They are both initially empty. I can do one of six things with the pitchers:</p>
+<ol>
+    <li><p>I can fill pitcher A to the top with water from the sink.</p></li>
+    <li><p>I can fill pitcher B to the top with water from the sink.</p></li>
+    <li><p>I can empty the contents of pitcher A into the sink.</p></li>
+    <li><p>I can empty the contents of pitcher B into the sink.</p></li>
+    <li><p>I can transfer the contents of pitcher A to pitcher B, until pitcher A is empty or pitcher B is filled to the top—whichever comes first.</p></li>
+    <li><p>I can transfer the contents of pitcher B to pitcher A, until pitcher B is empty or pitcher A is filled to the top—whichever comes first.</p></li>
+</ol>
 
+<p>Every time I do any one of the above six, it counts as a step.</p>
+<p>What is the fewest number of steps required until one of the pitchers (either A or B) contains precisely 5 liters of water?</p>
 </div>
 </div>
 </div>
@@ -14635,115 +14602,177 @@ $$X_k = \dfrac{k}{2} + \dfrac{1}{2} \cdot 1 = \dfrac{k + 1}{2}$$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>Since there are $s$ squares and an average of $\frac{s + 1}{2}$ clusters, the average cluster size is :</p>
-$$\dfrac{s}{\frac{s + 1}{2}}$$<p><br>
-$$= \dfrac{2s}{s + 1} \approx 2$$</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Extra-Credit">Extra Credit<a class="anchor-link" href="#Extra-Credit">&#182;</a></h1><p>Once again, I’m painting an infinitely long strip of canvas, broken up into adjacent 1 cm-by-1 cm squares. Squares are randomly and independently numbered 0 or 1 as before. But this time, the strip itself is 2 cm wide.</p><p>Squares are considered adjacent if they share a common edge. So squares can be horizontally or vertically adjacent, but not diagonally adjacent.</p><p>Once I’m done painting, there will again be many “clusters” of contiguous red and blue squares. The example below contains 20 total squares and nine clusters, which means the average size of a cluster here is approximately 2.22 squares.</p><p><img src = "https://substackcdn.com/image/fetch/w_848,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F079ab505-66c7-427b-ad6a-a2cf6a1794a6_1600x384.png"></p>
-<p>Once I’m done painting, what will be the average size of each red or blue cluster?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>Let $Y_s$ represent the average number of clusters for a strip of length $s$. I will use induction to show that:</p>
-$$Y_s = \dfrac{5s+7}{8}$$<h3 id="$s-=-1$:">$s = 1$:<a class="anchor-link" href="#$s-=-1$:">&#182;</a></h3><p>There are only four possibilities:</p>
-<ul>
-    <li>Two red squares - 1 cluster.</li>
-    <li>One red square, one blue square - 2 clusters.</li>
-    <li>One blue square, one red square - 2 clusters.</li>
-    <li>Two blue squares - 1 cluster.</li>
-</ul><p>The average number of clusters agrees with:</p>
-$$Y_1 = \dfrac{5+7}{8} = \dfrac{3}{2}$$
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="$s-=-k-1$:">$s = k-1$:<a class="anchor-link" href="#$s-=-k-1$:">&#182;</a></h3><p>Assume</p>
-$$Y_{k-1} = \dfrac{5(k-1)+7}{8}$$
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="$s-=-k$:">$s = k$:<a class="anchor-link" href="#$s-=-k$:">&#182;</a></h3><p>For $s = k-1$, there are $\left(2^{k-1}\right)^2 = 2^{2k-2}$ possible strips.  The average number of clusters for those strips is $\dfrac{5(k-1)+7}{8}$.</p>
-<p>Similar to what was done in the <em>Fiddler</em>, compare the two new squares to the last two previous squares to determine how many new clusters are added.  The following table summarizes the 16 possibilities into 6 groups.</p>
-<table>
-    <th style = "text-align: center" width = 110>Last Two Squares of $B_{k-1}$</th>
-    <th style = "text-align: center" width = 110>Last Two Squares of $B_k$</th>
-    <th style = "text-align: center" width = 100>Probability</th>    
-    <th style = "text-align: center" width = 100>Number of New Clusters</th>
+<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><table>
+    <th style = "text-align: center" width = 15>Step</th>
+    <th style = "text-align: left" width = 150>Pitcher Action</th>
+    <th style = "text-align: center" width = 30>Volume of A</th>
+    <th style = "text-align: center" width = 30>Volume of B</th>
     <tbody>
         <tr>
-            <td style = "text-align: center">$RR$ or $BB$</td>
-            <td style = "text-align: center">Same as $Y_{k-1}$</td>
-            <td style = "text-align: center">$\dfrac{1}{8}$</td>
-            <td style = "text-align: center">0</td>
+            <td style = "text-align: center" width = 15>1</td>
+            <td style = "text-align: left" width = 120>Fill B.</td>
+            <td style = "text-align: center" width = 15>0</td>
+            <td style = "text-align: center" width = 15>3</td>
         </tr>
         <tr>
-            <td style = "text-align: center">$RR$ or $BB$</td>
-            <td style = "text-align: center">Opposite of $Y_{k-1}$</td>
-            <td style = "text-align: center">$\dfrac{1}{8}$</td>
-            <td style = "text-align: center">1</td>
+            <td style = "text-align: center" width = 15>2</td>
+            <td style = "text-align: left" width = 120>Empty B into A.</td>
+            <td style = "text-align: center" width = 15>3</td>
+            <td style = "text-align: center" width = 15>0</td>
         </tr>
         <tr>
-            <td style = "text-align: center">$RR$ or $BB$</td>
-            <td style = "text-align: center">$RB$ or $BR$</td>
-            <td style = "text-align: center">$\dfrac{1}{4}$</td>
-            <td style = "text-align: center">1</td>
+            <td style = "text-align: center" width = 15>3</td>
+            <td style = "text-align: left" width = 120>Fill B.</td>
+            <td style = "text-align: center" width = 15>3</td>
+            <td style = "text-align: center" width = 15>3</td>
         </tr>
         <tr>
-            <td style = "text-align: center">$RB$ or $BR$</td>
-            <td style = "text-align: center">$RR$ or $BB$</td>
-            <td style = "text-align: center">$\dfrac{1}{4}$</td>
-            <td style = "text-align: center">0</td>
+            <td style = "text-align: center" width = 15>4</td>
+            <td style = "text-align: left" width = 120>Empty B into A.</td>
+            <td style = "text-align: center" width = 15>6</td>
+            <td style = "text-align: center" width = 15>0</td>
         </tr>
         <tr>
-            <td style = "text-align: center">$RB$ or $BR$</td>
-            <td style = "text-align: center">Same as $Y_{k-1}$</td>
-            <td style = "text-align: center">$\dfrac{1}{8}$</td>
-            <td style = "text-align: center">0</td>
+            <td style = "text-align: center" width = 15>5</td>
+            <td style = "text-align: left" width = 120>Fill B.</td>
+            <td style = "text-align: center" width = 15>6</td>
+            <td style = "text-align: center" width = 15>3</td>
         </tr>
         <tr>
-            <td style = "text-align: center">$RB$ or $BR$</td>
-            <td style = "text-align: center">Opposite of $Y_{k-1}$</td>
-            <td style = "text-align: center">$\dfrac{1}{8}$</td>
-            <td style = "text-align: center">2</td>
+            <td style = "text-align: center" width = 15>6</td>
+            <td style = "text-align: left" width = 120>Empty B into A.</td>
+            <td style = "text-align: center" width = 15>9</td>
+            <td style = "text-align: center" width = 15>0</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>7</td>
+            <td style = "text-align: left" width = 120>Fill B.</td>
+            <td style = "text-align: center" width = 15>9</td>
+            <td style = "text-align: center" width = 15>3</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>8</td>
+            <td style = "text-align: left" width = 150>Fill A with 1 liter from B.</td>
+            <td style = "text-align: center" width = 15>10</td>
+            <td style = "text-align: center" width = 15>2</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>9</td>
+            <td style = "text-align: left" width = 120>Empty A.</td>
+            <td style = "text-align: center" width = 15>0</td>
+            <td style = "text-align: center" width = 15>2</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>10</td>
+            <td style = "text-align: left" width = 120>Empty B into A.</td>
+            <td style = "text-align: center" width = 15>2</td>
+            <td style = "text-align: center" width = 15>0</td>
+        </tr> 
+        <tr>
+            <td style = "text-align: center" width = 15>11</td>
+            <td style = "text-align: left" width = 120>Fill B.</td>
+            <td style = "text-align: center" width = 15>2</td>
+            <td style = "text-align: center" width = 15>3</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>12</td>
+            <td style = "text-align: left" width = 120>Empty B into A.</td>
+            <td style = "text-align: center" width = 15>5</td>
+            <td style = "text-align: center" width = 15>0</td>
         </tr>
     </tbody>            
-</table><p>For $s = k$, there are $2^{2k}$ possible strips. From the table above,</p>
-<ul>
-    <li>$\frac{1}{2}$ of the strips have the same number of clusters.</li>
-    <li>$\frac{3}{8}$ of the strips have 1 more cluster.</li>
-    <li>$\frac{1}{8}$ of the strips have 2 more clusters.</li>
-</ul>$$Y_k = \dfrac{5(k-1)+7}{8} + \dfrac{3}{8} \cdot 1 + \dfrac{1}{8} \cdot 2$$<p><br>
-$$= \dfrac{5k+7}{8}$$</p>
+</table><p>To be sure, I checked starting with A.</p>
+<table>
+    <th style = "text-align: center" width = 15>Step</th>
+    <th style = "text-align: left" width = 150>Pitcher Action</th>
+    <th style = "text-align: center" width = 30>Volume of A</th>
+    <th style = "text-align: center" width = 30>Volume of B</th>
+    <tbody>
+        <tr>
+            <td style = "text-align: center" width = 15>1</td>
+            <td style = "text-align: left" width = 120>Fill A.</td>
+            <td style = "text-align: center" width = 15>10</td>
+            <td style = "text-align: center" width = 15>0</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>2</td>
+            <td style = "text-align: left" width = 120>Fill B from A.</td>
+            <td style = "text-align: center" width = 15>7</td>
+            <td style = "text-align: center" width = 15>3</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>3</td>
+            <td style = "text-align: left" width = 120>Empty B.</td>
+            <td style = "text-align: center" width = 15>7</td>
+            <td style = "text-align: center" width = 15>3</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>4</td>
+            <td style = "text-align: left" width = 120>Fill B from A.</td>
+            <td style = "text-align: center" width = 15>4</td>
+            <td style = "text-align: center" width = 15>3</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>5</td>
+            <td style = "text-align: left" width = 120>Empty B.</td>
+            <td style = "text-align: center" width = 15>4</td>
+            <td style = "text-align: center" width = 15>0</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>6</td>
+            <td style = "text-align: left" width = 120>Fill B from A.</td>
+            <td style = "text-align: center" width = 15>1</td>
+            <td style = "text-align: center" width = 15>3</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>7</td>
+            <td style = "text-align: left" width = 120>Empty B.</td>
+            <td style = "text-align: center" width = 15>1</td>
+            <td style = "text-align: center" width = 15>0</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>8</td>
+            <td style = "text-align: left" width = 150>Fill B with 1 liter from A.</td>
+            <td style = "text-align: center" width = 15>0</td>
+            <td style = "text-align: center" width = 15>1</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>9</td>
+            <td style = "text-align: left" width = 120>Fill A.</td>
+            <td style = "text-align: center" width = 15>10</td>
+            <td style = "text-align: center" width = 15>1</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>10</td>
+            <td style = "text-align: left" width = 120>Fill B with 2 liters from A.</td>
+            <td style = "text-align: center" width = 15>8</td>
+            <td style = "text-align: center" width = 15>3</td>
+        </tr> 
+        <tr>
+            <td style = "text-align: center" width = 15>11</td>
+            <td style = "text-align: left" width = 120>Empty B.</td>
+            <td style = "text-align: center" width = 15>8</td>
+            <td style = "text-align: center" width = 15>0</td>
+        </tr>
+        <tr>
+            <td style = "text-align: center" width = 15>12</td>
+            <td style = "text-align: left" width = 120>Fill B from A.</td>
+            <td style = "text-align: center" width = 15>5</td>
+            <td style = "text-align: center" width = 15>3</td>
+        </tr>
+    </tbody>            
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>Achieving 5 liters takes a minimum of 12 steps.  This can be done in two ways.</p>
 
 </div>
 </div>
@@ -14755,9 +14784,65 @@ $$= \dfrac{5k+7}{8}$$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>Since there are $2s$ squares and an average of $\frac{5s+7}{8}$ clusters, the average cluster size is :</p>
-$$\dfrac{2s}{\frac{5s+7}{8}}$$<p><br>
-$$= \dfrac{16s}{5s+7} \approx \dfrac{16}{5}$$</p>
+<h1 id="Extra-Credit">Extra Credit<a class="anchor-link" href="#Extra-Credit">&#182;</a></h1><p>Instead of 10 liters and 3 liters, suppose the volumes of the pitchers A and B are now 100 liters and 93 liters, respectively.</p><p><span>Further suppose that the fewest number of steps needed until one of the pitchers (either A or B) contains precisely </span><em>N</em><span> liters of water is </span><em>f</em><span>(</span><em>N</em><span>), where </span><em>N</em><span> is a whole number between 1 and 100, inclusive.</span></p><p><span>What is the maximum value of </span><em>f</em><span>(</span><em>N</em><span>), and for which value of </span><em>N</em><span> does this occur?</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>I created code that did the following :</p>
+<ol>
+    <li>Start with :</li>
+    <ol>
+        <li>Step number.
+            <ul>
+                <li>Initialize with 0 steps.</li>
+            </ul>
+        </li>
+        <li>An $(a+1) \text{ x } (b+1)$ matrix
+            <ul>
+                <li>A state is the ordered pair $(a,b)$, where $a$ and $b$ are the represent the amount of water in pitchers A and B.</li>
+                <li>The array is to check if a state has existed already, and the minimum number of steps to get there.</li>
+                <li>Initialize with $[0,0] = 0$ in the array.  The rest are NA.</li>
+            </ul>
+        </li>
+        <li>A list of states
+            <ul>
+                <li>Initialize state $[0,0]$.</li>
+            </ul>
+        </li>.
+    </ol>
+    <li><b>Begin</b></li>
+    <li>Create an empty list of new states</li>
+    <li>Increase the step number by 1.</li>
+    <li>For each state in the list of states, check and see if applying any of the following options to it (the next state) has already been visited in the array of states:</li>
+        <ul>
+            <li>Does filling A create a new state?</li>
+            <li>Does filling B create a new state?</li>
+            <li>Does emptying A create a new state?</li>
+            <li>Does emptying B create a new state?</li>
+            <li>If the amount in A $<$ empty amount in B, does emptying A into B create a new state?</li>
+            <li>If the amount in A $≥$ empty amount in B, does filling B from A create a new state?</li>
+            <li>If the amount in B $<$ empty amount in A, does emptying B into A create a new state?</li>
+            <li>If the amount in B $≥$ empty amount in A, does filling A from B create a new state?</li>
+        </ul>   
+    <li>Once all old states have been checked, look at new states.</li>
+    <ul>
+        <li>If there is at least one new state, repeat from <b>Begin</b>.</li>
+        <li>If there are no new states, the array is complete.</li>
+    </ul>
+    <li>Getting the steps for each volume:</li>
+    <ul>
+        <li>If the steps $>$ B, check for the minimum value in row $a$.</li>
+        <li>If the steps $≤$ B, check for the minimum of the minimum value in row $a$ and the minimum value in column $b$.</li>
+        <li>The maximum of all the minimums can be easily found.</li>
+    </ul>
+</ol><p>I used a breadth first search as it guarantees that the array is populated by the minimum number of steps or not at all.</p>
 
 </div>
 </div>
@@ -14769,7 +14854,61 @@ $$= \dfrac{16s}{5s+7} \approx \dfrac{16}{5}$$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h3><h4 id="2024.04.07">2024.04.07<a class="anchor-link" href="#2024.04.07">&#182;</a></h4><p>Code can be found <a href="https://humanrickshaw.github.io/Fiddler/2024/2024.04.05%20Fiddler%20Code.html">here</a>.</p>
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>Achieving 50 liters takes 190 steps.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>I plotted my results of all pitcher sizes from 1 to 200 liters.</p>
+<p>If the $gcd(a,b) ≠ 1$, they were removed, as not all pitcher sizes would be possible for that pair.</p>
+<p>The volume that requires the maximum number of steps is exactly half of the larger of the two pitchers if the larger is <em>even</em>.  This is observable at the blocks of the same color in any even row or column.</p>
+<p>I could not determine any immediate pattern if the larger pitcher is odd.</p>
+<p><img src = "2024.03.29.1.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The steps required to achieve that volume is also plotted.</p>
+<p><img src = "2024.03.29.2.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This seems to be directly proportional to the size of the pitchers, so I graphed a ratio, $r = \dfrac{\text{Number of Steps}}{\text{Volume of A and B}}$ .</p>
+<p><img src = "2024.03.29.3.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h3><h4 id="2024.04.01">2024.04.01<a class="anchor-link" href="#2024.04.01">&#182;</a></h4><p>Code can be found <a href="https://humanrickshaw.github.io/Fiddler/2024/2024.03.29%20Fiddler%20Code.html">here</a>.</p>
 
 </div>
 </div>

@@ -14592,9 +14592,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>Let $A_s$ represent the average number of clusters for a strip of length $s$. I will use induction to show that:</p>
-$$A_s = \dfrac{s+1}{2}$$<h3 id="$s-=-1$:">$s = 1$:<a class="anchor-link" href="#$s-=-1$:">&#182;</a></h3><p>There are only two possibilities.  A single red square or a single bue square.  The average number of clusters is</p>
-$$A_1 = \dfrac{1+1}{2} = 1$$
+<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>Let $X_s$ represent the average number of clusters for a strip of length $s$. I will use induction to show that:</p>
+$$X_s = \dfrac{s+1}{2}$$<h3 id="$s-=-1$:">$s = 1$:<a class="anchor-link" href="#$s-=-1$:">&#182;</a></h3><p>There are only two possibilities.  A single red square or a single bue square.  The average number of clusters is</p>
+$$X_1 = \dfrac{1+1}{2} = 1$$
 </div>
 </div>
 </div>
@@ -14606,7 +14606,7 @@ $$A_1 = \dfrac{1+1}{2} = 1$$
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="$s-=-k-1$:">$s = k-1$:<a class="anchor-link" href="#$s-=-k-1$:">&#182;</a></h3><p>Assume</p>
-$$A_{k-1} = \dfrac{k-1+1}{2} = \dfrac{k}{2}$$
+$$X_{k-1} = \dfrac{k-1+1}{2} = \dfrac{k}{2}$$
 </div>
 </div>
 </div>
@@ -14619,11 +14619,11 @@ $$A_{k-1} = \dfrac{k-1+1}{2} = \dfrac{k}{2}$$
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="$s-=-k$:">$s = k$:<a class="anchor-link" href="#$s-=-k$:">&#182;</a></h3><p>For $s = k-1$, there are $2^{k-1}$ possible strips.  The average number of clusters for those strips is $\dfrac{k}{2}$.</p>
 <p><ul>
-    <li>Half the time the next square added will match the last square of $A_{k-1}$.  They will have no new clusters.</li>
-    <li>Half the time the next square added will be different from the last square of $A_{k-1}$.  They will have one new cluster.</li>
+    <li>Half the time the next square added will match the last square of $X_{k-1}$.  They will have no new clusters.</li>
+    <li>Half the time the next square added will be different from the last square of $X_{k-1}$.  They will have one new cluster.</li>
 </ul>
 <br>
-$$A_k = \dfrac{k}{2} + \dfrac{1}{2} \cdot 1 = \dfrac{k + 1}{2}$$</p>
+$$X_k = \dfrac{k}{2} + \dfrac{1}{2} \cdot 1 = \dfrac{k + 1}{2}$$</p>
 
 </div>
 </div>
@@ -14661,15 +14661,15 @@ $$= \dfrac{2s}{s + 1} \approx 2$$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>Let $B_s$ represent the average number of clusters for a strip of length $s$. I will use induction to show that:</p>
-$$B_s = \dfrac{5s+7}{8}$$<h3 id="$s-=-1$:">$s = 1$:<a class="anchor-link" href="#$s-=-1$:">&#182;</a></h3><p>There are only four possibilities:</p>
+<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>Let $Y_s$ represent the average number of clusters for a strip of length $s$. I will use induction to show that:</p>
+$$Y_s = \dfrac{5s+7}{8}$$<h3 id="$s-=-1$:">$s = 1$:<a class="anchor-link" href="#$s-=-1$:">&#182;</a></h3><p>There are only four possibilities:</p>
 <ul>
     <li>Two red squares - 1 cluster.</li>
     <li>One red square, one blue square - 2 clusters.</li>
     <li>One blue square, one red square - 2 clusters.</li>
     <li>Two blue squares - 1 cluster.</li>
 </ul><p>The average number of clusters agrees with:</p>
-$$B_1 = \dfrac{5+7}{8} = \dfrac{3}{2}$$
+$$Y_1 = \dfrac{5+7}{8} = \dfrac{3}{2}$$
 </div>
 </div>
 </div>
@@ -14681,7 +14681,7 @@ $$B_1 = \dfrac{5+7}{8} = \dfrac{3}{2}$$
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="$s-=-k-1$:">$s = k-1$:<a class="anchor-link" href="#$s-=-k-1$:">&#182;</a></h3><p>Assume</p>
-$$B_{k-1} = \dfrac{5(k-1)+7}{8}$$
+$$Y_{k-1} = \dfrac{5(k-1)+7}{8}$$
 </div>
 </div>
 </div>
@@ -14693,7 +14693,7 @@ $$B_{k-1} = \dfrac{5(k-1)+7}{8}$$
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="$s-=-k$:">$s = k$:<a class="anchor-link" href="#$s-=-k$:">&#182;</a></h3><p>For $s = k-1$, there are $\left(2^{k-1}\right)^2 = 2^{2k-2}$ possible strips.  The average number of clusters for those strips is $\dfrac{5(k-1)+7}{8}$.</p>
-<p>Similar to what was done in the <em>Fiddler</em>, compare the two new squares to the last two previous squares to determine how many new clusters are added.  The following table summarizes the 16 possibilities into 10 groups.</p>
+<p>Similar to what was done in the <em>Fiddler</em>, compare the two new squares to the last two previous squares to determine how many new clusters are added.  The following table summarizes the 16 possibilities into 6 groups.</p>
 <table>
     <th style = "text-align: center" width = 110>Last Two Squares of $B_{k-1}$</th>
     <th style = "text-align: center" width = 110>Last Two Squares of $B_k$</th>
@@ -14701,64 +14701,40 @@ $$B_{k-1} = \dfrac{5(k-1)+7}{8}$$
     <th style = "text-align: center" width = 100>Number of New Clusters</th>
     <tbody>
         <tr>
-            <td style = "text-align: center">$AA$</td>
-            <td style = "text-align: center">$AA$</td>
-            <td style = "text-align: center">$\dfrac{1}{16}$</td>
+            <td style = "text-align: center">$RR$ or $BB$</td>
+            <td style = "text-align: center">Same as $Y_{k-1}$</td>
+            <td style = "text-align: center">$\dfrac{1}{8}$</td>
             <td style = "text-align: center">0</td>
         </tr>
         <tr>
-            <td style = "text-align: center">$AA$</td>
-            <td style = "text-align: center">$BB$</td>
-            <td style = "text-align: center">$\dfrac{1}{16}$</td>
+            <td style = "text-align: center">$RR$ or $BB$</td>
+            <td style = "text-align: center">Opposite of $Y_{k-1}$</td>
+            <td style = "text-align: center">$\dfrac{1}{8}$</td>
             <td style = "text-align: center">1</td>
         </tr>
         <tr>
-            <td style = "text-align: center">$BB$</td>
-            <td style = "text-align: center">$AA$</td>
-            <td style = "text-align: center">$\dfrac{1}{16}$</td>
-            <td style = "text-align: center">1</td>
-        </tr>
-        <tr>
-            <td style = "text-align: center">$BB$</td>
-            <td style = "text-align: center">$BB$</td>
-            <td style = "text-align: center">$\dfrac{1}{16}$</td>
-            <td style = "text-align: center">0</td>
-        </tr>
-        <tr>
-            <td style = "text-align: center">$AA$ or $BB$</td>
-            <td style = "text-align: center">$AB$ or $BA$</td>
+            <td style = "text-align: center">$RR$ or $BB$</td>
+            <td style = "text-align: center">$RB$ or $BR$</td>
             <td style = "text-align: center">$\dfrac{1}{4}$</td>
             <td style = "text-align: center">1</td>
         </tr>
         <tr>
-            <td style = "text-align: center">$AB$ or $BA$</td>
-            <td style = "text-align: center">$AA$ or $BB$</td>
+            <td style = "text-align: center">$RB$ or $BR$</td>
+            <td style = "text-align: center">$RR$ or $BB$</td>
             <td style = "text-align: center">$\dfrac{1}{4}$</td>
             <td style = "text-align: center">0</td>
         </tr>
         <tr>
-            <td style = "text-align: center">$AB$</td>
-            <td style = "text-align: center">$AB$</td>
-            <td style = "text-align: center">$\dfrac{1}{16}$</td>
+            <td style = "text-align: center">$RB$ or $BR$</td>
+            <td style = "text-align: center">Same as $Y_{k-1}$</td>
+            <td style = "text-align: center">$\dfrac{1}{8}$</td>
             <td style = "text-align: center">0</td>
         </tr>
         <tr>
-            <td style = "text-align: center">$AB$</td>
-            <td style = "text-align: center">$BA$</td>
-            <td style = "text-align: center">$\dfrac{1}{16}$</td>
+            <td style = "text-align: center">$RB$ or $BR$</td>
+            <td style = "text-align: center">Opposite of $Y_{k-1}$</td>
+            <td style = "text-align: center">$\dfrac{1}{8}$</td>
             <td style = "text-align: center">2</td>
-        </tr>
-        <tr>
-            <td style = "text-align: center">$BA$</td>
-            <td style = "text-align: center">$AB$</td>
-            <td style = "text-align: center">$\dfrac{1}{16}$</td>
-            <td style = "text-align: center">2</td>
-        </tr>
-        <tr>
-            <td style = "text-align: center">$BA$</td>
-            <td style = "text-align: center">$BA$</td>
-            <td style = "text-align: center">$\dfrac{1}{16}$</td>
-            <td style = "text-align: center">0</td>
         </tr>
     </tbody>            
 </table><p>For $s = k$, there are $2^{2k}$ possible strips. From the table above,</p>
@@ -14766,7 +14742,7 @@ $$B_{k-1} = \dfrac{5(k-1)+7}{8}$$
     <li>$\frac{1}{2}$ of the strips have the same number of clusters.</li>
     <li>$\frac{3}{8}$ of the strips have 1 more cluster.</li>
     <li>$\frac{1}{8}$ of the strips have 2 more clusters.</li>
-</ul>$$B_k = \dfrac{5(k-1)+7}{8} + \dfrac{3}{8} \cdot 1 + \dfrac{1}{8} \cdot 2$$<p><br>
+</ul>$$Y_k = \dfrac{5(k-1)+7}{8} + \dfrac{3}{8} \cdot 1 + \dfrac{1}{8} \cdot 2$$<p><br>
 $$= \dfrac{5k+7}{8}$$</p>
 
 </div>
