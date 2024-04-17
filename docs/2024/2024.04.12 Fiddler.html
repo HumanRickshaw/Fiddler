@@ -14794,21 +14794,19 @@ $$\dfrac{4a^2-2a{x_N}- a^2}{(2a-x_N)^\frac{3}{2}} = 0$$
 <br>
 $$3a^2 = 2a{x_N}$$
 <br></p>
-<center><b style = "padding: 18px; border: 2px solid black; width: 5px">$a = \dfrac{2}{3}{x_N}$</b></center>
+<center><b style = "padding: 18px; border: 2px solid black; width: 5px">$a = \dfrac{2}{3}{\cos{\frac{\pi}{N}}}$</b></center>
 <br>
 Substituting into $b =a\tan{\frac{\pi}{N}}\sqrt{\dfrac{x_N}{2a-x_N}}$,
 <br>
 $$b = \frac{2}{3}{x_N}\tan{\frac{\pi}{N}}\sqrt{3}$$
 <br>
-<center><b style = "padding: 18px; border: 2px solid black; width: 25px">$b = \dfrac{2x_N}{\sqrt{3}}\tan{\frac{\pi}{N}}$</b></center>
+<center><b style = "padding: 18px; border: 2px solid black; width: 25px">$b = \dfrac{2}{\sqrt{3}}\sin{\frac{\pi}{N}}$</b></center>
 <br>
 The area of one ellipse is thus,
 <br>
 $$A = \pi ab$$
 <br>
-$$A = \pi \cdot  \dfrac{2}{3}{x_N} \cdot \dfrac{2x_N}{\sqrt{3}}\tan{\frac{\pi}{N}}$$
-<br>
-$$A =  \dfrac{4\pi}{\sqrt{27}} \cdot \cos{\frac{\pi}{N}} \cdot  \cos{\frac{\pi}{N}} \cdot \dfrac{\sin{\frac{\pi}{N}}}{\cos{\frac{\pi}{N}}} $$
+$$A =  \pi \cdot \frac{2}{3}{\cos{\frac{\pi}{N}}} \cdot \frac{2}{\sqrt{3}}\sin{\frac{\pi}{N}} $$
 <br>
 Substituting $2\cos{\theta}\sin{\theta} = \sin{2\theta}$,
 <br>
@@ -14852,13 +14850,16 @@ $$b = \dfrac{1}{2}\sqrt{\dfrac{\frac{1}{\sqrt{2}}}{1-\frac{1}{\sqrt{2}}}}= \dfra
 <p>The foci are at $(b-\sqrt{-b^2-a^2}, 0)$ and $(b+\sqrt{-b^2-a^2}, 0)$.</p>
 <p>Because ellipses and distance formulas have some symmetry,</p>
 <p><br></p>
-<center><b style = "padding: 18px; border: 2px solid black; width: 25px">$a = b\tan{\frac{\pi}{N}}\sqrt{\dfrac{x_N}{2b-x_N}}$</b></center>
+<p><center><b style = "padding: 18px; border: 2px solid black; width: 25px">$a = b\tan{\frac{\pi}{N}}\sqrt{\dfrac{x_N}{2b-x_N}}$</b></center>
 <br>
+<br></p>
+<p><center><b style = "padding: 18px; border: 2px solid black; width: 5px">$b = \dfrac{2}{3}\cos{\frac{\pi}{N}}$</b></center>
 <br>
-<center><b style = "padding: 18px; border: 2px solid black; width: 5px">$b = \dfrac{2}{3}{x_N}$</b></center>
+<br></p>
+<p><center><b style = "padding: 18px; border: 2px solid black; width: 25px">$a = \dfrac{2}{\sqrt{3}}\sin{\frac{\pi}{N}}$</b></center>
 <br>
-<br>
-<center><b style = "padding: 18px; border: 2px solid black; width: 25px">$a = \dfrac{2x_N}{\sqrt{3}}\tan{\frac{\pi}{N}}$</b></center>
+Note that $\lim\limits_{N\to\infty} (a, b) = \big(0, \dfrac{2}{3}\big)$.</p>
+
 </div>
 </div>
 </div>
@@ -14895,7 +14896,7 @@ Applying L'Hôpital's,
 <br>
 $$= 2\pi\lim\limits_{N\to\infty} \dfrac{\cos{\dfrac{1}{N}}\cdot-\dfrac{1}{N^2}}{-\dfrac{1}{N^2}}$$
 <br>
-$$= 2\pi \cos{\dfrac{1}{N}} = 2\pi$$
+$$= 2\pi\lim\limits_{N\to\infty} \cos{\dfrac{1}{N}} = 2\pi$$
 <br>
 Thus, 
 <br></p>
