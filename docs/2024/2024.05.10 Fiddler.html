@@ -14630,14 +14630,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>All odd values of $N$ result in squares that can be covered by a single tile.  Furthermore, any value of $N = nk$, or a multiple of an odd number, can be precisely covered by $k^2$ squares of side length $n$.</p>
 <p>The only values of $N$ unaccounted for are powers of 2.</p>
 <p>I again considered $lcm$, but this time I am looking for rectangles.</p>
-<p>An 8-by-15 can be created from a row of five 3-by-3 and three 5-by-5.</p>
-<p>Extending this, there are an infinite number of rectangles in the form $(3a + 5b)$-by-15 created from a $a$ rows of five 3-by-3 and $b$ rows of three 5-by-5.</p>
-<p>Extending this again, there are an infinite number of rectangles in the form $(ax + by)$-by-$xy$ created from a $a$ rows of $y$ x-by-x and $b$ rows of $x$ y-by-y, where $gcd(x,y) \ne 1$.</p>
+<p>An 8-by-15 rectangle can be created from a row of five 3-by-3 and three 5-by-5.</p>
+<p>Extending this, there are an infinite number of rectangles in the form $(3a + 5b)$-by-$15$ created from $a$ rows of five 3-by-3 and $b$ rows of three 5-by-5.</p>
+<p>Extending this again, there are an infinite number of rectangles in the form $(ax + by)$-by-$xy$ created from $a$ rows of $y$ x-by-x and $b$ rows of $x$ y-by-y, where $gcd(x,y) \ne 1$.</p>
 <p>Solving for one side of the square, $xy + ax + by + xy = 2^m$ for some integer $m$.  Using code, the two solutions with the smallest values are for $m = 6$</p>
 <ol>
     <li>3 rows of five 3-by-3 and 5 rows of three 5-by-5 yields a <b>34-by-15</b> rectangle.  <b>34 + 15 + 15 = 64</b>.</li>
     <li>5 rows of seven 3-by-3 and 1 row of three 7-by-7 yields a <b>22-by-21</b> rectangle.  <b>22 + 21 + 21 = 64</b>.</li>
-</ol><p>However, the <b>34-by-15</b> can be halved.  This yields a <b>32-by-32</b> rectangle that can be completely covered by odd tiles.</p>
+</ol><p>However, the <b>34-by-15</b> can be halved.  This yields a <b>32-by-32</b> square that can be completely covered by odd tiles.</p>
 <p><img src = "2024.05.10 EC.png"></p>
 
 </div>
@@ -14650,7 +14650,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>Every $2^m$ square, $m \ge 5$, can now be tiled, using $4^{m-5}$ of the 32-by-32 tiles above.</p>
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>Every $2^m$ square, $m \ge 5$, can now be tiled, using $4^{m-5}$ of the 32-by-32 decomposition above.</p>
 <p>$m = 4$ yields 16, which is too small as it is only 1 greater than $lcm(3,5) = 15$.</p>
 <p>Therefore $16$ is the largest square that cannot be covered by odd tiles.</p>
 
