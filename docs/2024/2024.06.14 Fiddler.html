@@ -14599,6 +14599,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>The square packed method will always result in a ratio of $\boxed{\dfrac{1}{4} \text{ circle per unit area}}$, provided the dimensions are multiples of 2.</p>
+<p><img src = "2024.06.14Fiddler1.png"></p>
 <p>The area of the hexagonal packed rectangle can be found from the following diagram :</p>
 <p><img src = "2024.06.14Fiddler2.png"></p>
 <p>We can see that the height of the rectangle is $2 + (c_k-1)\sqrt{3}$, where $c_k$ is the height, in circles.</p>
@@ -14664,7 +14665,22 @@ $$\dfrac{1}{4} \le \dfrac{4\cdot \bigg\lceil\dfrac{c_k-1}{2}\bigg\rceil + 3\cdot
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>Substituting in for $k$,</p>
-$$k = \boxed{2+111\sqrt{3}} \approx \boxed{194.26}$$
+$$k = \boxed{2+110\sqrt{3}} \approx \boxed{192.53}$$<p>I tried to make a heatmap to visualize this but the numbers didn't fit an aesthetic view...</p>
+<p><img src = "2024.06.14FiddlerEC.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>As the height and width get very large, the packing approaches $\dfrac{1}{2\sqrt{3}} \approx 0.2887$, as shown by the image below.</p>
+<p><img src = "2024.06.14Fiddler3.png"></p>
+
 </div>
 </div>
 </div>
@@ -14680,6 +14696,22 @@ $$k = \boxed{2+111\sqrt{3}} \approx \boxed{194.26}$$
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 </body>
 
