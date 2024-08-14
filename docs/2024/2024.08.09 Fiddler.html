@@ -14698,9 +14698,10 @@ $$\frac{6\cdot 5-5\cdot b^2}{2} = \frac{5}{2}$$$$\frac{6^2}{2} - \frac{6\cdot 5}
     <li>Taking the sum of both triangular regions.</li>
     <li>Integrating with respect to $b$ from $0$ to $a$.</li>
     <li>Integrating with respect to $a$ from $0$ to $10$.</li>
-    <li>Multiplying by 2 to account for $b>a$, and dividing by $100$ to get average.</li>
+    <li>Multiplying by 2 to account for $b>a$, and divide by $100$ to get average.</li>
     <li>Subtracting from 100 to get the area of regions where the relative ranking is the same.</li>        
-</ul>$$100 - \frac{2}{100}\int\limits_0^{10} \int\limits_0^a \left(\frac{ab-b^2}{2} + \frac{a^2}{2} - \frac{ab}{2} + 10b - 10a - \frac{50b}{a} + 50 \right) db\text{ }da$$\begin{align*}
+</ul>\begin{align*}
+A &amp;= 100 - \frac{2}{100}\int\limits_0^{10} \int\limits_0^a \left(\frac{ab-b^2}{2} + \frac{a^2}{2} - \frac{ab}{2} + 10b - 10a - \frac{50b}{a} + 50 \right) db\text{ }da \\
 &amp;= 100 - \frac{1}{50}\int\limits_0^{10} \int\limits_0^a \left(\frac{a^2}{2} - \frac{b^2}{2} + 10b - 10a - \frac{50b}{a} + 50 \right) db\text{ }da \\
 &amp;= 100 - \frac{1}{50}\int\limits_0^{10} \left[\frac{a^2b}{2} - \frac{b^3}{6} + 5b^2 - 10ab - \frac{25b^2}{a} + 50b \right]_0^a da \\
 &amp;= 100 - \frac{1}{50}\int\limits_0^{10} \left(\frac{a^3}{2} - \frac{a^3}{6} + 5a^2 - 10a^2 - 25a + 50a \right) da \\
