@@ -14683,9 +14683,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">font1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'size'</span> <span class="p">:</span> <span class="mi">16</span><span class="p">}</span>
 <span class="n">font2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'size'</span> <span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
 
-<span class="c1">#Seven artists:</span>
-<span class="c1">#Circle, Center, R1, R2, Blockout,</span>
-<span class="c1">#phi, a/b ratio</span>
+<span class="c1">#Fifteen artists:</span>
+<span class="c1">#circle, center, r1, r2, r3, blockout,</span>
+<span class="c1">#phi left, phi right, phi value, a/b ratio</span>
+<span class="c1">#a, b, a line, b line, center of mass line</span>
 
 <span class="n">circ</span> <span class="o">=</span> <span class="n">mpC</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
            <span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
@@ -14736,6 +14737,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">phi</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">pi</span><span class="o">-</span><span class="mf">0.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.82</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">'k'</span><span class="p">,</span> <span class="n">ha</span> <span class="o">=</span> <span class="s1">'left'</span><span class="p">,</span> <span class="o">**</span><span class="n">font2</span><span class="p">)</span>
 <span class="n">ratio</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">pi</span><span class="o">-</span><span class="mf">0.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.17</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">"k"</span><span class="p">,</span> <span class="n">ha</span> <span class="o">=</span> <span class="s1">'left'</span><span class="p">,</span> <span class="o">**</span><span class="n">font2</span><span class="p">)</span>
 
+<span class="c1">#Ratio Details.</span>
 <span class="n">a_l</span> <span class="o">=</span> <span class="n">mpL</span><span class="p">(</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="n">pi</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)],</span>
           <span class="n">edgecolor</span> <span class="o">=</span> <span class="n">dot</span><span class="p">,</span>
           <span class="n">facecolor</span> <span class="o">=</span> <span class="n">dot</span><span class="p">,</span>
@@ -14760,7 +14762,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <span class="k">def</span> <span class="nf">init</span><span class="p">():</span>
 <span class="w">    </span>
-<span class="w">    </span><span class="sd">"""Initialize seven artists."""</span>
+<span class="w">    </span><span class="sd">"""Initialize fifteen artists."""</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">center</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span>
@@ -14792,7 +14794,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
         <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="o">-</span><span class="n">r</span>
         <span class="n">phi_text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-        <span class="n">ratio_text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="c1">#Emphasize the final result.    </span>
     <span class="k">else</span> <span class="p">:</span>
         <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">tr</span> <span class="o">=</span> <span class="mi">0</span>
@@ -14801,19 +14803,21 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
         <span class="n">x</span> <span class="o">=</span> <span class="n">pi</span>
         <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="n">phi_text</span> <span class="o">=</span> <span class="s1">'0'</span>   
-        <span class="n">ratio_text</span> <span class="o">=</span> <span class="s1">'∞'</span>
     
     <span class="c1">#Arc is always 2𝜋, top of circle is always (0,1).</span>
     <span class="n">circ</span><span class="o">.</span><span class="n">set_radius</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
     <span class="n">circ</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
     
     <span class="c1">#Center.</span>
+    <span class="c1">#Average out full semicircle above and circle sections below.</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">180</span> <span class="p">:</span>
         <span class="n">com</span> <span class="o">=</span> <span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span> 
         <span class="n">ans</span> <span class="o">=</span>  <span class="p">(</span><span class="n">com</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">com</span><span class="p">)</span>
+    <span class="c1">#Circle section above only.    </span>
     <span class="k">elif</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">360</span> <span class="p">:</span>
         <span class="n">com</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">tr</span><span class="p">))</span> <span class="o">+</span> <span class="n">r</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="n">ans</span> <span class="o">=</span> <span class="p">(</span><span class="n">com</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">com</span><span class="p">)</span>
+    <span class="c1">#Emphasize the final result.</span>
     <span class="k">else</span> <span class="p">:</span>
         <span class="n">com</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="n">ans</span> <span class="o">=</span> <span class="mi">2</span>
@@ -14852,7 +14856,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <span class="n">ratio</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">"a/b : "</span> <span class="o">+</span> <span class="n">ratio_text</span><span class="p">)</span>
     
     <span class="c1">#Ratio info.</span>
-    <span class="n">a_l</span><span class="o">.</span><span class="n">set_xy</span><span class="p">([(</span><span class="o">-</span><span class="n">pi</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">)])</span>
+    <span class="n">a_l</span><span class="o">.</span><span class="n">set_xy</span><span class="p">([(</span><span class="o">-</span><span class="n">pi</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)])</span>
     <span class="n">com_l</span><span class="o">.</span><span class="n">set_xy</span><span class="p">([(</span><span class="o">-</span><span class="n">pi</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">com</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">com</span><span class="p">)])</span>
     <span class="n">a_text</span><span class="o">.</span><span class="n">set_y</span><span class="p">((</span><span class="n">y</span><span class="o">+</span><span class="n">com</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">b_text</span><span class="o">.</span><span class="n">set_y</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">com</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
