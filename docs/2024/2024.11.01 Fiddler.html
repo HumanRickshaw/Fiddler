@@ -14615,7 +14615,7 @@ $$\frac{2\pi (r+1)}{2\pi} = \frac{1}{\phi}$$
 <br>
 $$\boxed{r = \frac{1}{\phi}-1}$$
 <br></p>
-<p>Thus,
+<p>Setting the two equal to each other,
 <br>
 $$\frac{1}{2\pi - \phi} = \frac{1}{\phi}-1$$
 <br>
@@ -14625,12 +14625,12 @@ $$0 = \phi^2 - (2\pi + 2)\phi +2pi$$
 <br>
 $$\phi = \frac{(2\pi + 2) \pm \sqrt{(2\pi + 2)^2 -(4)(1)(2\pi)}}{2}$$
 <br>
-$$\phi = \frac{(2\pi + 2) \pm \sqrt{4\pi^2 + 8\pi + 4 - 8\pi}}{2}$$
+$$\phi = \frac{2\pi + 2 \pm \sqrt{4\pi^2 + 8\pi + 4 - 8\pi}}{2}$$
 <br>
-$$\phi = \boxed{\pi + 1 - \sqrt{\pi^2 + 1} \approx 0.84468}$$
+$$\boxed{\phi = \pi + 1 - \sqrt{\pi^2 + 1} \approx 0.84468}$$
 <br></p>
 <p>Solving for r,</p>
-$$r \approx \boxed{\frac{1}{0.84468} - 1\approx 0.1839}$$
+$$\boxed{r \approx \frac{1}{0.84468} - 1\approx 0.1839}$$
 </div>
 </div>
 </div>
@@ -14641,27 +14641,28 @@ $$r \approx \boxed{\frac{1}{0.84468} - 1\approx 0.1839}$$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The area can be determined from the solved variables and dividing the figure into the two sectors below.</p>
 <div id = "centerIcons">
     <div class = "" text-align = center;>
         <a target = "_blank" href = "2024.11.01fiddler2.png"><img src = "2024.11.01fiddler2.png" style="width:400px"></a>
     </div>
-</div><p><ul>
-    <li><p style = "color: #39568C;"><strong>Left, Major Arc Sector</strong><p><ul>
+</div><p>The area can be found as follows:</p>
+<ul>
+    <li><p style = "color: #39568C;"><strong>Left, Major Arc Sector</strong><p>
+        <ul>
             <li>Angle = $2\pi - \phi$</li>
             <li>Radius = $r$</li>
-            <li>Area = $\dfrac{2\pi - \phi}{2\pi} \cdot \pi r^2 = \boxed{\pi r^2 - \dfrac{r^2\phi}{2}}$</li>        
+            <li>Area = $\dfrac{2\pi - \phi}{2\pi} \cdot \pi r^2 = \boxed{\pi r^2 - \dfrac{r^2\phi}{2}}$</li> 
         </ul>
-    &lt;/li&gt;<br><br>
-    <li><p style = "color: #1F968B;"><strong>Right, Minor Arc Sector</strong><p><ul>
+    </li><br>    
+    <li><p style = "color: #1F968B;"><strong>Right, Minor Arc Sector</strong><p>
+        <ul>
             <li>Angle = $\phi$</li>
             <li>Radius = $r+1$</li>
             <li>Area = $\dfrac{\phi}{2\pi} \cdot \pi (r+1)^2 = \boxed{\dfrac{r^2\phi}{2} + r\phi + \frac{\phi}{2}}$</li>
-        &lt;/ul&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;<br>
-<br>
-$$A = \left(\pi r^2 - \frac{r^2\phi}{2}\right) + \left(\frac{r^2\phi}{2} + r\phi + \frac{\phi}{2}\right)$$
-<br>
+        </ul>
+    </li>
+</ul>$$A = \left(\pi r^2 - \frac{r^2\phi}{2}\right) + \left(\frac{r^2\phi}{2} + r\phi + \frac{\phi}{2}\right)$$<p><br>
 $$A = \pi r^2 + \phi\left(r + \frac{1}{2}\right)$$
 <br>
 $$A \approx \pi \cdot 0.1839^2 + 0.84468(0.1839+0.5)$$</p>
@@ -14738,8 +14739,8 @@ $$\cos\phi\left(1 + \frac{2\cos \phi - 2}{\phi} - \frac{\sin\phi}{\pi - \phi}\ri
 <br></p>
 <p>$\phi = \frac{\pi}{2}$ does not make sense, so using <a href="https://www.desmos.com/calculator">Desmos</a>, $\phi \approx 0.7496$.</p>
 <p>Solving for $r$,</p>
-$$r \approx \boxed{\frac{1}{2\pi - 2\cdot 0.7496} \approx 0.2090}$$<p>Solving for $R$,</p>
-$$R \approx \boxed{\frac{1}{0.7496} \approx 1.3340}$$
+$$\boxed{r \approx \frac{1}{2\pi - 2\cdot 0.7496} \approx 0.2090}$$<p>Solving for $R$,</p>
+$$\boxed{R \approx \frac{1}{0.7496} \approx 1.3340}$$
 </div>
 </div>
 </div>
@@ -14756,26 +14757,30 @@ $$R \approx \boxed{\frac{1}{0.7496} \approx 1.3340}$$
     </div>
 </div><p>The area can be found as follows:</p>
 <ul>
-    <li><p style = "color: #440154;"><strong>Left & Right Circular Segments</strong><p><ul>
+    <li><p style = "color: #440154;"><strong>Left & Right Circular Segments</strong><p>
+        <ul>
             <li>Angle = $\phi$</li>
             <li>Radius = $R$</li>
             <li>Area = $2 \cdot \frac{1}{2}R^2(\phi - \sin \phi) = R - R^2\sin\phi \approx 0.1215$</li> 
         </ul>
     </li><br>    
-    <li><p style = "color: #39568C;"><strong>Trapezoid</strong><p><ul>
+    <li><p style = "color: #39568C;"><strong>Trapezoid</strong><p>
+        <ul>
             <li>Base<sub>1</sub> = $1$</li>
             <li>Base<sub>2</sub> = $1+ 2R\cos \phi - 2R$</li>
             <li>Height = $R\sin \phi$</li>
             <li>Area = $\dfrac{(2+ 2R\cos \phi - 2R)\cdot R\sin \phi}{2} = (1 + R\cos\phi - R)\cdot R\sin \phi \approx 0.5839$</li> 
         </ul>
     </li><br>    
-    <li><p style = "color: #1F968B;"><strong>Triangle</strong><p><ul>
+    <li><p style = "color: #1F968B;"><strong>Triangle</strong><p>
+        <ul>
             <li>Base = $1+ 2R\cos \phi - 2R$</li>
             <li>Height = $r\sin (\frac{\pi}{2}-\phi) = r\cos\phi$</li>
             <li>Area = $\dfrac{(1+ 2R\cos \phi - 2R)\cdot r\cos\phi}{2} = \left(\dfrac{1}{2}+ R\cos \phi - R\right)\cdot r\cos\phi \approx 0.0218$</li>
         </ul>
     </li><br>    
-    <li><p style = "color: #73D055;"><strong>Top, Major Arc Sector</strong><p><ul>
+    <li><p style = "color: #73D055;"><strong>Top, Major Arc Sector</strong><p>
+        <ul>
             <li>Angle = $2\pi - 2\phi$</li>
             <li>Radius = $r$</li>
             <li>Area = $\dfrac{2\pi - 2\phi}{2\pi} \cdot \pi r^2 = \pi r^2 - r^2\phi \approx 0.1045$</li>
@@ -14792,7 +14797,7 @@ $$R \approx \boxed{\frac{1}{0.7496} \approx 1.3340}$$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2>$$A \approx 0.8317$$
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2>$$\boxed{A \approx 0.8317}$$
 </div>
 </div>
 </div>
@@ -14833,7 +14838,7 @@ $\phi \to 0$ looks like...</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h4><h4 id="2024.11.04">2024.11.04<a class="anchor-link" href="#2024.11.04">&#182;</a></h4><p>Code can be found <a href="https://humanrickshaw.github.io/Fiddler/2024/2024.10.18%20Fiddler.html">here</a>.</p>
+<h4 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h4><h4 id="2024.11.04">2024.11.04<a class="anchor-link" href="#2024.11.04">&#182;</a></h4><p>Code can be found <a href="https://humanrickshaw.github.io/Fiddler/2024/2024.11.01%20Fiddler.html">here</a>.</p>
 
 </div>
 </div>
