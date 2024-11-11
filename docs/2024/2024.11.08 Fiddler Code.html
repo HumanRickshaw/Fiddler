@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2024.11.01 Fiddler Code</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2024.11.08 Fiddler Code</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14634,23 +14634,28 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <span class="k">def</span> <span class="nf">napSort</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">'''</span>
-<span class="sd">    Given the number of students in line, returns the</span>
-<span class="sd">    probability that you will be place in Graphindor after</span>
-<span class="sd">    hearing 'Graphinoor' being yelled.</span>
+<span class="sd">    Given the number of students in line, returns a list of</span>
+<span class="sd">    tuples (n, p) where n is the number of students from 2 to</span>
+<span class="sd">    N and p is the corresponding probability that you will be</span>
+<span class="sd">    placed in Graphindor after hearing 'Graphinoor' being yelled.</span>
 <span class="sd">    '''</span>
+    
+    <span class="n">wakeup</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="n">cum</span> <span class="o">=</span> <span class="mi">0</span>
-
     <span class="c1">#You are the Nth student.</span>
-    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">cum</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cum</span>
+
         
         <span class="c1">#Your probability is complementary to that of the the person immediately before you.</span>
-        <span class="n">cum</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">getP</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
-
-    <span class="c1">#Any of the 1 to (N-1) student could have been placed in Graphindor with probability 1/(N-1).</span>
-    <span class="n">cum</span> <span class="o">=</span> <span class="n">cum</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    
-    <span class="k">return</span><span class="p">(</span><span class="n">cum</span><span class="p">)</span>
+        <span class="n">cum</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">getP</span><span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">cum</span> <span class="o">=</span> <span class="n">cum</span> <span class="o">/</span> <span class="n">s</span>
+        <span class="n">wakeup</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">cum</span><span class="p">))</span>
+   
+    <span class="k">return</span><span class="p">(</span><span class="n">wakeup</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14666,19 +14671,52 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4919</span><span class="p">,</span> <span class="mi">4924</span><span class="p">)</span> <span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">napSort</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">napSort</span><span class="p">(</span><span class="mi">5000</span><span class="p">)[</span><span class="mi">4918</span><span class="p">:</span><span class="mi">4923</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
 
     
-<span class="n">Ps</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">not_Ps</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">getP</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">Ps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="n">not_Ps</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
-    
-<span class="nb">print</span><span class="p">()</span>    
-<span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">Ps</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[(4920, 0.7498856474893264),
+ (4921, 0.7498856707317065),
+ (4922, 0.7498856939646406),
+ (4923, 0.7498857171881341),
+ (4924, 0.749885740402193)]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">getP</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -14700,13 +14738,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>4919 0.7498856242374949
-4920 0.7498856474893271
-4921 0.7498856707317073
-4922 0.7498856939646413
-4923 0.7498857171881349
-
-0.7498856881572931
+<pre>0.7498856881572931
 </pre>
 </div>
 </div>
@@ -14722,7 +14754,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h4><h4 id="2024.11.04">2024.11.04<a class="anchor-link" href="#2024.11.04">&#182;</a></h4>
+<h4 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h4><h4 id="2024.11.11">2024.11.11<a class="anchor-link" href="#2024.11.11">&#182;</a></h4>
 </div>
 </div>
 </div>
