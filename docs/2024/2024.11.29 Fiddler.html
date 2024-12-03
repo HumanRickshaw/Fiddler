@@ -14799,13 +14799,15 @@ $$
         <li>For <b style = "color : #336382";>die</b> in <b style = "color : #440154";>dice combination</b> :</li>
         <ol>
             <li>Initiate an empty list of <b style = "color : #287D8E";>new total sums</b>.</li>
-            <li>For each <b style = "color : #1F968B";>face</b> on <b style = "color : #336382";>die</b> :</li>
-            <ol>
-                <li>For each <b style = "color : #3CBB75";>total</b> in <b style = "color : #453781";>total sums</b> :</li>
-                <ol>
+            <li>For each <b style = "color : #1F968B";>face</b> on <b style = "color : #336382";>die</b> :
+                <ul>
+                <li>For each <b style = "color : #3CBB75";>total</b> in <b style = "color : #453781";>total sums</b> :
+                    <ul>
                     <li>Add <b style = "color : #1F968B";>face</b> to <b style = "color : #3CBB75";>total</b>, and append it to <b style = "color : #287D8E";>new total sums</b>.</li>
-                </ol>
-            </ol> 
+                </ul>
+                </li>
+            </ul>
+            </li>
             <li>Replace <b style = "color : #453781";>total sums</b> with <b style = "color : #287D8E";>new total sums</b>, as those will be the sums the next <b style = "color : #336382";>die</b>'s faces will be successively added to.</li>
         </ol>
         <li>Calculate <b style = "color : #73D055";>frequency distribution</b> from <b style = "color : #453781";>total sums</b>.</li>
