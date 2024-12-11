@@ -14683,31 +14683,31 @@ $$</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>I created code that did the following :</p>
 <ol>
-    <li>Start with :</li>
-    <ol>
-        <li>A list of particles, initiated with a $[(0,0)]$.</li>
-        <li>Initial Energy $=0$ as there are no other particles.</li>
-    </ol>
-    <li>Create a Minimum Energy $=\infty$.
-    <li>For each point in the square :
-    <ol>
-        <li>Pass if the point is already in the list of particles.</li>
-        <li>Else, create a temporary energy $=0$.</li>
-        <li>For each particle in the particles :
-        <ul>
-            <li>Add the energy of the current point and particle to the temp energy.</li>
-        </ul>
-        </li>
-        <li>If the temp energy is less than the Minimum Energy :
-        <ul>
-            <li>Save the new point.</li>
-            <li>Save the temp energy as the Minimum Energy.</li>
-        </ul>
-        </li>
-        <li>Return the original particles and the last saved new point.</li>
-        <li>Return the sum of the Initial Energy and the saved Minimum Energy.</li>
-    </ol>
+    <li>Start with :
+        <ol>
+            <li>A list of particles, initiated with a $[(0,0)]$.</li>
+            <li>Initial Energy $=0$ as there are no other particles.</li>
+        </ol>
     </li>
+    <li>Create a Minimum Energy $=\infty$.</li>
+    <li>For each point in the square :
+        <ol>
+            <li>Pass if the point is already in the list of particles.</li>
+            <li>Else, create a temporary energy $=0$.</li>
+            <li>For each particle in the particles :
+                <ul>
+                    <li>Add the energy of the current point and particle to the temp energy.</li>
+                </ul>
+            </li>
+            <li>If the temp energy is less than the Minimum Energy :
+                <ul>
+                    <li>Save the new point.</li>
+                    <li>Save the temp energy as the Minimum Energy.</li>
+                </ul>
+            </li>
+        </ol>
+    <li>Return the original particles and the last saved new point.</li>
+    <li>Return the sum of the Initial Energy and the saved Minimum Energy.</li>
 </ol><p>I looked at particles $2 \le p \le 9$.  Here are my findings...</p>
 
 </div>
@@ -14909,7 +14909,7 @@ $$</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="8-Particles.">8 Particles.<a class="anchor-link" href="#8-Particles.">&#182;</a></h3><div class="row" style="height:180px">
   <div class="column" style="width:300px">
-    <p>Using the minimum energy of 8 particles, the 8th particle minimizes energy when placed at midpoint of the side with no particles.  This is not the minimum energy arrangement for 8 particles.<p>
+    <p>Using the minimum energy of 8 particles, the 7th particle minimizes energy when placed at midpoint of the side with no particles.  This is not the minimum energy arrangement for 8 particles.<p>
   </div>
   <div class="column" style="width:300px">
     <p>The minimum energy, however, occurs when the particles are located at all four vertices and all four midpoints.  Similar to 4 particles, this is symmetrical about all sides and diagonals.<p>
@@ -14941,7 +14941,7 @@ $$</p>
     <p>The minimum energy, however, occurs when when the particles form an inscribed 'nonagon', symmetrical about the base of the square.<p>
   </div>
   <div class="column" style="width:300px">
-    <p>I also minimized energy of an inscribed heptagon, symmetrical about the diagonal of the square.<p>
+    <p>I also minimized energy of an inscribed 'nonagon', symmetrical about the diagonal of the square.<p>
   </div>
 </div>
 <div class="row">
@@ -14965,7 +14965,8 @@ $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>I initially thought that induction would be used, that is, the minumum of $p$ particles would be a particle appended to the arrangement of the minumum of $p-1$ particles.  Arrangements with $6-9$ particles quickly debunked that.  I'm quite curious when there are at least two particles in the interior.  For now, however, this is the minimal energy arrangement of 9 particles.</p>
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>I initially thought that induction would be used, that is, the minumum of $p$ particles would be a particle appended to the arrangement of the minumum of $p-1$ particles.  Arrangements with $6-9$ particles quickly debunked that.  I am quite fascinated how close these numbers are for a given number of particles and different approaches to determining the minimum.  I'm quite curious how arrangements look for larger $p$ when there are at least two particles in the interior.</p>
+<p>For now, however, this is the minimal energy arrangement of 9 particles.</p>
 <p><img src = "2024.12.06-9Min.png"></p>
 
 </div>
