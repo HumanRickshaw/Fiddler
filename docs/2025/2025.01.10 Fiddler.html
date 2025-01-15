@@ -14592,16 +14592,16 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>If at least one person survives all 38 rounds, at least 38 people survive all 38 rounds.</p>
-<p>The minimum number of people in the previous round is the smallest multiple of 37 that is greater than 38.  This can be expressed generally as given there are $C$ contestants surviving round $k$, the minimum number of contestants that survive round $k-1$ is $(k-1)g$, where $(k-1)g \ge C$ and $g$ is minimized.</p>
-<p>I created code that did the following :</p>
+<p>The minimum number of people in the previous round is the smallest multiple of 37 that is greater than 38.  Given there are $g_k$ groups of contestants surviving round $k$, the minimum number of groups of contestants that survive round $k-1$ is :</p>
+$$g_{k-1} = \bigg\lceil \frac{g_k \times k}{k-1}\bigg\rceil$$<p>
+I created code that did the following :</p>
 <ol>
     <li>Start with an empty dictionary.</li>
-    <li>Initialize the number of groups that surive round $R$ is $1$:</li>
+    <li>Initialize the $g_R =1$:</li>
     <li>For round $r$ from $R-1$ to $1$:
-    <ol>
-        <li>Get the number of the survivors in round $r+1$, which is $r+1$ multiplied by the number of groups in that round.</li>
-        <li>The group size is the ceiling of the number of surivors divided by $r$.</li>
-    </ol>
+    <ul>
+        <li>The minimum number of groups for round $r$ is $g_{r} = \bigg\lceil \frac{g_{r+1} \times (r+1)}{r}\bigg\rceil$.</li>
+    </ul>
 </ol>
 </div>
 </div>
@@ -14640,7 +14640,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <br>
 $$EV_N = 1 + \sum\limits_{g = 1}^{10} \frac{1}{10}EV_{M(N,g)}$$
 <br>
-where $g$ is the group size called and $M(N,g)$ is the greatest multiple of $g$ less than $N$.</p>
+where $g$ is the group size called and $M(N,g)$ is the greatest multiple of $g$ less than $N$. Note that if $g$ is a factor of $N$:
+<br>
+$$EV_M(N,g) = EV_N$$
+<br>
+These rounds have no one eliminated, and thus prolong the game.</p>
 
 </div>
 </div>
@@ -14704,12 +14708,14 @@ where $g$ is the group size called and $M(N,g)$ is the greatest multiple of $g$ 
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>I looked at starting values of $1$ to $1000$.  If there are at least $3$ additional rounds between round $r$ and $r+1$, it is in the table.</p>
 <table>
-    <th style = "text-align: center" width = 110>$r$</th>
-    <th style = "text-align: center" width = 110>$r+1$</th>
-    <th style = "text-align: center" width = 100>Round Difference</th>
-    <th style = "text-align: center" width = 100>$r$ is prime?</th>    
-    <th style = "text-align: center" width = 100>$r+1$ is superabundant?</th>
-    <th style = "text-align: center" width = 100>$r+1$ is highly composite?</th>    
+    <thead>
+        <th style = "text-align: center" width = 110>$r$</th>
+        <th style = "text-align: center" width = 110>$r+1$</th>
+        <th style = "text-align: center" width = 100>Round Difference</th>
+        <th style = "text-align: center" width = 100>$r$ is prime?</th>    
+        <th style = "text-align: center" width = 100>$r+1$ is superabundant?</th>
+        <th style = "text-align: center" width = 100>$r+1$ is highly composite?</th>    
+    </thead>
     <tbody>
         <tr>
             <td style = "text-align: center">$71$</td>
@@ -14907,7 +14913,7 @@ where $g$ is the group size called and $M(N,g)$ is the greatest multiple of $g$ 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h3><h4 id="2025.01.013">2025.01.013<a class="anchor-link" href="#2025.01.013">&#182;</a></h4><p>Code can be found <a href="https://humanrickshaw.github.io/Fiddler/2025/2025.01.10%20Fiddler%20Code.html">here</a>.</p>
+<h3 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h3><h4 id="2025.01.13">2025.01.13<a class="anchor-link" href="#2025.01.13">&#182;</a></h4><p>Code can be found <a href="https://humanrickshaw.github.io/Fiddler/2025/2025.01.10%20Fiddler%20Code.html">here</a>.</p>
 
 </div>
 </div>
