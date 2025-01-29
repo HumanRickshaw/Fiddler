@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2025.01.24 Fiddler</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2025.01.24 Fiddler Code</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14580,93 +14580,55 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Can-You-Hop-to-the-Lily-Pad?">Can You Hop to the Lily Pad?<a class="anchor-link" href="#Can-You-Hop-to-the-Lily-Pad?">&#182;</a></h1><h2 id="Fiddler"><a href="https://thefiddler.substack.com/p/can-you-hop-to-the-lily-pad">Fiddler</a><a class="anchor-link" href="#Fiddler">&#182;</a></h2><p>From Michael Coffey comes a hoppin’ good puzzle:</p><p>You are a frog in a pond with four lily pads, marked “1” through “4.” You are currently on pad 2, and your goal is to make it to pad 1. From any given pad, there are specific probabilities that you’ll jump to another pad:</p><ul>
-    <li><p>Once on pad 1, you will happily stay there forever.</p></li>
-    <li><p>From pad 2, there’s a 1-in-2 chance you’ll hop to pad 1, and a 1-in-2 chance you’ll hop to pad 3.</p></li>
-    <li><p>From pad 3, there’s a 1-in-3 chance you’ll hop to pad 2, and a 2-in-3 chance you’ll hop to pad 4.</p></li>
-    <li><p>Once on pad 4, you will unhappily stay there forever.</p></li>
-</ul><p>Given that you are starting on pad 2, what is the probability that you will ultimately make it to pad 1 (as opposed to pad 4)?</p>
+<h1 id="Setup">Setup<a class="anchor-link" href="#Setup">&#182;</a></h1>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>Let $P_k$ be the probability the frog lands on pad $k$ <em>after</em> the starting position.</p>
-<ol>
-    <li><p>$P_1 = \frac{1}{2} + \frac{1}{2}P_2$</p></li>
-    <li><p>$P_2 = \frac{1}{3}P_3$</p></li>
-    <li><p>$P_3 = \frac{1}{2} + \frac{1}{2}P_2$</p></li>
-    <li><p>$P_4 = \frac{2}{3}P_3$</p></li>
-</ol><p>Equation 1 yields $P_2 = 2P_1 - 1$.</p>
-<p>Substituting that into Equation 2 yields $P_3 = 3(2P_1 - 1)$.</p>
-<p>Substituting that and $P_4 = 1-P_1$ into Equation 4:</p>
-\begin{align*}
-1-P_1 &amp;= \frac{2}{3}\big(3(2P_1 - 1)\big) \\
-1-P_1 &amp;= 4P_1 - 2 \\
-3 &amp;= 5P_1 \\
-\end{align*}
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+     </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>The probability that the frog ultimately lands on lily pad 1 is</p>
-$$\boxed{\frac{3}{5}}$$
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Extra-Credit">Extra Credit<a class="anchor-link" href="#Extra-Credit">&#182;</a></h2><p>From Michael Coffey also comes some Extra Credit:</p><p><span>Once again, you are a frog in a pond. But this time, the pond has </span><em>infinitely many</em><span> lily pads, which are numbered “1,” “2,” “3,” etc. As before, you are currently on pad 2, and your goal is to make it to pad 1, which you would happily stay on forever.</span></p><p><span>Whenever you are on pad </span><em>k</em><span>, you will hop to pad </span><em>k</em><span>−1 with probability 1/</span><em>k</em><span>, and you will hop to pad </span><em>k</em><span>+1 with probability (</span><em>k</em><span>−1)/</span><em>k</em><span>.</span></p><p>Now, what is the probability that you will ultimately make it to pad 1?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>Let $P_k$ be the probability the frog lands on pad $k$ <em>after</em> the starting position.</p>
-<ul>
-    <li><p>$P_1 = \frac{1}{2} + \frac{1}{2}P_2$</p></li>
-    <li><p>$P_2 = \frac{1}{3}P_3$</p></li>
-    <li><p>$P_3 = \frac{1}{2} + \frac{1}{2}P_2 + \frac{1}{4}P_4$</p></li>
-    <li><p>$P_4 = \frac{2}{3}P_3 + \frac{1}{5}P_5$</p></li>
-    <li><p>...</p></li>  
-    <li><p>$P_{k-1} = \frac{k-3}{k-2}P_{k-2}$</p></li>
-    <li><p>$P_k = \frac{k-2}{k-1}P_{k-1}$</p></li>
-</ul>\begin{bmatrix}
-    1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 \\
-    \frac{1}{2} &amp; 0 &amp; \frac{1}{2} &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 \\
-    0 &amp; \frac{1}{3} &amp; 0 &amp; \frac{2}{3} &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 \\
-    0 &amp; 0 &amp; \frac{1}{4} &amp; 0 &amp; \frac{3}{4} &amp; \dots &amp; 0 &amp; 0 &amp; 0 \\
-    0 &amp; 0 &amp; 0 &amp; \frac{1}{5} &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 \\  
-    \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \dots &amp; \vdots &amp; \vdots &amp; \vdots \\
-    0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; \frac{k-3}{k-2} &amp; 0 \\ 
-    0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; \frac{1}{k-1} &amp; 0 &amp; \frac{k-2}{k-1} \\ 
-    0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 1 \\ 
-\end{bmatrix}<p>I raised this matrix to the 100<sup>th</sup> power for $4 \le k \le 100$. For $19 \le k$, the value is consistently $0.6321205588285576$.</p>
 
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Constants-&amp;-Functions">Constants &amp; Functions<a class="anchor-link" href="#Constants-&amp;-Functions">&#182;</a></h1>
 </div>
 </div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14674,11 +14636,185 @@ $$\boxed{\frac{3}{5}}$$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>I'm quite certain the answer is $\boxed{1-\frac{1}{e}} = 0.6321205588285576...$ but I do not know why.</p>
+<h1 id="Fiddler">Fiddler<a class="anchor-link" href="#Fiddler">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">lilyPad</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">'''Given a maximum number of lily pads n,</span>
+<span class="sd">    returns a list of (n-2) ordered triples</span>
+<span class="sd">    (k, p1, pk), where :</span>
+<span class="sd">    *k is from 3 to n lily pads.</span>
+<span class="sd">    *p1 is the probability of eventually landing on lily pad 1.</span>
+<span class="sd">    *pk = 1-p1'''</span>  
+    
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">m3</span>
+
+    
+    <span class="n">final</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">]]</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">initial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="p">)])</span>
+        
+        <span class="c1">#Grow k x k from k-1 x k-1.</span>
+        <span class="n">matrix_array</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">matrix_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+        <span class="c1">#k-1.</span>
+        <span class="n">matrix_array</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
+        <span class="c1">#k.</span>
+        <span class="n">matrix_array</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        
+        <span class="c1">#kxk matrix.</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix_array</span><span class="p">)</span>
+        
+        <span class="c1">#Evaluate end game.</span>
+        <span class="n">eg</span> <span class="o">=</span> <span class="n">initial</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">final</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">final</span><span class="p">)</span>
+
+
+<span class="n">probs</span> <span class="o">=</span> <span class="n">lilyPad</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">probs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>0.5
+0.6
+0.625
+0.6307692307692307
+0.6319018404907976
+0.6320899335717934
+0.6321167883211679
+0.6321201448891888
+0.6321205178374103
+0.6321205551321909
+0.632120558522625
+0.6321205588051614
+0.6321205588268948
+0.6321205588284472
+0.6321205588285507
+0.6321205588285571
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+0.6321205588285576
+</pre>
+</div>
+</div>
 
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14686,8 +14822,7 @@ $$\boxed{\frac{3}{5}}$$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h3><h4 id="2025.01.27">2025.01.27<a class="anchor-link" href="#2025.01.27">&#182;</a></h4><p>Code can be found <a href="https://humanrickshaw.github.io/Fiddler/2025/2025.01.24%20Fiddler%20Code.html">here</a>.</p>
-
+<h5 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h5><h4 id="2025.01.17">2025.01.17<a class="anchor-link" href="#2025.01.17">&#182;</a></h4>
 </div>
 </div>
 </div>
