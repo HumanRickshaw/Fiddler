@@ -14593,124 +14593,111 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>The following tree diagram summarizes the domino placement and total length:</p>
 <html>
-<style>
-.tree,
-.tree ul,
-.tree li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-.tree {
-    margin: 0 0 1em;
-    text-align: center;
-}
-.tree,
-.tree ul {
-    display: table;
-}
-.tree ul {
-    width: 100%;
-}
-.tree li {
-    display: table-cell;
-    padding: .5em 0;
-    vertical-align: top;
-}
-.tree li:before {
-    outline: solid 1px #666;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-.tree li:first-child:before {
-    left: 50%;
-}
-.tree li:last-child:before {
-    right: 50%;
-}
-.tree code,
-.tree span {
-    border: solid .1em #666;
-    border-radius: .2em;
-    display: inline-block;
-    margin: 0 .2em .5em;
-    padding: .2em .5em;
-    position: relative;
-}
-.tree ul:before,
-.tree code:before,
-.tree span:before {
-    outline: solid 1px #666;
-    content: "";
-    height: .5em;
-    left: 50%;
-    position: absolute;
-}
-.tree ul:before {
-    top: -.5em;
-}
-.tree code:before,
-.tree span:before {
-    top: -.55em;
-}
-.tree>li {
-    margin-top: 0;
-}
-.tree>li:before,
-.tree>li:after,
-.tree>li>code:before,
-.tree>li>span:before {
-    outline: none;
-}
-</style>
-  <body>
-    <ul class="tree">
-        <li> <span>Place <b>d<sub>1</sub></b>.</span>
-            <ul>
-                <li> <span>$\frac{1}{100}$ it falls over.</span>
-                    <ul>
-                        <li><span><b>$\frac{1}{100}$</b> domino length is 0.</span></li> 
-                    </ul></li>
-                <li> <span>Place <b>d<sub>2</sub></b>.</span>
-                    <ul>
-                        <li> <span>$\frac{1}{100}$ it falls over.</span>
-                            <ul>
-                                <li><span><b>$\frac{99}{100^2}$</b> domino length is 1.</span></li>
-                            </ul></li>
-                        <li> <span>Place <b>d<sub>3</sub></b>.</span>
-                            <ul>
-                                <li> <span>$\frac{1}{100}$ it falls over.</span>
-                                    <ul>
-                                        <li><span><b>$\frac{99^2}{100^3}$</b> domino length is 2.</span></li>
-                                    </ul></li>
-                                <li><span>...</span>
-                                    <ul>
-                                        <li> <span>Place <b>d<sub>n</sub></b>.</span>
-                                            <ul>
-                                                <li> <span>$\frac{1}{100}$ it falls over.</span>
-                                                    <ul>
-                                                        <li><span><b>$\frac{99^{n-1}}{100^n}$</b> domino length is n.</span></li>
-                                                    </ul></li>
-                                                <li> <span>Place <b>d<sub>n+1</sub></b>.</span>
-                                                    <ul>
-                                                        <li><span>...</span></li>
-                                                    </ul></li>                                   
-                                            </ul>
-                                        </li>                                      
-                                    </ul>                                
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</body>
+    <style>
+        .tree,
+        .tree ul,
+        .tree li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        }
+        .tree {
+        margin: 0 0 1em;
+        text-align: center;
+        }
+        .tree,
+        .tree ul {
+        display: table;
+        }
+        .tree ul {
+        width: 100%;
+        }
+        .tree li {
+        display: table-cell;
+        padding: .5em 0;
+        vertical-align: top;
+        }
+        .tree li:before {
+        outline: solid 1px #666;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        }
+        .tree li:first-child:before {
+        left: 50%;
+        }
+        .tree li:last-child:before {
+        right: 50%;
+        }
+        .tree code,
+        .tree span {
+        border: solid .1em #666;
+        border-radius: .2em;
+        display: inline-block;
+        margin: 0 .2em .5em;
+        padding: .2em .5em;
+        position: relative;
+        }
+        .tree ul:before,
+        .tree code:before,
+        .tree span:before {
+        outline: solid 1px #666;
+        content: "";
+        height: .5em;
+        left: 50%;
+        position: absolute;
+        }
+        .tree ul:before {
+        top: -.5em;
+        }
+        .tree code:before,
+        .tree span:before {
+        top: -.55em;
+        }
+        .tree>li {
+        margin-top: 0;
+        }
+        .tree>li:before,
+        .tree>li:after,
+        .tree>li>code:before,
+        .tree>li>span:before {
+        outline: none;
+        }
+    </style>
+    <body>
+        <ul class="tree">
+            <li> <span>Place <b>d<sub>1</sub></b>.</span>
+                <ul>
+                    <li><span>1/100 it falls over.</span>
+                        <span><b>1/100</b> dominos placed is 1.</span></li>
+                    <li><span>Place <b>d<sub>2</sub></b>.</span>
+                        <ul>
+                            <li><span>1/100 it falls over.</span><br>
+                                <span><b>99/100<sup>2</sup></b> dominos placed is 2.</span></li>
+                            <li><span>Place <b>d<sub>3</sub></b>.</span>
+                                <ul>
+                                    <li><span>1/100 it falls over.</span><br>
+                                        <span><b>99<sup>2</sup>/100<sup>3</sup></b> dominos placed is 3.</span></li>
+                                    <li><span>...</span><br>
+                                        <span>Place <b>d<sub>n</sub></b>.</span>
+                                        <ul>
+                                            <li><span>1/100 it falls over.</span><br>
+                                                <span><b>99<sup>n-1</sup>/100<sup>n+1</sup></b> dominos placed is n.</span></li> 
+                                            <li><span>Place <b>d<sub>n+1</sub></b>.</span><br>
+                                                <span>...</span></li>
+                                        </ul>
+                                    </li>
+                                </ul> 
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </body>
 </html>
 </div>
 </div>
@@ -14766,124 +14753,111 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>The following tree diagram summarizes the domino placement and total length:</p>
 <html>
-<style>
-.tree,
-.tree ul,
-.tree li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-.tree {
-    margin: 0 0 1em;
-    text-align: center;
-}
-.tree,
-.tree ul {
-    display: table;
-}
-.tree ul {
-    width: 100%;
-}
-.tree li {
-    display: table-cell;
-    padding: .5em 0;
-    vertical-align: top;
-}
-.tree li:before {
-    outline: solid 1px #666;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-.tree li:first-child:before {
-    left: 50%;
-}
-.tree li:last-child:before {
-    right: 50%;
-}
-.tree code,
-.tree span {
-    border: solid .1em #666;
-    border-radius: .2em;
-    display: inline-block;
-    margin: 0 .2em .5em;
-    padding: .2em .5em;
-    position: relative;
-}
-.tree ul:before,
-.tree code:before,
-.tree span:before {
-    outline: solid 1px #666;
-    content: "";
-    height: .5em;
-    left: 50%;
-    position: absolute;
-}
-.tree ul:before {
-    top: -.5em;
-}
-.tree code:before,
-.tree span:before {
-    top: -.55em;
-}
-.tree>li {
-    margin-top: 0;
-}
-.tree>li:before,
-.tree>li:after,
-.tree>li>code:before,
-.tree>li>span:before {
-    outline: none;
-}
-</style>
-  <body>
-    <ul class="tree">
-        <li> <span>Place <b>d<sub>1</sub></b>.</span>
-            <ul>
-                <li><span>10<sup>-k</sup> it falls over.</span>
-                    <ul>
-                        <li><span><b>10<sup>-k</sup></b> domino length is 0.</span></li> 
-                    </ul></li>
-                <li> <span>Place <b>d<sub>2</sub></b>.</span>
-                    <ul>
-                        <li> <span>10<sup>-k</sup> it falls over.</span>
-                            <ul>
-                                <li><span><b>10<sup>-k</sup>(1-10<sup>-k</sup>)</b> domino length is 1.</span></li>
-                            </ul></li>
-                        <li> <span>Place <b>d<sub>3</sub></b>.</span>
-                            <ul>
-                                <li> <span>10<sup>-k</sup> it falls over.</span>
-                                    <ul>
-                                        <li><span><b>10<sup>-k</sup>(1-10<sup>-k</sup>)<sup>2</sup></b> domino length is 2.</span></li>
-                                    </ul></li>
-                                <li><span>...</span>
-                                    <ul>
-                                        <li> <span>Place <b>d<sub>n</sub></b>.</span>
-                                            <ul>
-                                                <li> <span>10<sup>-k</sup> it falls over.</span>
-                                                    <ul>
-                                                        <li><span><b>10<sup>-k</sup>(1-10<sup>-k</sup>)<sup>n-1</sup></b> domino length is n.</span></li>
-                                                    </ul></li>
-                                                <li> <span>Place <b>d<sub>n+1</sub></b>.</span>
-                                                    <ul>
-                                                        <li><span>...</span></li>
-                                                    </ul></li>                                   
-                                            </ul>
-                                        </li>                                      
-                                    </ul>                                
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</body>
+    <style>
+        .tree,
+        .tree ul,
+        .tree li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        }
+        .tree {
+        margin: 0 0 1em;
+        text-align: center;
+        }
+        .tree,
+        .tree ul {
+        display: table;
+        }
+        .tree ul {
+        width: 100%;
+        }
+        .tree li {
+        display: table-cell;
+        padding: .5em 0;
+        vertical-align: top;
+        }
+        .tree li:before {
+        outline: solid 1px #666;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        }
+        .tree li:first-child:before {
+        left: 50%;
+        }
+        .tree li:last-child:before {
+        right: 50%;
+        }
+        .tree code,
+        .tree span {
+        border: solid .1em #666;
+        border-radius: .2em;
+        display: inline-block;
+        margin: 0 .2em .5em;
+        padding: .2em .5em;
+        position: relative;
+        }
+        .tree ul:before,
+        .tree code:before,
+        .tree span:before {
+        outline: solid 1px #666;
+        content: "";
+        height: .5em;
+        left: 50%;
+        position: absolute;
+        }
+        .tree ul:before {
+        top: -.5em;
+        }
+        .tree code:before,
+        .tree span:before {
+        top: -.55em;
+        }
+        .tree>li {
+        margin-top: 0;
+        }
+        .tree>li:before,
+        .tree>li:after,
+        .tree>li>code:before,
+        .tree>li>span:before {
+        outline: none;
+        }
+    </style>  
+    <body>
+        <ul class="tree">
+            <li> <span>Place <b>d<sub>1</sub></b>.</span>
+                <ul>
+                    <li><span>10<sup>-k</sup> it falls over.</span><br>
+                        <span><b>10<sup>-k</sup></b> domino length is 0.</span></li>
+                    <li> <span>Place <b>d<sub>2</sub></b>.</span>
+                        <ul>
+                            <li><span>10<sup>-k</sup> it falls over.</span><br>
+                                <span><b>10<sup>-k</sup>(1-10<sup>-k</sup>)</b> domino length is 1.</span></li>
+                            <li><span>Place <b>d<sub>3</sub></b>.</span>
+                                <ul>
+                                    <li><span>10<sup>-k</sup> it falls over.</span><br>
+                                        <span><b>10<sup>-k</sup>(1-10<sup>-k</sup>)<sup>2</sup></b> domino length is 2.</span></li>
+                                    <li><span>...</span><br>
+                                        <span>Place <b>d<sub>n</sub></b>.</span>
+                                        <ul>
+                                            <li><span>10<sup>-k</sup> it falls over.</span><br>
+                                                <span><b>10<sup>-k</sup>(1-10<sup>-k</sup>)<sup>n-1</sup></b> domino length is n.</span></li>
+                                            <li><span>Place <b>d<sub>n+1</sub></b>.</span><br>
+                                                <span>...</span></li>
+                                        </ul>
+                                    </li>
+                                </ul> 
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </body>
 </html>
 </div>
 </div>
