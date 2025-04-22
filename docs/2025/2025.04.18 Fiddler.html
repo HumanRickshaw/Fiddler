@@ -14598,8 +14598,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <li> A hammer thrown benefits your opponent, so they throw a hammer.</li>
     <li> A hammer thrown results in the same probability of winning as not throwing a hammer.  There is no difference.</li>
 </ol><p>Half the time you will get 2 points and half the time your opponent will get two points.</p>
-<p>Let $d_{p_1}$ and $d_{p_2}$ be the respective number of points you and your opponent have.  Let $P(d_{p_1}, d_{p_2})$ be the probability that you win.  Thus,</p>
-$$\boxed{P(d_{p_1}, d_{p_2}) = \frac{1}{2} \big(P(d_{p_1}+2, d_{p_2}) + P(d_{p_1}, d_{p_2}+2))}$$<p>If the distance is $d_{p_1}$ or $d_{p_2}$ is at least the number of points to win, then the probability is 1 or 0, respectively.</p>
+<p>Let $d_{p_1}$ and $d_{p_2}$ be the respective number of points you and your opponent have.  Let $P_3(d_{p_1}, d_{p_2})$ be the probability that you win.  Thus,</p>
+$$\boxed{P_3(d_{p_1}, d_{p_2}) = \frac{1}{2} \big(P_3(d_{p_1}+2, d_{p_2}) + P_3(d_{p_1}, d_{p_2}+2))}$$<p>If the distance is $d_{p_1}$ or $d_{p_2}$ is at least the number of points to win, then the probability is 1 or 0, respectively.</p>
 <p>If $d_{p_1} = d_{p_2}$, the probability is $\frac{1}{2}$.</p>
 
 </div>
@@ -14613,10 +14613,10 @@ $$\boxed{P(d_{p_1}, d_{p_2}) = \frac{1}{2} \big(P(d_{p_1}+2, d_{p_2}) + P(d_{p_1
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 \begin{align*}
-P(1, 0) &amp;= \frac{1}{2}P(3, 0) + \frac{1}{2}P(1, 2) \\
-P(1, 2) &amp;= \frac{1}{2}P(3, 2) + \frac{1}{2}P(1, 4) \\
-P(1, 2) &amp;= \frac{1}{2}(1) + \frac{1}{2}(0) \\
-P(1, 2) &amp;= \frac{1}{2} \\
+P_3(1, 0) &amp;= \frac{1}{2}P_3(3, 0) + \frac{1}{2}P_3(1, 2) \\
+P_3(1, 2) &amp;= \frac{1}{2}P_3(3, 2) + \frac{1}{2}P_3(1, 4) \\
+P_3(1, 2) &amp;= \frac{1}{2}(1) + \frac{1}{2}(0) \\
+P_3(1, 2) &amp;= \frac{1}{2} \\
 \end{align*}
 </div>
 </div>
@@ -14628,7 +14628,7 @@ P(1, 2) &amp;= \frac{1}{2} \\
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2>$$P(1, 0) = \frac{1}{2}(1) + \frac{1}{2}\bigg(\frac{1}{2}\bigg) = \boxed{\frac{3}{4}}$$
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2>$$P_3(1, 0) = \frac{1}{2}(1) + \frac{1}{2}\bigg(\frac{1}{2}\bigg) = \boxed{\frac{3}{4}}$$
 </div>
 </div>
 </div>
@@ -14661,7 +14661,7 @@ P(1, 2) &amp;= \frac{1}{2} \\
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>I wrote code that recursively evaluates a scenario.</p>
+<p>I wrote code that recursively evaluates a scenario based on the findings above.</p>
 
 </div>
 </div>
@@ -14673,7 +14673,7 @@ P(1, 2) &amp;= \frac{1}{2} \\
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2>$$\boxed{P_5(1, 0) = \frac{11/16}}$$<p></p>
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2>$$\boxed{P_5(1, 0) = \frac{11}{16}}$$<p></p>
 
 </div>
 </div>
