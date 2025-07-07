@@ -14987,7 +14987,7 @@ class="
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">drawStar</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">drawStar</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="n">ec</span><span class="p">,</span> <span class="n">fc</span><span class="p">)</span> <span class="p">:</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Draw a pentagram.</span>
@@ -15009,8 +15009,8 @@ class="
     <span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.25</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.25</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
     
     <span class="k">return</span><span class="p">(</span><span class="n">mpP</span><span class="p">(</span><span class="n">xy</span> <span class="o">=</span> <span class="n">points</span><span class="p">,</span>
-               <span class="n">edgecolor</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-               <span class="n">facecolor</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span>
+               <span class="n">edgecolor</span> <span class="o">=</span> <span class="n">ec</span><span class="p">,</span>
+               <span class="n">facecolor</span> <span class="o">=</span> <span class="n">fc</span><span class="p">,</span>
                <span class="n">lw</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
                <span class="n">zorder</span> <span class="o">=</span> <span class="mi">2</span><span class="p">))</span>
 
@@ -15109,7 +15109,7 @@ class="
                      <span class="n">zorder</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
 
     <span class="k">for</span> <span class="n">xy</span> <span class="ow">in</span> <span class="n">XY</span> <span class="p">:</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">drawStar</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">drawStar</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="s1">'None'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">))</span>
         
     <span class="k">return</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
 
@@ -15198,7 +15198,7 @@ class="
     <span class="n">para</span> <span class="o">=</span> <span class="n">Ps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">xy</span> <span class="ow">in</span> <span class="n">para</span> <span class="p">:</span>
         <span class="c1">#Paint the four stars red.</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">drawStar</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="s1">'#C00A31FF'</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">drawStar</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="s1">'#C00A31FF'</span><span class="p">,</span> <span class="s1">'#C00A31FF'</span><span class="p">))</span>
     <span class="c1">#Draw the paralellogram.</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mpP</span><span class="p">(</span><span class="n">xy</span> <span class="o">=</span> <span class="n">para</span> <span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">'#C00A31FF'</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">'None'</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">2</span><span class="p">))</span>
     
