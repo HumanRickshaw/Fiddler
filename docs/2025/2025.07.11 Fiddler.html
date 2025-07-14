@@ -14681,8 +14681,9 @@ $$\boxed{44 \text{ pins.}}$$
 <h3 id="Frame-11-:">Frame 11 :<a class="anchor-link" href="#Frame-11-:">&#182;</a></h3><p>Scored twice.</p>
 <h3 id="Frame-12-:">Frame 12 :<a class="anchor-link" href="#Frame-12-:">&#182;</a></h3><p>Scored once.</p>
 <p>This yields,</p>
-$$ Score_{max}(p) = \begin{cases}
-p, &amp;0 \lt p \leq 10\\
+$$
+Score_{max}(p) = \begin{cases}
+p, &amp;0 \leq p \leq 10\\
 2p-10, &amp;10 \lt p \leq 20\\
 3p-30, &amp;20 \lt p \leq 100\\
 2p+70, &amp;100 \lt p \leq 110\\
@@ -14709,8 +14710,9 @@ $$
 <h3 id="Frame-12:">Frame 12:<a class="anchor-link" href="#Frame-12:">&#182;</a></h3><p>In order to get to Frame 12, that means Frame 10 had a strike.  Which means the pins in Frame 10 are scored twice, as there was a spare in Frame 9.</p>
 <p>The Frame 12 pins are scored once.</p>
 <p>This yields,</p>
-$$ Score_{max}(p) = \begin{cases}
-p, &amp;0 \lt p \leq 110\\
+$$
+Score_{min}(p) = \begin{cases}
+p, &amp;0 \leq p \leq 110\\
 p+10, &amp;110 \lt p \leq 120\\
 \end{cases}
 $$
@@ -14725,8 +14727,9 @@ $$
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Combining the two functions yields,</p>
-$$ Score_{Diff}(p) = \begin{cases}
-0, &amp;0 \lt p \leq 10\\
+$$
+Score_{Diff}(p) = \begin{cases}
+0, &amp;0 \leq p \leq 10\\
 p-10, &amp;10 \lt p \leq 20\\
 2p-30, &amp;20 \lt p \leq 100\\
 p+70, &amp;100 \lt p \leq 110\\
