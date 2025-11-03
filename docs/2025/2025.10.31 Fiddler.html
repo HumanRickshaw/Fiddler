@@ -14627,7 +14627,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 \begin{align*}
 P_s(N) &amp;= W_w(N) - L_w(N) \\
 &amp;= \boxed{\sum\limits_{L=0}^{N-1} \frac{(N-2+L)!}{(N-2)!L!} \cdot \frac{1}{2^{N+L-1}} - \sum\limits_{L=0}^{N-2} \frac{(N-1+L)!}{(N-1)!L!} \cdot \frac{1}{2^{N+L}}} \\
-\end{align*}\begin{align*}
 P_s(4) &amp;= \sum\limits_{L=0}^{3} \frac{(2+L)!}{2!L!} \cdot \frac{1}{2^{3+L}} - \sum\limits_{L=0}^{2} \frac{(3+L)!}{3!L!} \cdot \frac{1}{2^{4+L}} \\
 &amp;= \left(\frac{1}{8} + \frac{3}{16} + \frac{6}{32} + \frac{10}{64}\right) - \left(\frac{1}{16} + \frac{4}{32} + \frac{10}{64} \right)
 \end{align*}
@@ -14669,9 +14668,7 @@ $$\sum\limits_{L=0}^{M} \frac{(N-2+L)!}{(N-2)!L!} \cdot \frac{1}{2^{N+L-1}} - \s
 =&amp; \left[\frac{(N-2+0)!}{(N-2)!0!} \cdot \frac{1}{2^{N+0-1}}\right] + \left[\frac{(N-2+1)!}{(N-2)!1!} \cdot \frac{1}{2^{N+1-1}}\right] - \left[\frac{(N-1+0)!}{(N-1)!0!} \cdot \frac{1}{2^{N+0}}\right] \\
 =&amp; \left[\frac{(N-2)!}{(N-2)!} \cdot \frac{1}{2^{N-1}}\right] + \left[\frac{(N-1)!}{(N-2)!} \cdot \frac{1}{2^{N}}\right] - \left[\frac{(N-1)!}{(N-1)!} \cdot \frac{1}{2^{N}}\right] \\
 =&amp; \left[\frac{2}{2^{N}}\right] + \left[\frac{N-1}{2^{N}}\right] - \left[\frac{1}{2^{N}}\right] \\
-=&amp; \frac{2+N-1-1}{2^{N}} \\
-=&amp; \frac{N}{2^{N}} \\
-=&amp; \boxed{\frac{N-1+1 \choose 1}{2^{N-1+1}}} \\
+=&amp; \frac{2+N-1-1}{2^{N}} = \boxed{\frac{N-1+1 \choose 1}{2^{N-1+1}}} \\
 \end{align*}
 </div>
 </div>
@@ -14703,14 +14700,16 @@ Separate the $M$ and $M-1$ terms from the respective sums,
 \begin{align*}
 =&amp; \left[\frac{(N-2+K)!}{(N-2)!K!} \cdot \frac{1}{2^{N+K-1}} + \sum\limits_{L=0}^{K-1} \frac{(N-2+L)!}{(N-2)!L!} \cdot \frac{1}{2^{N+L-1}}\right] - \left[\frac{(N-1+K-1)!}{(N-1)!(K-1)!} \cdot \frac{1}{2^{N+K-1}} + \sum\limits_{L=0}^{K-2} \frac{(N-1+L)!}{(N-1)!L!} \cdot \frac{1}{2^{N+L}}\right] \\
 \end{align*}<p><br>
-combine the remaining sums identical to expression from $M=K-1$, combine the separated $M$ and $M-1$ terms, 
+Combine the remaining sums identical to expression from $M=K-1$, combine the separated $M$ and $M-1$ terms, 
 <br></p>
 \begin{align*}
 =&amp; \left[\sum\limits_{L=0}^{K-1} \frac{(N-2+L)!}{(N-2)!L!} \cdot \frac{1}{2^{N+L-1}} - \sum\limits_{L=0}^{K-2} \frac{(N-1+L)!}{(N-1)!L!} \cdot \frac{1}{2^{N+L}}\right] + \left[\frac{(N-2+K)!}{(N-2)!K!} \cdot \frac{1}{2^{N+K-1}} -\frac{(N-1+K-1)!}{(N-1)!(K-1)!} \cdot \frac{1}{2^{N+K-1}}\right] \\
 =&amp; \left[\frac{N-1+K-1 \choose K-1}{2^{N-1+K-1}}\right] + \frac{1}{2^{N+K-1}} \cdot \left[\frac{(N+K-2)!}{(N-2)!K!} - \frac{(N+K-2)!}{(N-1)!(K-1)!}\right] \\
 =&amp; \frac{1}{2^{N+K-1}} \cdot \left[2\cdot\frac{(N+K-2)!}{(N-1)!(K-1)!} + \frac{(N+K-2)!}{(N-2)!K!} - \frac{(N+K-2)!}{(N-1)!(K-1)!}\right] \\
 =&amp; \frac{1}{2^{N+K-1}} \cdot \left[\frac{(N+K-2)!}{(N-1)!(K-1)!} + \frac{(N+K-2)!}{(N-2)!K!}\right] \\
-\end{align*}<p>From <a href="https://mathworld.wolfram.com/PascalsFormula.html">Pascal's Formula</a>,</p>
+\end{align*}<p><br>
+From <a href="https://mathworld.wolfram.com/PascalsFormula.html">Pascal's Formula</a>,
+<br></p>
 \begin{align*}
 =&amp; \frac{1}{2^{N+K-1}} \cdot \left[\frac{(N+K-1)!}{(N-1)!(K)!}\right] \\
 =&amp; \frac{N+K-1 \choose K}{2^{N+K-1}} = \boxed{\frac{N-1+K \choose K}{2^{N-1+K}}} \\
