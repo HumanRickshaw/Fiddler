@@ -14609,7 +14609,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
             <li>$N-1$ additional wins are necessary between the first and last game.</li>
             <li>$0 \le L \le N-2$ additional losses are <em>possible</em> between the first and last game.</li>
             <li>The total number of games is $N+1+L$.</li>
-            <li>The probability is $2^{N+L}$</li>
+            <li>The probability is $2^{N+L}$.</li>
         </ul>
    </li>
 </ol>
@@ -14697,7 +14697,15 @@ $$\sum\limits_{L=0}^{K-1} \frac{(N-2+L)!}{(N-2)!L!} \cdot \frac{1}{2^{N+L-1}} - 
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="M-=-K">M = K<a class="anchor-link" href="#M-=-K">&#182;</a></h3>\begin{align*}
 &amp; \sum\limits_{L=0}^{K} \frac{(N-2+L)!}{(N-2)!L!} \cdot \frac{1}{2^{N+L-1}} - \sum\limits_{L=0}^{K-1} \frac{(N-1+L)!}{(N-1)!L!} \cdot \frac{1}{2^{N+L}} \\
+\end{align*}<p><br>
+Separate the $M$ and $M-1$ terms from the respective sums,
+<br></p>
+\begin{align*}
 =&amp; \left[\frac{(N-2+K)!}{(N-2)!K!} \cdot \frac{1}{2^{N+K-1}} + \sum\limits_{L=0}^{K-1} \frac{(N-2+L)!}{(N-2)!L!} \cdot \frac{1}{2^{N+L-1}}\right] - \left[\frac{(N-1+K-1)!}{(N-1)!(K-1)!} \cdot \frac{1}{2^{N+K-1}} + \sum\limits_{L=0}^{K-2} \frac{(N-1+L)!}{(N-1)!L!} \cdot \frac{1}{2^{N+L}}\right] \\
+\end{align*}<p><br>
+combine the remaining sums identical to expression from $M=K-1$, combine the separated $M$ and $M-1$ terms, 
+<br></p>
+\begin{align*}
 =&amp; \left[\sum\limits_{L=0}^{K-1} \frac{(N-2+L)!}{(N-2)!L!} \cdot \frac{1}{2^{N+L-1}} - \sum\limits_{L=0}^{K-2} \frac{(N-1+L)!}{(N-1)!L!} \cdot \frac{1}{2^{N+L}}\right] + \left[\frac{(N-2+K)!}{(N-2)!K!} \cdot \frac{1}{2^{N+K-1}} -\frac{(N-1+K-1)!}{(N-1)!(K-1)!} \cdot \frac{1}{2^{N+K-1}}\right] \\
 =&amp; \left[\frac{N-1+K-1 \choose K-1}{2^{N-1+K-1}}\right] + \frac{1}{2^{N+K-1}} \cdot \left[\frac{(N+K-2)!}{(N-2)!K!} - \frac{(N+K-2)!}{(N-1)!(K-1)!}\right] \\
 =&amp; \frac{1}{2^{N+K-1}} \cdot \left[2\cdot\frac{(N+K-2)!}{(N-1)!(K-1)!} + \frac{(N+K-2)!}{(N-2)!K!} - \frac{(N+K-2)!}{(N-1)!(K-1)!}\right] \\
