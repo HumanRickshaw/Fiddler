@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>2025.11.28 Fiddler</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2025.11.21 Fiddler</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14580,21 +14580,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Can-You-Take-the-Heat?">Can You Take the Heat?<a class="anchor-link" href="#Can-You-Take-the-Heat?">&#182;</a></h1><h2 id="Fiddler"><a href="https://thefiddler.substack.com/p/can-you-take-the-heat">Fiddler</a><a class="anchor-link" href="#Fiddler">&#182;</a></h2><p>In the YouTube show, “Hot Ones,” guests answer interview questions while consuming 10 hot sauces, one at a time, ranked in increasing spiciness from 1 to 10.</p><p>You have been invited on as a guest and want to prepare for the show. However, you don’t feel like purchasing all 10 sauces in advance. Your plan is to purchase fewer sauces, and then to combine sauces together for any you are missing. For example, if you are missing sauce #7, then you can instead simultaneously consume sauces #3 and #4, since 3 + 4 = 7. (I know the spiciness of the sauces isn’t linear, but for the purposes of this puzzle, let’s assume it is.)</p><p>After some pencil-and-paper scratch work, you realize you only need four spices. For example, here’s how you can generate all the values from 1 to 10 using the spices #1, #2, #3, and #4 at most once:</p>
-<ul>
-    <li><p>1</p></li>
-    <li><p>2</p></li>
-    <li><p>3</p></li>
-    <li><p>4</p></li>
-    <li><p>5 = 1 + 4</p></li>
-    <li><p>6 = 2 + 4</p></li>
-    <li><p>7 = 3 + 4</p></li>
-    <li><p>8 = 1 + 3 + 4</p></li>
-    <li><p>9 = 2 + 3 + 4</p></li>
-    <li><p>10 = 1 + 2 + 3 + 4</p></li>
-</ul>
-
-<p><span>Including this particular set of four spices (i.e., #1 through #4), for </span><em>how many</em><span> sets of four spice numbers is it possible to generate all the numbers from 1 to 10 using each spice at most once?</span></p>
+<h1 id="A-Loopy-Holiday-Gift-Exchange">A Loopy Holiday Gift Exchange<a class="anchor-link" href="#A-Loopy-Holiday-Gift-Exchange">&#182;</a></h1><h2 id="Fiddler"><a href="https://thefiddler.substack.com/p/a-loopy-holiday-gift-exchange">Fiddler</a><a class="anchor-link" href="#Fiddler">&#182;</a></h2><p><span>This week’s puzzle is another collaboration between </span><em>Fiddler on the Proof</em><span> and </span><em><a href="https://www.sciencenews.org/" rel>Science News</a></em><span>, where four math puzzles that are related were </span><a href="https://www.sciencenews.org/article/math-puzzle-holiday-gift" rel>posted</a><span> earlier this morning. The third and fourth among these are also appearing here as this week’s Fiddler and Extra Credit. Now—on to those puzzles!</span></p><p>You are participating in a holiday gift exchange with your classmates. You each write down your own name on a slip of paper and fold it up. Then, all the students place their names into a single hat. Next, students pull a random name from the hat, one at a time. If at any point someone pulls their own name from the hat, the whole class starts over, with everyone returning the names to the hat.</p><p>Once the whole process is complete, each student purchases a gift for the classmate whose name they pulled. Gifts are handed out at a big holiday party at the end of the year.</p><p>At this party, you observe that there are “loops” of gift-giving within the class. For example, student A might have gotten a gift for B, who got a gift for C, who got a gift for D, who got a gift for A. In this case, A, B, C and D would form a loop of length four. Another way to have a loop of length four is if student A got a gift for C, who got a gift for B, who got a gift for D, who got a gift for A. And of course, there are other ways.</p><p>If there are a total of five students in the class, how likely is it that they form a single loop that includes the entire class?</p>
 </div>
 </div>
 </div>
@@ -14605,107 +14591,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>The largest number cannot be more than 6.</p>
-<p>If the largest number is 5, $\boxed{\text{#1, #1, #3, #5}}$ and $\boxed{\text{#1, #2, #2, #5}}$ can generate all 10 spice levels.</p>
-<p>If the largest number is 4, $\boxed{\text{#1, #2, #3, #4}}$ can generate all 10 spice levels.</p>
-<p>The largest number cannot be 3, as #1, #3, #3, #3 cannot generate spice level 2 and #2, #2, #3, #3 cannot generate spice level 1.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>There are 3 sets of four spice numbers.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Extra-Credit">Extra Credit<a class="anchor-link" href="#Extra-Credit">&#182;</a></h2><p><span>You’re prepping for a new show, “Hotter Ones,” which has spices ranked from 1 to 100. Let </span><em>N</em><span> be the minimum number of spices needed to generate all the numbers from 1 to 100.</span></p><p><span>For </span><em>how many</em><span> sets of </span><em>N</em><span> spice numbers is it possible to generate all the numbers from 1 to 100 using each spice at most once? (Note that I am </span><em>not</em><span> asking for the value of </span><em>N</em><span>; that’s just something you’ll need to figure out en route to your answer.)</span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>I first determined that a max heat level of $2^h-1$ has only one set, $[1,2,4, \cdots, 2^{h-1}]$.  This helped defined the value of $N$ for all numbers.</p>
-<p>A heat level can only appear a maximum of two times.  This can be proved as follows.</p>
-<ul>
-    <li>Assume the largest heat value is $v$.</li>        
-    <li>All heat values from $1$ to $v-1$ are guaranteed from all other heat levels in the list.</li>
-    <li>All heat values from $1$ to $2v-1$ are guaranteed if including heat level $v$.</li>
-    <li>Appending $[2v]$ and $[v,v]$ both guarantee $1$ to $4v-1$, but $[2v]$ is one less heat level added.</li>        
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>I wrote code that did the following :</p>
-<ol>
-    <li>Start with a maximum heat level $h$.</li>
-    <li>The minimum number of heat levels, $N(h) = \lfloor log_2 h \rfloor +1$.</li>
-    <li>Start with a single initial heat level set of [1].</li>
-    <li>Check the number of heat levels in each heat level set...
-        <ul> 
-            <li> If $<N-1$...
-                <ol>
-                    <li>Create a empty list of new heat level sets.</li>
-                    <li><b>LOOP 1</b> - For each heat level set in the current heat level sets :
-                        <ul>
-                            <li>Let the largest (most recent) heat level be $m$.
-                                <ol>
-                                    <li>If the second most recent is less, the minimum  $=m$.</li>
-                                    <li>If the second most recent is the same, the minimum $=m+1$.</li>
-                                </ol>
-                            </li>
-                            <li>The maximum is the sum of all heat levels and $1$.</li>
-                            <li><b>LOOP 2</b> - For each heat level from the minimum to the maximum:
-                                <ul>
-                                    <li>Append to heat level set and save.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Once all heat level sets have had additional an additional heat level added, check the number of heat levels.</li>
-                </ol>
-            </li>
-            <li> If $=N-1$, this is the last heat level to add...
-                <ol>
-                    <li><b>LOOP 3</b> - For each heat level set in the current heat level sets : 
-                        <ul>
-                            <li> If the sum of all heat levels is $\ge \lfloor \dfrac{n}{2} \rfloor$
-                                <ul>
-                                    <li>Append a heat level such that the sum of all heat levels is $n$.  Save in final list.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Remove duplicates from final list.</li>
-                </ol>
-            </li>
-        </ul>
-    </li>
+<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>The number of derrangements, that is, the permutations of $N$ items where none of them are in the correct location converges very quickly to <a href="https://oeis.org/A000166">$\frac{N!}{e}$</a>.</p>
+<p>For $N=5$, there are $44$ derrangements.</p>
+<p>For the loops, $A$ cannot be first.  And WLOG, every other student will receive a gift from A the same number of times in the solution set.</p>
+<ol style="list-style-type: upper-alpha" start="2">
+  <li>$BCDEA$, $BCEAD$, $BDAEC$, $BDECA$, $BEACD$, $BEDAC$</li>
+  <li>$CADEB$, $CAEBD$, $CDBEA$, $CDEAB$, $CEBAD$, $CEDBA$</li>
+  <li>$DABEC$, $BCEAD$, $BDAEC$, $BDECA$, $BEACD$, $BEDAC$</li>
+  <li>$EABCD$, $CAEBD$, $CDBEA$, $CDEAB$, $CEBAD$, $CEDBA$</li>
 </ol>
 </div>
 </div>
@@ -14717,7 +14610,30 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>For $h = 100$, $N = 7$, and there are $\boxed {114}$ unique sets to achieve all values from $1$ to $100$.</p>
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2>$$\boxed{\frac{24}{44} = \frac{6}{11}}$$
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Extra-Credit">Extra Credit<a class="anchor-link" href="#Extra-Credit">&#182;</a></h2><p><span>If there are </span><em>N</em><span> students in the class, where </span><em>N</em><span> is some large number, how likely is it that they form a single loop that includes the entire class, in terms of </span><em>N</em><span>? (For full credit, your answer should be proportional to </span><em>N</em><span> raised to some negative power.)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>The numerator seems to be $(N-1)!$, as the first can gift anyone but themself, the second can gift anyone but themself and the first, etc.</p>
+<p>The denominator was noted above!</p>
 
 </div>
 </div>
@@ -14729,12 +14645,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>A max heat level of $2^h + 1$ has the most sets for any $N$.</p>
-<p>This makes a fascinating graph.  Notice that even and odd values have two 'parallel' curves.</p>
-<center><div class = "column" style = "width:500px">
-    <a target = "_blank" href = "2025.11.28EC.png"><img src = "2025.11.28EC.png"></a>
-</div></center><p>Max heat levels of $256$ and $257$ have a whopping $462,664$ and $465,297$ sets!</p>
-
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2>$$\boxed{\frac{(N-1)!}{\frac{N!}{e}} = \frac{e}{N}}$$
 </div>
 </div>
 </div>
@@ -14745,8 +14656,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h1><h4 id="2025.12.01">2025.12.01<a class="anchor-link" href="#2025.12.01">&#182;</a></h4><p>Code can be found <a href="https://humanrickshaw.github.io/Fiddler/2025/2025.11.07%20Fiddler%20Code.html">here</a>.</p>
-
+<h1 id="Rohan-Lewis">Rohan Lewis<a class="anchor-link" href="#Rohan-Lewis">&#182;</a></h1><h4 id="2025.11.24">2025.11.24<a class="anchor-link" href="#2025.11.24">&#182;</a></h4>
 </div>
 </div>
 </div>
