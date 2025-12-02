@@ -14643,13 +14643,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>I first determined that a max heat level of $2^h-1$ has only one set, $[1,2,4, \cdots, 2^{h-1}]$.  This helped defined the value of $N$ for all numbers.</p>
-<p>A heat level can only appear a maximum of two times.  This can be proved as follows.</p>
+<h2 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h2><p>I first determined that a max spice level of $2^h-1$ has only one set, $[1,2,4, \cdots, 2^{h-1}]$.  This helped defined the value of $N$ for all numbers.</p>
+<p>A spice level can appear a maximum of two times.</p>
 <ul>
-    <li>Assume the largest heat value is $v$.</li>        
-    <li>All heat values from $1$ to $v-1$ are guaranteed from all other heat levels in the list.</li>
-    <li>All heat values from $1$ to $2v-1$ are guaranteed if including heat level $v$.</li>
-    <li>Appending $[2v]$ and $[v,v]$ both guarantee $1$ to $4v-1$, but $[2v]$ is one less heat level added.</li>        
+    <li>Assume the largest spice level in a set is $v$.</li>        
+    <li>All spice values from $1$ to $v-1$ are guaranteed from all other spice levels in the set.</li>
+    <li>It follows that all spice values from $1$ to $2v-1$ are guaranteed if including spice level $v$.</li>
+    <li>Appending $[2v]$ and $[v,v]$ both guarantee $1$ to $4v-1$, but $[2v]$ is one less spice number.</li>        
 </ul>
 </div>
 </div>
@@ -14663,40 +14663,41 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>I wrote code that did the following :</p>
 <ol>
-    <li>Start with a maximum heat level $h$.</li>
-    <li>The minimum number of heat levels, $N(h) = \lfloor log_2 h \rfloor +1$.</li>
-    <li>Start with a single initial heat level set of [1].</li>
-    <li>Check the number of heat levels in each heat level set...
+    <li>Start with a maximum spice level $h$.</li>
+    <li>The minimum number of spice levels, $N(h) = \lfloor log_2 h \rfloor +1$.</li>
+    <li>Initiate a set containing sets of spice numbers</li>
+    <li>Start with a single initial set of [1].</li>
+    <li>Check the number of spice levels in each spice level set...
         <ul> 
             <li> If $<N-1$...
                 <ol>
-                    <li>Create a empty list of new heat level sets.</li>
-                    <li><b>LOOP 1</b> - For each heat level set in the current heat level sets :
+                    <li>Create a empty list of new spice level sets.</li>
+                    <li><b>LOOP 1</b> - For each spice level set in the current spice level sets :
                         <ul>
-                            <li>Let the largest (most recent) heat level be $m$.
+                            <li>Let the largest (most recent) spice level be $m$.
                                 <ol>
                                     <li>If the second most recent is less, the minimum  $=m$.</li>
                                     <li>If the second most recent is the same, the minimum $=m+1$.</li>
                                 </ol>
                             </li>
-                            <li>The maximum is the sum of all heat levels and $1$.</li>
-                            <li><b>LOOP 2</b> - For each heat level from the minimum to the maximum:
+                            <li>The maximum is the sum of all spice levels and $1$.</li>
+                            <li><b>LOOP 2</b> - For each spice level from the minimum to the maximum:
                                 <ul>
-                                    <li>Append to heat level set and save.</li>
+                                    <li>Append to spice level set and save.</li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li>Once all heat level sets have had additional an additional heat level added, check the number of heat levels.</li>
+                    <li>Once all spicev level sets have had additional an additional spice level added, check the number of spice levels.</li>
                 </ol>
             </li>
-            <li> If $=N-1$, this is the last heat level to add...
+            <li> If $=N-1$, this is the last spice level to add...
                 <ol>
-                    <li><b>LOOP 3</b> - For each heat level set in the current heat level sets : 
+                    <li><b>LOOP 3</b> - For each spice level set in the current spice level sets : 
                         <ul>
-                            <li> If the sum of all heat levels is $\ge \lfloor \dfrac{n}{2} \rfloor$
+                            <li> If the sum of all spice levels is $\ge \lfloor \dfrac{n}{2} \rfloor$
                                 <ul>
-                                    <li>Append a heat level such that the sum of all heat levels is $n$.  Save in final list.</li>
+                                    <li>Append a spice level such that the sum of all spice levels is $n$.  Save in final list.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -14729,11 +14730,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>A max heat level of $2^h + 1$ has the most sets for any $N$.</p>
+<p>A max spice level of $2^h + 1$ has the most sets for any $N$.</p>
 <p>This makes a fascinating graph.  Notice that even and odd values have two 'parallel' curves.</p>
 <center><div class = "column" style = "width:500px">
     <a target = "_blank" href = "2025.11.28EC.png"><img src = "2025.11.28EC.png"></a>
-</div></center><p>Max heat levels of $256$ and $257$ have a whopping $462,664$ and $465,297$ sets!</p>
+</div></center><p>Max spice levels of $256$ and $257$ have a whopping $462,664$ and $465,297$ sets!</p>
 
 </div>
 </div>
