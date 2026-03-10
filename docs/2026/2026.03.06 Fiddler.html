@@ -14649,18 +14649,24 @@ $M$ is the midpoint of the two teams.  $AB$ is the chord passing through $M$ per
 <br>
 $M'$ is the midpoint of $AB$.<br>
 <br>
-Right $\bigtriangleup ACM'$ has $\angle BCM' = \beta$, $CM' = a$, and $BM' = b$.</p>
-<p>It follows that $a = \cos \beta$ and $b = \sin \beta$.</p>
-<p>Given Team Centroid at $(x_c, y_c)$ and Team Vertex at $(x_v, y_v)$ :</p>
-<ul>
-    <li>$(x_M, y_M) = \left(\dfrac{x_c+x_v}{2}, \dfrac{y_c+y_v}{2}\right)$.</li>
-    <li>$m = \dfrac{y_c-y_v}{x_c-x_v}$ between the two teams' centers.</li>
-    <li>The equation of $AB$ is $y - y_M = -\frac{1}{m}(x-x_M) \implies \frac{1}{m}x + y + (-\frac{1}{m}x_M-y_M) = 0$.</li>
-    <li>$a$ is the <a href = "https://mathworld.wolfram.com/Point-LineDistance2-Dimensional.html">minimum distance</a> from the center to $AB$.</li>
-    <li>$a = \dfrac{|\dfrac{1}{m}x_M+y_M|}{\sqrt{\dfrac{1}{m^2}+1}} = \dfrac{|x_M+my_M|}{\sqrt{1+m^2}}$.</li>
-    <li>The area of $\bigcirc C = \pi$ and the area of sector $ACB = \beta$.</li>
-    <li>The area of $\bigtriangleup ABC = \frac{1}{2}2b\cdot a = \frac{1}{2} \cdot 2\sin \beta \cos \beta = \frac{1}{2} \sin 2\beta$.</li>
-</ul><p>Thus, the area of the larger region bounded by chord $AB$ and major arc $AB$ is $\boxed{\pi - \beta + \frac{1}{2} \sin 2\beta}$.</p>
+Right $\bigtriangleup ACM'$ has $\angle BCM' = \beta$, $CM' = a$, and $BM' = b$.
+<br>
+It follows that $a = \cos \beta$ and $b = \sin \beta$.
+<br>
+Given Team Centroid at $(x_c, y_c)$ and Team Vertex at $(x_v, y_v)$ :
+<br></p>
+<p><ul>
+    <li>$(x_M, y_M) = \left(\dfrac{x_c+x_v}{2}, \dfrac{y_c+y_v}{2}\right)$.<br></li>
+    <li>$m = \dfrac{y_c-y_v}{x_c-x_v}$ between the two teams' centers.<br></li>
+    <li>The equation of $AB$ is $y - y_M = -\frac{1}{m}(x-x_M) \implies \frac{1}{m}x + y + (-\frac{1}{m}x_M-y_M) = 0$.<br></li>
+    <li>$a$ is the <a href = "https://mathworld.wolfram.com/Point-LineDistance2-Dimensional.html">minimum distance</a> from the center to $AB$.<br></li>
+    <li>$a = \dfrac{\bigg|\dfrac{1}{m}x_M+y_M\bigg|}{\sqrt{\dfrac{1}{m^2}+1}} = \dfrac{|x_M+my_M|}{\sqrt{1+m^2}}$.<br></li>
+    <li>The area of $\bigcirc C = \pi$ and the area of sector $ACB = \beta$.<br></li>
+    <li>$a = \sin\beta$.<br></li>
+    <li>The area of $\bigtriangleup ABC = \frac{1}{2}2b\cdot a = \frac{1}{2} \cdot 2\sin \beta \cos \beta = \frac{1}{2} \sin 2\beta$.<br></li>
+</ul>
+<br>
+Thus, the area of the larger region bounded by chord $AB$ and major arc $AB$ is $\boxed{\pi - \beta + \frac{1}{2} \sin 2\beta}$.</p>
 
 </div>
 </div>
@@ -14672,14 +14678,20 @@ Right $\bigtriangleup ACM'$ has $\angle BCM' = \beta$, $CM' = a$, and $BM' = b$.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>I ran a simulation of 10 million random radiis and angle corresponding to the radii of one team, and the radii and angle of the other team.  I took the square root of the random number for the radii both times to account for the <a href="https://math.stackexchange.com/questions/1307287/random-uniformly-distributed-points-in-a-circle">probability density of a circle</a>.  The larger region averages to about $$\boxed{0.6340}$$</p>
-<p>I rendered an animation where Team Centroid travels along the vertical diameter of the circle while Team Vertex travels along an <a href="https://www.wolframalpha.com/input/?i=Archimedes%27+spiral">Archimidean Spiral</a> through exactly 3 revolutions.</p>
+<h2 id="Answer">Answer<a class="anchor-link" href="#Answer">&#182;</a></h2><p>I ran a simulation of 100 million random radiis and angles corresponding to the radii of one team, and the radii and angle of the other team.  I took the square root of the random number for the radii both times to account for the <a href="https://math.stackexchange.com/questions/1307287/random-uniformly-distributed-points-in-a-circle">probability density of a circle</a>.  The larger region averages to $$\boxed{0.6398}$$</p>
+<p>I rendered an animation where Team Centroid travels along the vertical diameter of the circle while Team Vertex travels along an <a href="https://www.wolframalpha.com/input/?i=Archimedes%27+spiral">Archimidean Spiral</a> through exactly 3 revolutions.
+<br></p>
 <center>
     <div class = "column" style = "width:400px">
         <a target = "_blank" href = "2026.03.06EC.mp4"><img src = "2026.03.06EC2.png"></a>
     </div>
-</center><p>"Proximity" of a point is defined by :</p>
-$$\dfrac{d_{Centroid} - d_{Vertex}}{d_{Centroid} + d_{Vertex}}$$<p>This gives a smooth colormap from $-1$ to $1$.  As a random point is relatively further away from the midpoint of the two teams, "Proximity" approaches $0$.  This is apparent if the two teams are relatively close together.</p>
+</center><p>"Proximity" of a point is defined by :
+<br>
+$$\dfrac{d_{Centroid} - d_{Vertex}}{d_{Centroid} + d_{Vertex}}$$
+<br>
+This gives a smooth colormap from $-1$ to $1$.  As a random point is relatively further away from the midpoint of the two teams, "Proximity" approaches $0$.
+<br>
+This is apparent if the two teams are relatively close together.</p>
 
 </div>
 </div>
