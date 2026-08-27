@@ -7880,8 +7880,8 @@ where $r$ is the distance of the light to the center of the circle.
 <p>In order to have a uniform distribution, the weight of each ring at $\text{radius} = r$ is $2\pi r$.  Thus, the integral to be solved is:
 <br/>
 \begin{align*}
-\text{Avg} =&amp; \dfrac{1}{\pi r^2} \cdot \int\limits_{r=0}^1 2\pi r\cdot\int\limits_{\theta=0}^{2\pi}\sqrt{\left(1 - r\cos{\theta}\right)^2 + \left(r\sin{\theta}\right)^2} \cdot d\theta\cdot dr \\
-=&amp; \dfrac{2}{r^2} \cdot \int\limits_{r=0}^1 r\cdot\int\limits_{\theta=0}^{2\pi}\sqrt{1 - 2r\cos{\theta} + r^2} \cdot d\theta\cdot dr
+\text{Avg} =&amp; \dfrac{1}{\pi R^2} \cdot \int\limits_{r=0}^1 2\pi r\cdot\int\limits_{\theta=0}^{2\pi}\sqrt{\left(1 - r\cos{\theta}\right)^2 + \left(r\sin{\theta}\right)^2} \cdot d\theta\cdot dr \\
+=&amp; 2 \cdot \int\limits_{r=0}^1 r\cdot\int\limits_{\theta=0}^{2\pi}\sqrt{1 - 2r\cos{\theta} + r^2} \cdot d\theta\cdot dr
 \end{align*}</p>
 </div>
 </div>
