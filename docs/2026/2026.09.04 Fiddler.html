@@ -7916,10 +7916,16 @@ clear: both;
 <li>Create a list containing $2M + 2$ lists for wins on the $M \times M$ Board and a list containing the number of lists corresponding to potential win lines on the Big Board.  These represent potential to win.</li>
 <li>From a list of numbers from $1 - N^2$:
                 <ol>
-<li>Check if the number is on the $M\times M$ or $N\times N$ Board.</li>
-<li>If it is, append a $1$ to the potential lists that contain that number.</li>
-<li>Check if that list has $M$ or $N$ $1$s.  If it does, a winner is declared.</li>
-<li>If not, the number was on a non useful line on the Big Board.</li>
+<li>Check if the number is on the $M\times M$ or $N\times N$ Board.
+                        <ol>
+<li>If it is, append a $1$ to the potential lists that contain that number. Check if that list has $M$ or $N$ $1$s.
+                                <ol>
+<li>If it does, a winner is declared.  Break out and start with a new $M \times M$ board.</li>
+<li>If not, continue to next number.</li>
+</ol>
+<li>If not, the number was on a non useful line on the Big Board.  Continue to next number</li>
+</li></ol>
+</li>
 </ol>
 </li>
 <li>Note that if there are no potential lines on the $N \times N$ Board (Related to Fiddler problem), $M \times M$ board wins by default!</li>
